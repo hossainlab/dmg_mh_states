@@ -1,0 +1,14 @@
+{
+ "script": "scripts/m02_qc.py",
+ "utc": "2026-10-21T22:03:35Z",
+ "inputs_sha256": {
+  "mouse_comparison/data/interim/mouse_all.h5ad": "0bae70595baca4a152c6594db23a0cb05b74591d331438f127c3a204efc49596",
+  "configs/qc.yaml": "3f82a7d9f20c109c4688b50f1651cd8d67582d4c21ac3faa9090daad637d44ff"
+ },
+ "argv": [],
+ "thresholds": {
+  "pct_mito_max": 20.0,
+  "min_genes": 300
+ },
+ "max_genes_quantile": 0.995
+}

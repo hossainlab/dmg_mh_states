@@ -1,0 +1,23 @@
+{
+ "script": "m10_treatment_programmes.py",
+ "utc": "2026-10-23T16:16:29Z",
+ "inputs_sha256": {
+  "mouse_comparison/data/processed/mouse_all_hs.h5ad": "a1e097e90ac90d617e82d6627d6800b031df7caa7dcad2b83998f6804320d7f0",
+  "mouse_comparison/data/processed/mouse_tumour_calls.csv": "162a7ccceffae68164db01ecf658ac6ddb1dda3727e1799f5bc17db1ce91782b",
+  "mouse_comparison/data/external/collectri_human.csv": "f4706bde7185746f9263ff83ca2cc3a31078d2bb7580305cf53182fe08757f79",
+  "mouse_comparison/data/external/progeny_human.csv": "c08df9d90ac734eff8ec9c07a09715fb4834789d13c09c3e3cc0d17424d26310"
+ },
+ "argv": [
+  "--force"
+ ],
+ "programmes": {
+  "inflammation": 14,
+  "interferon": 16,
+  "immune_suppression": 14,
+  "T_cell_dysfunction": 10,
+  "T_cell_activation": 14,
+  "regulatory_T": 6
+ },
+ "min_tumour_cells": 20,
+ "min_immune_cells": 50
+}

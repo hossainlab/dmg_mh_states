@@ -1,0 +1,9 @@
+{
+ "script": "scripts/m01_ingest.py",
+ "utc": "2026-10-21T21:54:00Z",
+ "inputs_sha256": {
+  "mouse_comparison/data/mouse/DIPG1_allcell_raw_counts.h5ad": "fb7b0f0a60993e98d9e2c3295bba13c4808d4cb0f4f0ef4734fda53de5fce61a",
+  "mouse_comparison/data/mouse/DIPG1_allcell_metadata.csv": "86f17a3d9264fae610e59a4381deb59089e19ea9b98c72751653c8776c244715"
+ },
+ "argv": []
+}

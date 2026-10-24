@@ -1,0 +1,7 @@
+programme,n_genes,n_present,missing_from_deposit
+inflammation,14,10,Il6;Cxcl1;Cxcl2;S100a9
+interferon,16,14,Mx1;Cxcl9
+immune_suppression,14,10,Il10;Arg1;Ido1;Pdcd1lg2
+T_cell_dysfunction,10,8,Tigit;Ctla4
+T_cell_activation,14,7,Ifng;Gzma;Gzmb;Cd69;Tbx21;Icos;Klrg1
+regulatory_T,6,3,Foxp3;Ctla4;Tnfrsf4

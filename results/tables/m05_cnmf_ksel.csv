@@ -1,0 +1,20 @@
+sample_id,k,chosen,rule,sil,coph,full,min_restart_frac,n_clusters,err_mean,err_sd,run,n_cells
+pooled_primary,4.0,False,largest_k_with_sil>=0.90_and_full,0.9999987077444412,0.9982520130517898,True,1.0,4.0,649.8023071289062,0.0,pooled_primary,891
+pooled_primary,5.0,False,largest_k_with_sil>=0.90_and_full,0.9321072223509465,0.9797879227360231,True,0.8,5.0,645.8203125,0.2311585247516632,pooled_primary,891
+pooled_primary,6.0,False,largest_k_with_sil>=0.90_and_full,0.8596428406895098,0.9359924926140839,False,0.6,6.0,642.1266479492188,0.1011999323964119,pooled_primary,891
+pooled_primary,7.0,False,largest_k_with_sil>=0.90_and_full,0.8724599563924758,0.9154613976942304,False,0.5,7.0,638.8864135742188,0.1419067531824112,pooled_primary,891
+pooled_primary,8.0,False,largest_k_with_sil>=0.90_and_full,0.950955732618338,0.9462979368601572,True,0.9,8.0,635.741943359375,0.0842081680893898,pooled_primary,891
+pooled_primary,9.0,True,largest_k_with_sil>=0.90_and_full,0.9989563042393024,0.9598330370936199,True,1.0,9.0,632.9813232421875,0.0001250848436029628,pooled_primary,891
+pooled_primary_noSample6,4.0,False,largest_k_with_sil>=0.90_and_full,0.9999991147660594,0.9954356842578124,True,1.0,4.0,472.5523986816406,5.870173481525853e-05,pooled_primary_noSample6,489
+pooled_primary_noSample6,5.0,True,largest_k_with_sil>=0.90_and_full,0.9999990411616227,0.9745000294068287,True,1.0,5.0,468.61199951171875,3.0517578125e-05,pooled_primary_noSample6,489
+pooled_primary_noSample6,6.0,False,largest_k_with_sil>=0.90_and_full,0.8796438268969241,0.9465843551996507,False,0.4,6.0,465.6439514160156,0.1738247126340866,pooled_primary_noSample6,489
+pooled_primary_noSample6,7.0,False,largest_k_with_sil>=0.90_and_full,0.8663080497841487,0.9387386328174991,False,0.6,7.0,462.58697509765625,0.0714888721704483,pooled_primary_noSample6,489
+pooled_primary_noSample6,8.0,False,largest_k_with_sil>=0.90_and_full,0.9115368919880478,0.9461889823383733,False,0.7,8.0,459.81768798828125,0.26288971304893494,pooled_primary_noSample6,489
+pooled_primary_noSample6,9.0,False,largest_k_with_sil>=0.90_and_full,0.9352401383254295,0.9592135021653572,False,0.6,9.0,457.4032287597656,0.14890697598457336,pooled_primary_noSample6,489
+mouse_Sample6,4.0,False,largest_k_with_sil>=0.90_and_full,0.9999989504484429,0.9969291892145598,True,1.0,4.0,462.16363525390625,9.650505489844363e-06,mouse_Sample6,402
+mouse_Sample6,5.0,False,largest_k_with_sil>=0.90_and_full,0.8687190968895347,0.9728350469358981,False,0.3,5.0,459.2438049316406,0.027764713391661644,mouse_Sample6,402
+mouse_Sample6,6.0,True,largest_k_with_sil>=0.90_and_full,0.9999955496198257,0.9905377089771684,True,1.0,6.0,456.4034118652344,3.479539373074658e-05,mouse_Sample6,402
+mouse_Sample6,7.0,False,largest_k_with_sil>=0.90_and_full,0.7639360839457279,0.9598456449721657,False,0.2,7.0,454.74993896484375,0.13469363749027252,mouse_Sample6,402
+mouse_Sample6,8.0,False,largest_k_with_sil>=0.90_and_full,0.8459694210480311,0.9702947298644625,False,0.1,8.0,453.043212890625,0.14174464344978333,mouse_Sample6,402
+mouse_Sample6,9.0,False,largest_k_with_sil>=0.90_and_full,0.7859445670298923,0.9422888347126369,False,0.2,9.0,451.6101989746094,0.17394383251667023,mouse_Sample6,402
+mouse_Sample11,,,failed: b'There are other near singularities as well. 0.01561\n',,,,,,,,mouse_Sample11,110

@@ -1,0 +1,9 @@
+cohort,n_cells,species,median_maxprob,frac_maxprob_ge_0.8,median_uncertainty_knn,frac_uncertainty_knn_gt_0.9,frac_classifier_knn_agree,frac_predicted_malignant
+mouse (all cells),67313,mouse,0.877,0.6126,0.8948,0.4776,0.8549,0.2018
+mouse (QC-pass),22750,mouse,0.9842,0.8705,0.8716,0.459,0.9462,0.1329
+"mouse (m04 tumour, QC-pass)",891,mouse,0.9986,0.9506,0.7952,0.2974,0.9888,0.9753
+human query: braun2023,100000,human,0.9976,0.8812,0.977,0.9006,0.9483,0.8769
+human query: filbin,3037,human,0.9997,0.9374,0.9984,0.9895,0.9631,0.895
+human query: labelle,8247,human,0.9998,0.9717,0.9201,0.5537,0.9891,0.1111
+human query: liu,12438,human,0.9993,0.9138,0.9922,0.9121,0.9589,0.7707
+human query: siletti2023,100000,human,0.9986,0.9423,0.5744,0.1754,0.9687,0.0183

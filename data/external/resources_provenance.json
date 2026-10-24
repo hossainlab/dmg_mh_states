@@ -1,0 +1,16 @@
+{
+ "retrieved_utc": "2026-10-23T15:17:36Z",
+ "source": "omnipathdb.org via decoupler 2.2.0",
+ "files": {
+  "data/external/collectri_human.csv": {
+   "rows": 42990,
+   "tfs": 1185,
+   "sha256": "f4706bde7185746f"
+  },
+  "data/external/progeny_human.csv": {
+   "rows": 62421,
+   "pathways": 14,
+   "sha256": "c08df9d90ac734ef"
+  }
+ }
+}

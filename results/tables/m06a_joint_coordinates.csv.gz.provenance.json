@@ -1,0 +1,14 @@
+{
+ "script": "m06a_joint_embedding.py",
+ "utc": "2026-10-23T21:50:44Z",
+ "inputs_sha256": {
+  "data/processed/dmg_atlas_v1.h5ad": "331a50d758b3cac2bf0ead7fbda2279af2c0e11cdd3faa8ad1171039988925ed",
+  "results/tables/malignant_state_assignment.csv.gz": "f7190db3576b877abe8709784e4d26d48321e7be9a56aef733a43b350dc3558d",
+  "mouse_comparison/results/tables/m06_projection_per_cell.csv.gz": "66783c5cebf49f753a65fae3dbbfab8c23de17ed7e1232bb1ae0bde092ea1efc",
+  "mouse_comparison/results/tables/m05_state_scores.csv.gz": "9a0c30023dff8e5c5a3fbcb50529e8886761ff62e75d2ac6739558445278a420"
+ },
+ "argv": [
+  "--force"
+ ],
+ "mouse_coordinates": "m06 kNN placement (mean X_umap of 15 nearest reference cells), display only"
+}

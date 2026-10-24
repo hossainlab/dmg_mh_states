@@ -1,0 +1,183 @@
+mouse_group,human_class,n_mouse_cells,rho
+Meningeal fibroblasts (VLMC),T_NK,351,-0.1237845144461286
+Meningeal fibroblasts (VLMC),astrocyte,351,0.19532770583192643
+Meningeal fibroblasts (VLMC),malignant_AC_like,351,0.12627737406934353
+Meningeal fibroblasts (VLMC),malignant_MES_like,351,0.16619016104754025
+Meningeal fibroblasts (VLMC),malignant_OC_like,351,-0.1936966144241536
+Meningeal fibroblasts (VLMC),malignant_OPC_like,351,-0.22128166782041697
+Meningeal fibroblasts (VLMC),malignant_cycling,351,-0.20963509190877294
+Meningeal fibroblasts (VLMC),malignant_hypoxia,351,0.10174677593669398
+Meningeal fibroblasts (VLMC),malignant_novel_MP15,351,0.12658176464544116
+Meningeal fibroblasts (VLMC),myeloid,351,-0.06548590637147658
+Meningeal fibroblasts (VLMC),neuron,351,-0.06156925539231384
+Meningeal fibroblasts (VLMC),oligodendrocyte,351,-0.01353943688485922
+Meningeal fibroblasts (VLMC),vascular,351,0.24330501082625267
+Microglia,T_NK,5685,0.3956662694165673
+Microglia,astrocyte,5685,0.07331216582804145
+Microglia,malignant_AC_like,5685,-0.3848651312162828
+Microglia,malignant_MES_like,5685,-0.30758465589616396
+Microglia,malignant_OC_like,5685,-0.3566856276714069
+Microglia,malignant_OPC_like,5685,-0.2925207506301877
+Microglia,malignant_cycling,5685,-0.26431817857954465
+Microglia,malignant_hypoxia,5685,-0.291418563854641
+Microglia,malignant_novel_MP15,5685,-0.35752243588060895
+Microglia,myeloid,5685,0.6311558552889638
+Microglia,neuron,5685,-0.2512099123024781
+Microglia,oligodendrocyte,5685,0.12416008604002152
+Microglia,vascular,5685,0.18577625544406384
+Mono/Macro,T_NK,6124,0.46696283224070795
+Mono/Macro,astrocyte,6124,0.11466026566506643
+Mono/Macro,malignant_AC_like,6124,-0.389993603998401
+Mono/Macro,malignant_MES_like,6124,-0.2860904275226068
+Mono/Macro,malignant_OC_like,6124,-0.4233396353349088
+Mono/Macro,malignant_OPC_like,6124,-0.3231760932940233
+Mono/Macro,malignant_cycling,6124,-0.3505586526396632
+Mono/Macro,malignant_hypoxia,6124,-0.28929438782359695
+Mono/Macro,malignant_novel_MP15,6124,-0.3934118378529594
+Mono/Macro,myeloid,6124,0.643139736284934
+Mono/Macro,neuron,6124,-0.2983771135942784
+Mono/Macro,oligodendrocyte,6124,0.06628821157205289
+Mono/Macro,vascular,6124,0.25387200046800007
+NK cells,T_NK,1949,0.6085289376322344
+NK cells,astrocyte,1949,0.008291391572847893
+NK cells,malignant_AC_like,1949,-0.33412469203117295
+NK cells,malignant_MES_like,1949,-0.25864190866047715
+NK cells,malignant_OC_like,1949,-0.3351368127842032
+NK cells,malignant_OPC_like,1949,-0.27864117966029495
+NK cells,malignant_cycling,1949,-0.2827287931821983
+NK cells,malignant_hypoxia,1949,-0.26561853640463406
+NK cells,malignant_novel_MP15,1949,-0.29545788786447197
+NK cells,myeloid,1949,0.4300281655070413
+NK cells,neuron,1949,-0.25979507894876974
+NK cells,oligodendrocyte,1949,0.005189917297479324
+NK cells,vascular,1949,0.20556877689219422
+OPC-like (normal call),T_NK,1775,-0.38346757036689255
+OPC-like (normal call),astrocyte,1775,-0.13193868898467223
+OPC-like (normal call),malignant_AC_like,1775,0.14939624534906135
+OPC-like (normal call),malignant_MES_like,1775,0.1152684468171117
+OPC-like (normal call),malignant_OC_like,1775,0.3835320628830157
+OPC-like (normal call),malignant_OPC_like,1775,0.21690080422520105
+OPC-like (normal call),malignant_cycling,1775,0.28762281140570284
+OPC-like (normal call),malignant_hypoxia,1775,0.11010848752712188
+OPC-like (normal call),malignant_novel_MP15,1775,0.22549272537318132
+OPC-like (normal call),myeloid,1775,-0.4247306741826686
+OPC-like (normal call),neuron,1775,0.5873609758402439
+OPC-like (normal call),oligodendrocyte,1775,-0.015846006961501742
+OPC-like (normal call),vascular,1775,-0.3859407274851819
+Purkinje-like neuron,T_NK,12999,-0.33818401404600346
+Purkinje-like neuron,astrocyte,12999,0.10581073895268475
+Purkinje-like neuron,malignant_AC_like,12999,0.3015367068841767
+Purkinje-like neuron,malignant_MES_like,12999,0.14554269188567298
+Purkinje-like neuron,malignant_OC_like,12999,0.19160273990068497
+Purkinje-like neuron,malignant_OPC_like,12999,0.14796713049178262
+Purkinje-like neuron,malignant_cycling,12999,0.03660580965145241
+Purkinje-like neuron,malignant_hypoxia,12999,0.11912406428101607
+Purkinje-like neuron,malignant_novel_MP15,12999,0.29643417510854375
+Purkinje-like neuron,myeloid,12999,-0.3456465384116346
+Purkinje-like neuron,neuron,12999,0.36119431829857956
+Purkinje-like neuron,oligodendrocyte,12999,-0.005785640946410237
+Purkinje-like neuron,vascular,12999,-0.2620571770142942
+T cells,T_NK,4943,0.6762639775659943
+T cells,astrocyte,4943,-0.10925153281288319
+T cells,malignant_AC_like,4943,-0.41059020064755014
+T cells,malignant_MES_like,4943,-0.34952923988231
+T cells,malignant_OC_like,4943,-0.29718911629727907
+T cells,malignant_OPC_like,4943,-0.20543194235798556
+T cells,malignant_cycling,4943,-0.1305517196379299
+T cells,malignant_hypoxia,4943,-0.31529706832426707
+T cells,malignant_novel_MP15,4943,-0.3683460770865193
+T cells,myeloid,4943,0.4376295374073843
+T cells,neuron,4943,-0.28630258307564577
+T cells,oligodendrocyte,4943,0.020863331215832802
+T cells,vascular,4943,0.21180478695119673
+Vascular cells,T_NK,347,0.07893869873467468
+Vascular cells,astrocyte,347,0.08953339938334984
+Vascular cells,malignant_AC_like,347,-0.042249342062335514
+Vascular cells,malignant_MES_like,347,-0.04006463501615875
+Vascular cells,malignant_OC_like,347,-0.29656179814044953
+Vascular cells,malignant_OPC_like,347,-0.220131412032853
+Vascular cells,malignant_cycling,347,-0.2549855992463998
+Vascular cells,malignant_hypoxia,347,-0.06590154747538687
+Vascular cells,malignant_novel_MP15,347,-0.08845839861459966
+Vascular cells,myeloid,347,0.10441784910446228
+Vascular cells,neuron,347,-0.21777027794256948
+Vascular cells,oligodendrocyte,347,0.0007754116938529234
+Vascular cells,vascular,347,0.5544635151158787
+astrocyte (normal),T_NK,364,-0.37183182145795535
+astrocyte (normal),astrocyte,364,0.3495082263770566
+astrocyte (normal),malignant_AC_like,364,0.4171271872817968
+astrocyte (normal),malignant_MES_like,364,0.2898242224560556
+astrocyte (normal),malignant_OC_like,364,0.03801906650476662
+astrocyte (normal),malignant_OPC_like,364,-0.04261201365300341
+astrocyte (normal),malignant_cycling,364,-0.0745397196349299
+astrocyte (normal),malignant_hypoxia,364,0.20958944689736173
+astrocyte (normal),malignant_novel_MP15,364,0.3779989454997364
+astrocyte (normal),myeloid,364,-0.32147585336896334
+astrocyte (normal),neuron,364,0.10501644375411091
+astrocyte (normal),oligodendrocyte,364,0.008750393187598295
+astrocyte (normal),vascular,364,-0.17375986193996545
+granule-like neuron,T_NK,29915,-0.3031845217961305
+granule-like neuron,astrocyte,29915,0.023973800993450246
+granule-like neuron,malignant_AC_like,29915,0.20187240996810246
+granule-like neuron,malignant_MES_like,29915,0.09852897513224378
+granule-like neuron,malignant_OC_like,29915,0.21031797607949398
+granule-like neuron,malignant_OPC_like,29915,0.14074311518577878
+granule-like neuron,malignant_cycling,29915,0.01851185712796428
+granule-like neuron,malignant_hypoxia,29915,0.07733923633480908
+granule-like neuron,malignant_novel_MP15,29915,0.21191363747840936
+granule-like neuron,myeloid,29915,-0.3224176826044206
+granule-like neuron,neuron,29915,0.48056014514003625
+granule-like neuron,oligodendrocyte,29915,0.0352233268058317
+granule-like neuron,vascular,29915,-0.274965724241431
+tumour:clone_only,T_NK,494,-0.3269676862419216
+tumour:clone_only,astrocyte,494,-0.22645582311395576
+tumour:clone_only,malignant_AC_like,494,0.2006386551596638
+tumour:clone_only,malignant_MES_like,494,0.1284361956090489
+tumour:clone_only,malignant_OC_like,494,0.4232861663215416
+tumour:clone_only,malignant_OPC_like,494,0.40416898704224674
+tumour:clone_only,malignant_cycling,494,0.4455178263794566
+tumour:clone_only,malignant_hypoxia,494,0.18632906258226564
+tumour:clone_only,malignant_novel_MP15,494,0.17023045705761428
+tumour:clone_only,myeloid,494,-0.3817458174364543
+tumour:clone_only,neuron,494,0.13272794418198605
+tumour:clone_only,oligodendrocyte,494,-0.04124916581229145
+tumour:clone_only,vascular,494,-0.24109358427339603
+tumour:s1,T_NK,370,-0.3212839268209817
+tumour:s1,astrocyte,370,-0.3053155873288968
+tumour:s1,malignant_AC_like,370,0.14302028975507242
+tumour:s1,malignant_MES_like,370,0.13647695661923917
+tumour:s1,malignant_OC_like,370,0.49770339292584814
+tumour:s1,malignant_OPC_like,370,0.36600719700179923
+tumour:s1,malignant_cycling,370,0.5207296196824048
+tumour:s1,malignant_hypoxia,370,0.17737252434313108
+tumour:s1,malignant_novel_MP15,370,0.18370647092661774
+tumour:s1,myeloid,370,-0.3805114581278645
+tumour:s1,neuron,370,0.10603460800865198
+tumour:s1,oligodendrocyte,370,-0.0251763587940897
+tumour:s1,vascular,370,-0.2317101084275271
+tumour:s12,T_NK,120,-0.20736655284163819
+tumour:s12,astrocyte,120,-0.026498781624695406
+tumour:s12,malignant_AC_like,120,0.16106228976557244
+tumour:s12,malignant_MES_like,120,0.2458241264560316
+tumour:s12,malignant_OC_like,120,0.12058387064596768
+tumour:s12,malignant_OPC_like,120,0.11531199482799871
+tumour:s12,malignant_cycling,120,0.1327145371786343
+tumour:s12,malignant_hypoxia,120,0.2333111578277894
+tumour:s12,malignant_novel_MP15,120,0.12919681129920282
+tumour:s12,myeloid,120,-0.1795976923994231
+tumour:s12,neuron,120,-0.08974294493573623
+tumour:s12,oligodendrocyte,120,-0.08465573266393317
+tumour:s12,vascular,120,0.0014924703731175933
+tumour:s2,T_NK,495,-0.1709302192325548
+tumour:s2,astrocyte,495,-0.3141026210256552
+tumour:s2,malignant_AC_like,495,0.13208597552149387
+tumour:s2,malignant_MES_like,495,0.032654949663737415
+tumour:s2,malignant_OC_like,495,0.37064398466099613
+tumour:s2,malignant_OPC_like,495,0.4673914258478564
+tumour:s2,malignant_cycling,495,0.4713613553403388
+tumour:s2,malignant_hypoxia,495,0.17534956233739057
+tumour:s2,malignant_novel_MP15,495,0.10179959544989885
+tumour:s2,myeloid,495,-0.24748588987147244
+tumour:s2,neuron,495,-0.09157085889271471
+tumour:s2,oligodendrocyte,495,-0.05913855278463819
+tumour:s2,vascular,495,-0.1400166860041715
