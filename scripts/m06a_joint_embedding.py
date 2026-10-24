@@ -26,7 +26,9 @@ Human subpopulation shares are given under both assignment rules: 'state_raw' (a
 import sys, argparse
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
-sys.path[:0] = [str(ROOT / "src"), str(ROOT.parent / "src")]
+import os as _os  # noqa: E402
+_ATLAS = _os.environ.get("DMG_ATLAS_ROOT") or (ROOT.parent / "dmg_atlas" if (ROOT.parent / "dmg_atlas" / "src").is_dir() else ROOT.parent)
+sys.path[:0] = [str(ROOT / "src"), str(Path(_ATLAS) / "src")]  # the human atlas is a sibling repo since the split
 import dmg_atlas.utils as U  # noqa: E402
 import numpy as np, pandas as pd, anndata as ad  # noqa: E402
 from dmg_atlas.states import STATE_GENE_SETS  # noqa: E402
@@ -111,6 +113,7 @@ def figure(ho, mo):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
+    import matplotlib.patheffects as mpe
     sys.path.insert(0, str(ATLAS_ROOT / "src"))
     from dmg_atlas.figstyle import apply_figure_style, letter
     apply_figure_style()
@@ -178,17 +181,31 @@ def figure(ho, mo):
     legend_below(ax, 4)
     letter(ax, "c", title="Mouse, lineage transferred from the human reference")
 
-    # (d) mouse tumour cells by best-scoring human subpopulation
+    # (d) mouse tumour cells by best-scoring human subpopulation, zoomed to the malignant territory.
+    # 891 points spread over the whole embedding cannot be read, so the axes are cropped to where the human malignant
+    # cells sit and each human subpopulation's territory is named in place; the mouse points are read against those.
     ax = axes[1, 1]
-    ax.scatter(xy[:, 0], xy[:, 1], s=0.3, c="0.90", lw=0, rasterized=True)
+    mal = ho[ho["state_raw"].notna() & ho["state_raw"].ne("unassigned")]
+    x0, x1 = np.percentile(mal.umap_1, [0.5, 99.5]); y0, y1 = np.percentile(mal.umap_2, [0.5, 99.5])
+    mx, my = 0.06 * (x1 - x0), 0.06 * (y1 - y0)
+    ax.scatter(xy[:, 0], xy[:, 1], s=0.3, c="0.93", lw=0, rasterized=True)
+    ax.scatter(mal.umap_1, mal.umap_2, s=0.4, c="0.82", lw=0, rasterized=True)
+    for lab in ["OPC_like", "AC_like", "OC_like", "MES_like", "cycling"]:
+        g = mal[mal["state_raw"].eq(lab)]
+        if len(g) < 50:
+            continue
+        t = ax.text(np.median(g.umap_1), np.median(g.umap_2), PRETTY[lab], fontsize=8, fontweight="bold",
+                    ha="center", va="center", color=STATE_COL[lab], zorder=5)
+        t.set_path_effects([mpe.withStroke(linewidth=2.4, foreground="white")])
     st = mo["mouse_state_raw"].astype(str)
     for lab in [c for c in ["OPC_like", "cycling", "AC_like", "MES_like", "OC_like", "unassigned"] if (st == c).any()]:
         g = mo[st.eq(lab)]
-        ax.scatter(g.umap_ref_1, g.umap_ref_2, s=4.5, color=STATE_COL.get(lab, "0.5"), lw=0, rasterized=True,
-                   label=PRETTY.get(lab, lab))
-    ax.set(xticks=[], yticks=[])
-    legend_below(ax, 3)
-    letter(ax, "d", title="Mouse tumour cells, best-scoring human subpopulation")
+        ax.scatter(g.umap_ref_1, g.umap_ref_2, s=14, color=STATE_COL.get(lab, "0.5"), lw=0.3, edgecolor="white",
+                   rasterized=True, label=f"{PRETTY.get(lab, lab)} ({len(g)})", zorder=4)
+    ax.set(xticks=[], yticks=[], xlim=(x0 - mx, x1 + mx), ylim=(y0 - my, y1 + my))
+    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.015), ncol=3, fontsize=7, markerscale=1.8,
+              frameon=False, handletextpad=0.5, columnspacing=1.6, labelspacing=0.45, borderpad=0.0)
+    letter(ax, "d", title="Mouse tumour cells on the human malignant territory")
 
     fig.subplots_adjust(left=0.02, right=0.98, top=0.955, bottom=0.055, wspace=0.06, hspace=0.30)
     fig.savefig(OUT["fig"], dpi=300)

@@ -47,7 +47,9 @@ Methods
 import sys, argparse
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
-sys.path[:0] = [str(ROOT / "src"), str(ROOT.parent / "src")]
+import os as _os  # noqa: E402
+_ATLAS = _os.environ.get("DMG_ATLAS_ROOT") or (ROOT.parent / "dmg_atlas" if (ROOT.parent / "dmg_atlas" / "src").is_dir() else ROOT.parent)
+sys.path[:0] = [str(ROOT / "src"), str(Path(_ATLAS) / "src")]  # the human atlas is a sibling repo since the split
 import dmg_atlas.utils as U  # noqa: E402
 import numpy as np, pandas as pd, scipy.sparse as sp, anndata as ad, scanpy as sc  # noqa: E402
 import scipy.stats as ss  # noqa: E402

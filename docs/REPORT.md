@@ -72,8 +72,9 @@ two metaprograms that met the atlas's replication rule.
 by subpopulation (warm colours and black) and the microenvironment by lineage (cool colours), so that AC-like tumour is
 not confusable with normal astrocyte nor MES-like with oligodendrocyte; (b) mouse cells placed by their 15 nearest
 reference neighbours, coloured by the author annotation; (c) the same cells coloured by the lineage the human model
-transfers to them; (d) the 891 QC-pass mouse tumour cells coloured by the human subpopulation they score highest for
-(OPC-like 230, cycling 285, AC-like 215, MES-like 102, OC-like 49). Human cell counts per subpopulation are in the
+transfers to them; (d) the 891 QC-pass mouse tumour cells, zoomed to the human malignant territory, coloured by the human
+subpopulation they score highest for (OPC-like 230, cycling 285, AC-like 215, MES-like 102, OC-like 49); the bold
+labels mark where each human subpopulation sits, so the mouse points are read against those regions. Human cell counts per subpopulation are in the
 table above; mouse counts per author label are in `m06_projection_by_label.csv`. The point to make: panels (a) and (d)
 are the direct comparison - the mouse tumour cells land in the OPC-like and cycling territory and not in the AC-like or
 MES-like one.
