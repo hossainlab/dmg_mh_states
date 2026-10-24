@@ -1,0 +1,23 @@
+# Mouse DMG comparison: inputs and design (filled 2026-10-22 from the h5ad deposit).
+mouse_object: data/mouse/DIPG1_allcell_raw_counts.h5ad   # sha256 fb7b0f0a60993e98d9e2c3295bba13c4808d4cb0f4f0ef4734fda53de5fce61a
+mouse_metadata: data/mouse/DIPG1_allcell_metadata.csv    # sha256 86f17a3d9264fae610e59a4381deb59089e19ea9b98c72751653c8776c244715
+# metadata columns in the deposit obs / meta.data
+columns:
+  sample: Sample          # Sample1..Sample16, Sample3 absent (= orig.ident = SampleID)
+  treatment: Group        # Control / FUS / RT / FUS+RT
+  cell_type: Cell_type_v2 # author annotation, copied verbatim, never overwritten (cell.type = older version)
+# treatment arms; reference arm for all contrasts is the untreated control
+treatments:
+  reference: Control
+  arms: [FUS, RT, FUS+RT]   # ICI: not present in the deposit
+# orthology: one-to-one human-mouse orthologs only (Ensembl 116 BioMart, jun2026 archive), cached under data/external/
+orthologs:
+  source: ensembl_biomart_116
+  one_to_one_only: true
+# human comparators (all under data/human/, symlinked, read-only)
+human:
+  release: dmg_atlas_v1.h5ad
+  malignant_states: malignant_state_assignment.csv.gz
+  metaprograms: metaprogram_genes.csv
+  tme_subclusters: tme_subcluster_labels.csv.gz
+  gene_sets: phase6_curated_gene_sets.csv

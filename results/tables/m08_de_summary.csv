@@ -1,0 +1,21 @@
+population,contrast,n_mice,n_genes_tested,d0,n_up,n_down,top_up,top_down
+tumour,FUS_vs_Control,11,12741,18.158593207551014,0,0,,
+tumour,RT_vs_Control,11,12741,18.158593207551014,2,1,Vim;Tmsb4x,Tnr
+tumour,FUS+RT_vs_Control,11,12741,18.158593207551014,1,7,Vim,Ptprz1;Igsf9b;Tnr;Mga;Neu4;Ppp6r3;Nsd2
+tumour,FUS+RT_vs_RT,11,12741,18.158593207551014,0,1,,Ptprz1
+Microglia,FUS_vs_Control,15,13127,7.421691378645617,0,0,,
+Microglia,RT_vs_Control,15,13127,7.421691378645617,0,0,,
+Microglia,FUS+RT_vs_Control,15,13127,7.421691378645617,0,0,,
+Microglia,FUS+RT_vs_RT,15,13127,7.421691378645617,0,0,,
+Mono/Macro,FUS_vs_Control,12,11797,7.80042191023619,0,0,,
+Mono/Macro,RT_vs_Control,12,11797,7.80042191023619,0,0,,
+Mono/Macro,FUS+RT_vs_Control,12,11797,7.80042191023619,0,0,,
+Mono/Macro,FUS+RT_vs_RT,12,11797,7.80042191023619,0,0,,
+T cells,FUS_vs_Control,11,11870,7.946054193121344,0,0,,
+T cells,RT_vs_Control,11,11870,7.946054193121344,0,0,,
+T cells,FUS+RT_vs_Control,11,11870,7.946054193121344,0,0,,
+T cells,FUS+RT_vs_RT,11,11870,7.946054193121344,0,0,,
+NK cells,FUS_vs_Control,9,11792,9.912744891434992,0,0,,
+NK cells,RT_vs_Control,9,11792,9.912744891434992,0,0,,
+NK cells,FUS+RT_vs_Control,9,11792,9.912744891434992,0,0,,
+NK cells,FUS+RT_vs_RT,9,11792,9.912744891434992,0,0,,

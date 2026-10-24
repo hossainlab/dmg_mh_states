@@ -1,0 +1,20 @@
+{
+ "script": "scripts/m08_treatment_effects.py",
+ "utc": "2026-10-21T22:19:38Z",
+ "inputs_sha256": {
+  "mouse_comparison/data/interim/mouse_all.h5ad": "0bae70595baca4a152c6594db23a0cb05b74591d331438f127c3a204efc49596",
+  "mouse_comparison/data/interim/mouse_qc.csv": "af5eb98e2b40ba79dc5026dc950e63208db4e06f6c0ee94645003ad38ff3d5ff",
+  "mouse_comparison/data/external/mouse_human_orthologs.csv": "d02d56d3e586b823f68b2b8a4bd730f1ccadb6c110b7bc582e3be3dbe04354ce",
+  "mouse_comparison/data/processed/mouse_tumour_calls.csv": "162a7ccceffae68164db01ecf658ac6ddb1dda3727e1799f5bc17db1ce91782b",
+  "mouse_comparison/data/processed/m05_cnmf_usages.parquet": "974afd7eee0d108f7c555be32390c22701777dce77a25453adf4b4649dddf6ea",
+  "mouse_comparison/results/tables/m05_cnmf_programs.csv": "25c648dffb0755d6936cd4d4a8ce46797a125ec018a8079018b0b9a26b7b8a23",
+  "mouse_comparison/results/tables/m05_state_scores.csv.gz": "9a0c30023dff8e5c5a3fbcb50529e8886761ff62e75d2ac6739558445278a420",
+  "mouse_comparison/data/processed/mouse_tme_labels.csv": "f9fd5db68b24c8cd6eed68cae57f142f9d079f335f3180ff04a90129749c52c3",
+  "results/tables/metaprogram_genes.csv": "d3d39200e2c09e581d4f6b01cd177e9e724818b1e4d718a7d81c1ff22c17f99f",
+  "results/tables/metaprogram_families.csv": "5437047befccea01a707095aff53273aee514de76fbbab96c0fb238ec180934c",
+  "results/tables/genesets/phase6_curated_gene_sets.csv": "cdb05c32edb32089b163ad7d7a8d8b44ea9661759a69de6f4b0df716cbefa633"
+ },
+ "argv": [
+  "--force"
+ ]
+}

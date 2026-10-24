@@ -1,0 +1,19 @@
+{
+ "script": "scripts/m04_tumour_calls.py",
+ "utc": "2026-10-21T22:07:52Z",
+ "inputs_sha256": {
+  "mouse_comparison/data/interim/mouse_all.h5ad": "0bae70595baca4a152c6594db23a0cb05b74591d331438f127c3a204efc49596",
+  "mouse_comparison/data/interim/mouse_qc.csv": "af5eb98e2b40ba79dc5026dc950e63208db4e06f6c0ee94645003ad38ff3d5ff",
+  "mouse_comparison/data/external/mouse_human_orthologs.csv": "d02d56d3e586b823f68b2b8a4bd730f1ccadb6c110b7bc582e3be3dbe04354ce"
+ },
+ "argv": [
+  "--force"
+ ],
+ "clone_r_threshold": 0.2673942208290099,
+ "n_seed": 387,
+ "tumour_subclusters": [
+  "s1",
+  "s12",
+  "s2"
+ ]
+}

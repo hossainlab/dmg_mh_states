@@ -218,3 +218,27 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# macOS
+.DS_Store
+
+# Claude / AI assistant files
+.claude/
+CLAUDE.md
+CLAUDE.local.md
+**/CLAUDE.md
+.mcp.json
+.claudeignore
+
+# Large data files (binary matrices, >5 MB tables); provenance JSON stays tracked
+*.h5ad
+*.h5
+*.loom
+*.npz
+*.parquet
+!*.provenance.json
+data/mouse/DIPG1_allcell_metadata.csv
+data/interim/mouse_qc.csv
+data/processed/mouse_tumour_calls.csv
+results/tables/m06a_joint_coordinates.csv.gz
+results/tables/m08_pseudobulk_de.csv.gz

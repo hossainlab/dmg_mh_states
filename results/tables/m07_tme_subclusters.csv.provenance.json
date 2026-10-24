@@ -1,0 +1,16 @@
+{
+ "script": "scripts/m07_tme_comparison.py",
+ "utc": "2026-10-21T22:15:28Z",
+ "inputs_sha256": {
+  "mouse_comparison/data/processed/mouse_all_hs.h5ad": "a1e097e90ac90d617e82d6627d6800b031df7caa7dcad2b83998f6804320d7f0",
+  "mouse_comparison/data/processed/mouse_tumour_calls.csv": "162a7ccceffae68164db01ecf658ac6ddb1dda3727e1799f5bc17db1ce91782b",
+  "mouse_comparison/data/interim/mouse_qc.csv": "af5eb98e2b40ba79dc5026dc950e63208db4e06f6c0ee94645003ad38ff3d5ff",
+  "results/tables/tme_subclusters.csv": "a6a7768aa1426779d97095ecd7b7878546c42b75ba3836b9204b27d476043643",
+  "results/tables/tme_subcluster_markers.csv": "1dc9845ec12b1f9ac8929fbb4f8f5ac52952bd04903b4ea24737020ac95d675d",
+  "data/processed/tme_subcluster_labels.csv.gz": "7e6c82483c2e68d002ddad5d1d16a3a8d99343a2778a918d99d20307d5f5afec",
+  "results/tables/composition_per_sample.csv": "3a6d8b0fce5ade209182b04a12c436825635ba35be8bf31fc748f28efb9c640f"
+ },
+ "argv": [
+  "--force"
+ ]
+}

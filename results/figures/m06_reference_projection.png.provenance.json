@@ -1,0 +1,23 @@
+{
+ "script": "m06_reference_mapping.py",
+ "utc": "2026-10-22T09:31:11Z",
+ "inputs_sha256": {
+  "mouse_comparison/data/processed/mouse_all_hs.h5ad": "a1e097e90ac90d617e82d6627d6800b031df7caa7dcad2b83998f6804320d7f0",
+  "mouse_comparison/data/processed/mouse_tumour_calls.csv": "162a7ccceffae68164db01ecf658ac6ddb1dda3727e1799f5bc17db1ce91782b",
+  "mouse_comparison/data/interim/mouse_qc.csv": "af5eb98e2b40ba79dc5026dc950e63208db4e06f6c0ee94645003ad38ff3d5ff",
+  "models/scanvi/model.pt": "9a7935e66069b9b57740d6bcc84bc0e2d0e6cc75370882888a71cf6cae6f5911",
+  "data/processed/query_mapping.h5ad": "187087727e3b266dfd1139bbd9fcbf6151ae029d91c0dbeb842f9c9db8dd66b2"
+ },
+ "argv": [
+  "--force"
+ ],
+ "zero_shot_verification": {
+  "tensors_compared": 34,
+  "max_abs_diff_vs_reference": 0.0,
+  "n_reference_hvg": 3000,
+  "n_reference_hvg_absent_from_mouse_orthologs": 637,
+  "frac_reference_hvg_present": 0.7877,
+  "scvi_tools": "1.4.2"
+ },
+ "k_neighbours": 15
+}

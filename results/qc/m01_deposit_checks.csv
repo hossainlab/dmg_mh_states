@@ -1,0 +1,14 @@
+check,value
+n_cells,67313
+n_genes,15304
+n_mt_genes,13
+counts_integer,True
+X_equals_counts,True
+nCount_RNA_reproduced_max_abs_diff,0.0
+percent_mt_reproduced_max_abs_diff,6.768802364831572e-06
+meta_csv_same_cells_same_order,True
+meta_csv_numeric_cols_equal_obs,True
+all_scDblFinder_singlet,True
+min_nFeature_RNA,200
+duplicate_gene_names,0
+uns_source,DIPG1_allcell.standardized_seurat.rds (raw RNA counts)

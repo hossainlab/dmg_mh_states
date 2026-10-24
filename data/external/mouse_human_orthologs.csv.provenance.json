@@ -1,0 +1,14 @@
+{
+ "script": "scripts/m03_orthologs.py",
+ "utc": "2026-10-21T21:57:29Z",
+ "inputs_sha256": {
+  "mouse_comparison/data/interim/mouse_all.h5ad": "0bae70595baca4a152c6594db23a0cb05b74591d331438f127c3a204efc49596",
+  "data/interim/gene_universe.csv": "fa2612aed5ceac1df26942369c675cbd518e242cda21a29217b88f78a9bbb65e",
+  "results/tables/metaprogram_genes.csv": "d3d39200e2c09e581d4f6b01cd177e9e724818b1e4d718a7d81c1ff22c17f99f",
+  "mouse_comparison/data/external/ensembl116_mmusculus_genes.tsv": "dcf757fb3eb994a5102d2908b4c192cec6d059697582f0769a20395f4aeb2028",
+  "mouse_comparison/data/external/ensembl116_mmusculus_synonyms.tsv": "6ee732fb6ad5ae7235baa14a062464dc8cc14621fb418737da062c4e7fc34880",
+  "mouse_comparison/data/external/ensembl116_mmusculus_homologs.tsv": "d4a0cf7191624af821d452c290804323ee4d69c1ab3e402f50c5842d308c1f90"
+ },
+ "argv": [],
+ "biomart": "https://jun2026.archive.ensembl.org/biomart/martservice"
+}

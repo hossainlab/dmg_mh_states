@@ -1,0 +1,1276 @@
+set,sample,arm,category,k,n,value
+compartment,Sample1,Control,B_plasma,78.0,6207.0,0.012566457225712905
+compartment,Sample10,FUS,B_plasma,1.0,1334.0,0.0007496251874062968
+compartment,Sample11,RT,B_plasma,9.0,5831.0,0.0015434745326702109
+compartment,Sample12,FUS+RT,B_plasma,5.0,3700.0,0.0013513513513513514
+compartment,Sample13,Control,B_plasma,23.0,5149.0,0.004466886774130899
+compartment,Sample14,FUS,B_plasma,20.0,5506.0,0.003632401017072285
+compartment,Sample15,RT,B_plasma,7.0,2462.0,0.002843216896831844
+compartment,Sample16,FUS+RT,B_plasma,3.0,3792.0,0.0007911392405063291
+compartment,Sample2,FUS,B_plasma,79.0,5422.0,0.014570269273330874
+compartment,Sample4,FUS+RT,B_plasma,13.0,3547.0,0.003665069072455596
+compartment,Sample5,Control,B_plasma,9.0,3316.0,0.0027141133896260556
+compartment,Sample6,FUS,B_plasma,15.0,6636.0,0.0022603978300180833
+compartment,Sample7,RT,B_plasma,68.0,5314.0,0.01279638690252164
+compartment,Sample8,FUS+RT,B_plasma,38.0,5442.0,0.006982726938625505
+compartment,Sample9,Control,B_plasma,2.0,3655.0,0.0005471956224350205
+compartment,Sample1,Control,T_NK,1687.0,6207.0,0.2717899146125342
+compartment,Sample10,FUS,T_NK,34.0,1334.0,0.025487256371814093
+compartment,Sample11,RT,T_NK,468.0,5831.0,0.08026067569885097
+compartment,Sample12,FUS+RT,T_NK,185.0,3700.0,0.05
+compartment,Sample13,Control,T_NK,392.0,5149.0,0.07613128762866576
+compartment,Sample14,FUS,T_NK,222.0,5506.0,0.04031965128950236
+compartment,Sample15,RT,T_NK,26.0,2462.0,0.010560519902518278
+compartment,Sample16,FUS+RT,T_NK,14.0,3792.0,0.003691983122362869
+compartment,Sample2,FUS,T_NK,1791.0,5422.0,0.3303209147915898
+compartment,Sample4,FUS+RT,T_NK,24.0,3547.0,0.0067662813645334085
+compartment,Sample5,Control,T_NK,74.0,3316.0,0.022316043425814235
+compartment,Sample6,FUS,T_NK,601.0,6636.0,0.0905666063893912
+compartment,Sample7,RT,T_NK,1167.0,5314.0,0.2196085811065111
+compartment,Sample8,FUS+RT,T_NK,205.0,5442.0,0.03766997427416391
+compartment,Sample9,Control,T_NK,2.0,3655.0,0.0005471956224350205
+compartment,Sample1,Control,myeloid,3048.0,6207.0,0.49105848235862737
+compartment,Sample10,FUS,myeloid,322.0,1334.0,0.2413793103448276
+compartment,Sample11,RT,myeloid,1141.0,5831.0,0.19567827130852342
+compartment,Sample12,FUS+RT,myeloid,710.0,3700.0,0.1918918918918919
+compartment,Sample13,Control,myeloid,665.0,5149.0,0.12915129151291513
+compartment,Sample14,FUS,myeloid,644.0,5506.0,0.11696331274972757
+compartment,Sample15,RT,myeloid,165.0,2462.0,0.06701868399675061
+compartment,Sample16,FUS+RT,myeloid,126.0,3792.0,0.03322784810126582
+compartment,Sample2,FUS,myeloid,2465.0,5422.0,0.4546292880855773
+compartment,Sample4,FUS+RT,myeloid,135.0,3547.0,0.03806033267550042
+compartment,Sample5,Control,myeloid,253.0,3316.0,0.07629674306393244
+compartment,Sample6,FUS,myeloid,1429.0,6636.0,0.2153405666063894
+compartment,Sample7,RT,myeloid,1031.0,5314.0,0.1940158073014678
+compartment,Sample8,FUS+RT,myeloid,267.0,5442.0,0.04906284454244763
+compartment,Sample9,Control,myeloid,123.0,3655.0,0.03365253077975376
+compartment,Sample1,Control,neuron,1140.0,6207.0,0.18366360560657322
+compartment,Sample10,FUS,neuron,726.0,1334.0,0.5442278860569715
+compartment,Sample11,RT,neuron,3796.0,5831.0,0.6510032584462356
+compartment,Sample12,FUS+RT,neuron,2463.0,3700.0,0.6656756756756756
+compartment,Sample13,Control,neuron,3794.0,5149.0,0.7368421052631579
+compartment,Sample14,FUS,neuron,4344.0,5506.0,0.7889575009081002
+compartment,Sample15,RT,neuron,2091.0,2462.0,0.8493095044679123
+compartment,Sample16,FUS+RT,neuron,3490.0,3792.0,0.9203586497890295
+compartment,Sample2,FUS,neuron,901.0,5422.0,0.16617484323127998
+compartment,Sample4,FUS+RT,neuron,3210.0,3547.0,0.9049901325063434
+compartment,Sample5,Control,neuron,2883.0,3316.0,0.8694209891435465
+compartment,Sample6,FUS,neuron,3220.0,6636.0,0.48523206751054854
+compartment,Sample7,RT,neuron,2812.0,5314.0,0.5291682348513361
+compartment,Sample8,FUS+RT,neuron,4764.0,5442.0,0.8754134509371555
+compartment,Sample9,Control,neuron,3280.0,3655.0,0.8974008207934336
+compartment,Sample1,Control,other,188.0,6207.0,0.030288384082487515
+compartment,Sample10,FUS,other,157.0,1334.0,0.1176911544227886
+compartment,Sample11,RT,other,228.0,5831.0,0.039101354827645346
+compartment,Sample12,FUS+RT,other,184.0,3700.0,0.04972972972972973
+compartment,Sample13,Control,other,145.0,5149.0,0.028160807923868714
+compartment,Sample14,FUS,other,128.0,5506.0,0.023247366509262624
+compartment,Sample15,RT,other,86.0,2462.0,0.034930950446791224
+compartment,Sample16,FUS+RT,other,88.0,3792.0,0.023206751054852322
+compartment,Sample2,FUS,other,82.0,5422.0,0.015123570638140908
+compartment,Sample4,FUS+RT,other,122.0,3547.0,0.034395263603044825
+compartment,Sample5,Control,other,43.0,3316.0,0.012967430639324488
+compartment,Sample6,FUS,other,544.0,6636.0,0.08197709463532249
+compartment,Sample7,RT,other,167.0,5314.0,0.0314264207753105
+compartment,Sample8,FUS+RT,other,96.0,5442.0,0.017640573318632856
+compartment,Sample9,Control,other,178.0,3655.0,0.048700410396716826
+compartment,Sample1,Control,tumour,32.0,6207.0,0.005155469631061705
+compartment,Sample10,FUS,tumour,56.0,1334.0,0.041979010494752625
+compartment,Sample11,RT,tumour,123.0,5831.0,0.021094151946492883
+compartment,Sample12,FUS+RT,tumour,43.0,3700.0,0.011621621621621621
+compartment,Sample13,Control,tumour,93.0,5149.0,0.018061759564964072
+compartment,Sample14,FUS,tumour,65.0,5506.0,0.011805303305484925
+compartment,Sample15,RT,tumour,16.0,2462.0,0.006498781478472786
+compartment,Sample16,FUS+RT,tumour,46.0,3792.0,0.012130801687763712
+compartment,Sample2,FUS,tumour,72.0,5422.0,0.013279232755440797
+compartment,Sample4,FUS+RT,tumour,24.0,3547.0,0.0067662813645334085
+compartment,Sample5,Control,tumour,40.0,3316.0,0.012062726176115802
+compartment,Sample6,FUS,tumour,799.0,6636.0,0.1204038577456299
+compartment,Sample7,RT,tumour,44.0,5314.0,0.008280015054572827
+compartment,Sample8,FUS+RT,tumour,26.0,5442.0,0.004777655273796398
+compartment,Sample9,Control,tumour,0.0,3655.0,0.0
+compartment,Sample1,Control,vascular,34.0,6207.0,0.005477686483003061
+compartment,Sample10,FUS,vascular,38.0,1334.0,0.02848575712143928
+compartment,Sample11,RT,vascular,66.0,5831.0,0.011318813239581546
+compartment,Sample12,FUS+RT,vascular,110.0,3700.0,0.02972972972972973
+compartment,Sample13,Control,vascular,37.0,5149.0,0.007185861332297533
+compartment,Sample14,FUS,vascular,83.0,5506.0,0.015074464220849982
+compartment,Sample15,RT,vascular,71.0,2462.0,0.028838342810722988
+compartment,Sample16,FUS+RT,vascular,25.0,3792.0,0.006592827004219409
+compartment,Sample2,FUS,vascular,32.0,5422.0,0.005901881224640354
+compartment,Sample4,FUS+RT,vascular,19.0,3547.0,0.0053566394135889485
+compartment,Sample5,Control,vascular,14.0,3316.0,0.004221954161640531
+compartment,Sample6,FUS,vascular,28.0,6636.0,0.004219409282700422
+compartment,Sample7,RT,vascular,25.0,5314.0,0.004704554008280015
+compartment,Sample8,FUS+RT,vascular,46.0,5442.0,0.008452774715178243
+compartment,Sample9,Control,vascular,70.0,3655.0,0.019151846785225718
+immune_type,Sample1,Control,B/Plasma,71.0,4491.0,0.015809396570919617
+immune_type,Sample10,FUS,B/Plasma,1.0,344.0,0.0029069767441860465
+immune_type,Sample11,RT,B/Plasma,9.0,1548.0,0.005813953488372093
+immune_type,Sample12,FUS+RT,B/Plasma,5.0,833.0,0.006002400960384154
+immune_type,Sample13,Control,B/Plasma,23.0,1017.0,0.02261553588987217
+immune_type,Sample14,FUS,B/Plasma,20.0,763.0,0.02621231979030144
+immune_type,Sample15,RT,B/Plasma,7.0,174.0,0.040229885057471264
+immune_type,Sample16,FUS+RT,B/Plasma,3.0,120.0,0.025
+immune_type,Sample2,FUS,B/Plasma,78.0,4066.0,0.019183472700442697
+immune_type,Sample4,FUS+RT,B/Plasma,7.0,124.0,0.056451612903225805
+immune_type,Sample5,Control,B/Plasma,8.0,263.0,0.030418250950570342
+immune_type,Sample6,FUS,B/Plasma,15.0,1961.0,0.007649158592554819
+immune_type,Sample7,RT,B/Plasma,66.0,2133.0,0.030942334739803096
+immune_type,Sample8,FUS+RT,B/Plasma,34.0,404.0,0.08415841584158416
+immune_type,Sample9,Control,B/Plasma,2.0,107.0,0.018691588785046728
+immune_type,Sample1,Control,Microglia,705.0,4491.0,0.1569806279225117
+immune_type,Sample10,FUS,Microglia,220.0,344.0,0.6395348837209303
+immune_type,Sample11,RT,Microglia,270.0,1548.0,0.1744186046511628
+immune_type,Sample12,FUS+RT,Microglia,395.0,833.0,0.47418967587034816
+immune_type,Sample13,Control,Microglia,345.0,1017.0,0.3392330383480826
+immune_type,Sample14,FUS,Microglia,409.0,763.0,0.5360419397116645
+immune_type,Sample15,RT,Microglia,130.0,174.0,0.7471264367816092
+immune_type,Sample16,FUS+RT,Microglia,86.0,120.0,0.7166666666666667
+immune_type,Sample2,FUS,Microglia,815.0,4066.0,0.20044269552385638
+immune_type,Sample4,FUS+RT,Microglia,80.0,124.0,0.6451612903225806
+immune_type,Sample5,Control,Microglia,146.0,263.0,0.5551330798479087
+immune_type,Sample6,FUS,Microglia,715.0,1961.0,0.3646098929117797
+immune_type,Sample7,RT,Microglia,437.0,2133.0,0.20487576183778716
+immune_type,Sample8,FUS+RT,Microglia,152.0,404.0,0.37623762376237624
+immune_type,Sample9,Control,Microglia,99.0,107.0,0.9252336448598131
+immune_type,Sample1,Control,Mono/Macro,1938.0,4491.0,0.4315297261189045
+immune_type,Sample10,FUS,Mono/Macro,67.0,344.0,0.19476744186046513
+immune_type,Sample11,RT,Mono/Macro,787.0,1548.0,0.5083979328165374
+immune_type,Sample12,FUS+RT,Mono/Macro,220.0,833.0,0.26410564225690275
+immune_type,Sample13,Control,Mono/Macro,247.0,1017.0,0.24287118977384464
+immune_type,Sample14,FUS,Mono/Macro,73.0,763.0,0.09567496723460026
+immune_type,Sample15,RT,Mono/Macro,9.0,174.0,0.05172413793103448
+immune_type,Sample16,FUS+RT,Mono/Macro,12.0,120.0,0.1
+immune_type,Sample2,FUS,Mono/Macro,1402.0,4066.0,0.34481062469257256
+immune_type,Sample4,FUS+RT,Mono/Macro,29.0,124.0,0.23387096774193547
+immune_type,Sample5,Control,Mono/Macro,63.0,263.0,0.23954372623574144
+immune_type,Sample6,FUS,Mono/Macro,552.0,1961.0,0.28148903620601734
+immune_type,Sample7,RT,Mono/Macro,485.0,2133.0,0.2273792780121894
+immune_type,Sample8,FUS+RT,Mono/Macro,70.0,404.0,0.17326732673267325
+immune_type,Sample9,Control,Mono/Macro,3.0,107.0,0.028037383177570093
+immune_type,Sample1,Control,NK cells,316.0,4491.0,0.07036294811845914
+immune_type,Sample10,FUS,NK cells,10.0,344.0,0.029069767441860465
+immune_type,Sample11,RT,NK cells,248.0,1548.0,0.16020671834625322
+immune_type,Sample12,FUS+RT,NK cells,77.0,833.0,0.09243697478991597
+immune_type,Sample13,Control,NK cells,177.0,1017.0,0.17404129793510326
+immune_type,Sample14,FUS,NK cells,87.0,763.0,0.11402359108781127
+immune_type,Sample15,RT,NK cells,6.0,174.0,0.034482758620689655
+immune_type,Sample16,FUS+RT,NK cells,5.0,120.0,0.041666666666666664
+immune_type,Sample2,FUS,NK cells,365.0,4066.0,0.08976881455976389
+immune_type,Sample4,FUS+RT,NK cells,3.0,124.0,0.024193548387096774
+immune_type,Sample5,Control,NK cells,17.0,263.0,0.06463878326996197
+immune_type,Sample6,FUS,NK cells,192.0,1961.0,0.09790922998470168
+immune_type,Sample7,RT,NK cells,190.0,2133.0,0.08907641819034225
+immune_type,Sample8,FUS+RT,NK cells,66.0,404.0,0.16336633663366337
+immune_type,Sample9,Control,NK cells,1.0,107.0,0.009345794392523364
+immune_type,Sample1,Control,Neutrophils,20.0,4491.0,0.00445335114673792
+immune_type,Sample10,FUS,Neutrophils,10.0,344.0,0.029069767441860465
+immune_type,Sample11,RT,Neutrophils,10.0,1548.0,0.006459948320413436
+immune_type,Sample12,FUS+RT,Neutrophils,36.0,833.0,0.04321728691476591
+immune_type,Sample13,Control,Neutrophils,13.0,1017.0,0.012782694198623401
+immune_type,Sample14,FUS,Neutrophils,73.0,763.0,0.09567496723460026
+immune_type,Sample15,RT,Neutrophils,5.0,174.0,0.028735632183908046
+immune_type,Sample16,FUS+RT,Neutrophils,8.0,120.0,0.06666666666666667
+immune_type,Sample2,FUS,Neutrophils,34.0,4066.0,0.008362026561731432
+immune_type,Sample4,FUS+RT,Neutrophils,0.0,124.0,0.0
+immune_type,Sample5,Control,Neutrophils,6.0,263.0,0.022813688212927757
+immune_type,Sample6,FUS,Neutrophils,24.0,1961.0,0.01223865374808771
+immune_type,Sample7,RT,Neutrophils,4.0,2133.0,0.001875293014533521
+immune_type,Sample8,FUS+RT,Neutrophils,4.0,404.0,0.009900990099009901
+immune_type,Sample9,Control,Neutrophils,2.0,107.0,0.018691588785046728
+immune_type,Sample1,Control,T cells,1251.0,4491.0,0.2785571142284569
+immune_type,Sample10,FUS,T cells,23.0,344.0,0.06686046511627906
+immune_type,Sample11,RT,T cells,201.0,1548.0,0.1298449612403101
+immune_type,Sample12,FUS+RT,T cells,94.0,833.0,0.11284513805522209
+immune_type,Sample13,Control,T cells,199.0,1017.0,0.19567354965585054
+immune_type,Sample14,FUS,T cells,96.0,763.0,0.1258191349934469
+immune_type,Sample15,RT,T cells,17.0,174.0,0.09770114942528736
+immune_type,Sample16,FUS+RT,T cells,6.0,120.0,0.05
+immune_type,Sample2,FUS,T cells,1319.0,4066.0,0.3243974422036399
+immune_type,Sample4,FUS+RT,T cells,5.0,124.0,0.04032258064516129
+immune_type,Sample5,Control,T cells,22.0,263.0,0.08365019011406843
+immune_type,Sample6,FUS,T cells,397.0,1961.0,0.20244773074961755
+immune_type,Sample7,RT,T cells,910.0,2133.0,0.426629160806376
+immune_type,Sample8,FUS+RT,T cells,78.0,404.0,0.19306930693069307
+immune_type,Sample9,Control,T cells,0.0,107.0,0.0
+immune_type,Sample1,Control,pDC,190.0,4491.0,0.04230683589401024
+immune_type,Sample10,FUS,pDC,13.0,344.0,0.0377906976744186
+immune_type,Sample11,RT,pDC,23.0,1548.0,0.014857881136950904
+immune_type,Sample12,FUS+RT,pDC,6.0,833.0,0.007202881152460984
+immune_type,Sample13,Control,pDC,13.0,1017.0,0.012782694198623401
+immune_type,Sample14,FUS,pDC,5.0,763.0,0.00655307994757536
+immune_type,Sample15,RT,pDC,0.0,174.0,0.0
+immune_type,Sample16,FUS+RT,pDC,0.0,120.0,0.0
+immune_type,Sample2,FUS,pDC,53.0,4066.0,0.013034923757993113
+immune_type,Sample4,FUS+RT,pDC,0.0,124.0,0.0
+immune_type,Sample5,Control,pDC,1.0,263.0,0.0038022813688212928
+immune_type,Sample6,FUS,pDC,66.0,1961.0,0.033656297807241206
+immune_type,Sample7,RT,pDC,41.0,2133.0,0.01922175339896859
+immune_type,Sample8,FUS+RT,pDC,0.0,404.0,0.0
+immune_type,Sample9,Control,pDC,0.0,107.0,0.0
+myeloid_label,Sample1,Control,activated_microglia,174.0,2853.0,0.060988433228180865
+myeloid_label,Sample10,FUS,activated_microglia,4.0,310.0,0.012903225806451613
+myeloid_label,Sample11,RT,activated_microglia,47.0,1090.0,0.043119266055045874
+myeloid_label,Sample12,FUS+RT,activated_microglia,20.0,657.0,0.030441400304414
+myeloid_label,Sample13,Control,activated_microglia,37.0,618.0,0.059870550161812294
+myeloid_label,Sample14,FUS,activated_microglia,4.0,560.0,0.007142857142857143
+myeloid_label,Sample15,RT,activated_microglia,0.0,144.0,0.0
+myeloid_label,Sample16,FUS+RT,activated_microglia,1.0,106.0,0.009433962264150943
+myeloid_label,Sample2,FUS,activated_microglia,123.0,2304.0,0.053385416666666664
+myeloid_label,Sample4,FUS+RT,activated_microglia,4.0,109.0,0.03669724770642202
+myeloid_label,Sample5,Control,activated_microglia,9.0,216.0,0.041666666666666664
+myeloid_label,Sample6,FUS,activated_microglia,39.0,1357.0,0.028739867354458364
+myeloid_label,Sample7,RT,activated_microglia,29.0,967.0,0.02998965873836608
+myeloid_label,Sample8,FUS+RT,activated_microglia,19.0,226.0,0.084070796460177
+myeloid_label,Sample9,Control,activated_microglia,0.0,104.0,0.0
+myeloid_label,Sample1,Control,dendritic_cell,184.0,2853.0,0.06449351559761654
+myeloid_label,Sample10,FUS,dendritic_cell,13.0,310.0,0.041935483870967745
+myeloid_label,Sample11,RT,dendritic_cell,22.0,1090.0,0.02018348623853211
+myeloid_label,Sample12,FUS+RT,dendritic_cell,5.0,657.0,0.0076103500761035
+myeloid_label,Sample13,Control,dendritic_cell,13.0,618.0,0.021035598705501618
+myeloid_label,Sample14,FUS,dendritic_cell,3.0,560.0,0.005357142857142857
+myeloid_label,Sample15,RT,dendritic_cell,0.0,144.0,0.0
+myeloid_label,Sample16,FUS+RT,dendritic_cell,0.0,106.0,0.0
+myeloid_label,Sample2,FUS,dendritic_cell,53.0,2304.0,0.023003472222222224
+myeloid_label,Sample4,FUS+RT,dendritic_cell,0.0,109.0,0.0
+myeloid_label,Sample5,Control,dendritic_cell,1.0,216.0,0.004629629629629629
+myeloid_label,Sample6,FUS,dendritic_cell,63.0,1357.0,0.04642593957258659
+myeloid_label,Sample7,RT,dendritic_cell,36.0,967.0,0.03722854188210962
+myeloid_label,Sample8,FUS+RT,dendritic_cell,0.0,226.0,0.0
+myeloid_label,Sample9,Control,dendritic_cell,0.0,104.0,0.0
+myeloid_label,Sample1,Control,homeostatic_microglia,88.0,2853.0,0.030844724851034
+myeloid_label,Sample10,FUS,homeostatic_microglia,121.0,310.0,0.3903225806451613
+myeloid_label,Sample11,RT,homeostatic_microglia,95.0,1090.0,0.0871559633027523
+myeloid_label,Sample12,FUS+RT,homeostatic_microglia,188.0,657.0,0.2861491628614916
+myeloid_label,Sample13,Control,homeostatic_microglia,206.0,618.0,0.3333333333333333
+myeloid_label,Sample14,FUS,homeostatic_microglia,110.0,560.0,0.19642857142857142
+myeloid_label,Sample15,RT,homeostatic_microglia,48.0,144.0,0.3333333333333333
+myeloid_label,Sample16,FUS+RT,homeostatic_microglia,12.0,106.0,0.11320754716981132
+myeloid_label,Sample2,FUS,homeostatic_microglia,443.0,2304.0,0.19227430555555555
+myeloid_label,Sample4,FUS+RT,homeostatic_microglia,10.0,109.0,0.09174311926605505
+myeloid_label,Sample5,Control,homeostatic_microglia,22.0,216.0,0.10185185185185185
+myeloid_label,Sample6,FUS,homeostatic_microglia,259.0,1357.0,0.19086219602063376
+myeloid_label,Sample7,RT,homeostatic_microglia,177.0,967.0,0.18304033092037228
+myeloid_label,Sample8,FUS+RT,homeostatic_microglia,21.0,226.0,0.09292035398230089
+myeloid_label,Sample9,Control,homeostatic_microglia,43.0,104.0,0.41346153846153844
+myeloid_label,Sample1,Control,interferon_myeloid,691.0,2853.0,0.2422011917280056
+myeloid_label,Sample10,FUS,interferon_myeloid,36.0,310.0,0.11612903225806452
+myeloid_label,Sample11,RT,interferon_myeloid,595.0,1090.0,0.5458715596330275
+myeloid_label,Sample12,FUS+RT,interferon_myeloid,127.0,657.0,0.1933028919330289
+myeloid_label,Sample13,Control,interferon_myeloid,181.0,618.0,0.2928802588996764
+myeloid_label,Sample14,FUS,interferon_myeloid,25.0,560.0,0.044642857142857144
+myeloid_label,Sample15,RT,interferon_myeloid,5.0,144.0,0.034722222222222224
+myeloid_label,Sample16,FUS+RT,interferon_myeloid,2.0,106.0,0.018867924528301886
+myeloid_label,Sample2,FUS,interferon_myeloid,434.0,2304.0,0.18836805555555555
+myeloid_label,Sample4,FUS+RT,interferon_myeloid,4.0,109.0,0.03669724770642202
+myeloid_label,Sample5,Control,interferon_myeloid,7.0,216.0,0.032407407407407406
+myeloid_label,Sample6,FUS,interferon_myeloid,417.0,1357.0,0.3072955047899779
+myeloid_label,Sample7,RT,interferon_myeloid,155.0,967.0,0.16028955532574973
+myeloid_label,Sample8,FUS+RT,interferon_myeloid,9.0,226.0,0.03982300884955752
+myeloid_label,Sample9,Control,interferon_myeloid,2.0,104.0,0.019230769230769232
+myeloid_label,Sample1,Control,lipid_phagocytic_TAM,1696.0,2853.0,0.5944619698562916
+myeloid_label,Sample10,FUS,lipid_phagocytic_TAM,126.0,310.0,0.4064516129032258
+myeloid_label,Sample11,RT,lipid_phagocytic_TAM,321.0,1090.0,0.2944954128440367
+myeloid_label,Sample12,FUS+RT,lipid_phagocytic_TAM,282.0,657.0,0.4292237442922374
+myeloid_label,Sample13,Control,lipid_phagocytic_TAM,168.0,618.0,0.27184466019417475
+myeloid_label,Sample14,FUS,lipid_phagocytic_TAM,345.0,560.0,0.6160714285714286
+myeloid_label,Sample15,RT,lipid_phagocytic_TAM,86.0,144.0,0.5972222222222222
+myeloid_label,Sample16,FUS+RT,lipid_phagocytic_TAM,83.0,106.0,0.7830188679245284
+myeloid_label,Sample2,FUS,lipid_phagocytic_TAM,1217.0,2304.0,0.5282118055555556
+myeloid_label,Sample4,FUS+RT,lipid_phagocytic_TAM,91.0,109.0,0.8348623853211009
+myeloid_label,Sample5,Control,lipid_phagocytic_TAM,173.0,216.0,0.8009259259259259
+myeloid_label,Sample6,FUS,lipid_phagocytic_TAM,555.0,1357.0,0.4089904200442152
+myeloid_label,Sample7,RT,lipid_phagocytic_TAM,566.0,967.0,0.5853154084798345
+myeloid_label,Sample8,FUS+RT,lipid_phagocytic_TAM,173.0,226.0,0.7654867256637168
+myeloid_label,Sample9,Control,lipid_phagocytic_TAM,58.0,104.0,0.5576923076923077
+myeloid_label,Sample1,Control,monocyte,20.0,2853.0,0.0070101647388713636
+myeloid_label,Sample10,FUS,monocyte,10.0,310.0,0.03225806451612903
+myeloid_label,Sample11,RT,monocyte,10.0,1090.0,0.009174311926605505
+myeloid_label,Sample12,FUS+RT,monocyte,35.0,657.0,0.0532724505327245
+myeloid_label,Sample13,Control,monocyte,13.0,618.0,0.021035598705501618
+myeloid_label,Sample14,FUS,monocyte,73.0,560.0,0.13035714285714287
+myeloid_label,Sample15,RT,monocyte,5.0,144.0,0.034722222222222224
+myeloid_label,Sample16,FUS+RT,monocyte,8.0,106.0,0.07547169811320754
+myeloid_label,Sample2,FUS,monocyte,34.0,2304.0,0.014756944444444444
+myeloid_label,Sample4,FUS+RT,monocyte,0.0,109.0,0.0
+myeloid_label,Sample5,Control,monocyte,4.0,216.0,0.018518518518518517
+myeloid_label,Sample6,FUS,monocyte,24.0,1357.0,0.017686072218128224
+myeloid_label,Sample7,RT,monocyte,4.0,967.0,0.004136504653567736
+myeloid_label,Sample8,FUS+RT,monocyte,4.0,226.0,0.017699115044247787
+myeloid_label,Sample9,Control,monocyte,1.0,104.0,0.009615384615384616
+T_NK_label,Sample1,Control,CD4_T,221.0,1567.0,0.1410338225909381
+T_NK_label,Sample10,FUS,CD4_T,4.0,33.0,0.12121212121212122
+T_NK_label,Sample11,RT,CD4_T,65.0,449.0,0.1447661469933185
+T_NK_label,Sample12,FUS+RT,CD4_T,35.0,171.0,0.2046783625730994
+T_NK_label,Sample13,Control,CD4_T,82.0,376.0,0.21808510638297873
+T_NK_label,Sample14,FUS,CD4_T,51.0,183.0,0.2786885245901639
+T_NK_label,Sample15,RT,CD4_T,4.0,23.0,0.17391304347826086
+T_NK_label,Sample2,FUS,CD4_T,244.0,1684.0,0.14489311163895488
+T_NK_label,Sample5,Control,CD4_T,14.0,39.0,0.358974358974359
+T_NK_label,Sample6,FUS,CD4_T,140.0,589.0,0.23769100169779286
+T_NK_label,Sample7,RT,CD4_T,113.0,1100.0,0.10272727272727272
+T_NK_label,Sample8,FUS+RT,CD4_T,38.0,144.0,0.2638888888888889
+T_NK_label,Sample1,Control,CD8_T,850.0,1567.0,0.5424377791959157
+T_NK_label,Sample10,FUS,CD8_T,13.0,33.0,0.3939393939393939
+T_NK_label,Sample11,RT,CD8_T,114.0,449.0,0.25389755011135856
+T_NK_label,Sample12,FUS+RT,CD8_T,46.0,171.0,0.26900584795321636
+T_NK_label,Sample13,Control,CD8_T,98.0,376.0,0.26063829787234044
+T_NK_label,Sample14,FUS,CD8_T,50.0,183.0,0.273224043715847
+T_NK_label,Sample15,RT,CD8_T,12.0,23.0,0.5217391304347826
+T_NK_label,Sample2,FUS,CD8_T,659.0,1684.0,0.3913301662707839
+T_NK_label,Sample5,Control,CD8_T,9.0,39.0,0.23076923076923078
+T_NK_label,Sample6,FUS,CD8_T,229.0,589.0,0.38879456706281834
+T_NK_label,Sample7,RT,CD8_T,600.0,1100.0,0.5454545454545454
+T_NK_label,Sample8,FUS+RT,CD8_T,32.0,144.0,0.2222222222222222
+T_NK_label,Sample1,Control,NK,293.0,1567.0,0.18698149329929803
+T_NK_label,Sample10,FUS,NK,11.0,33.0,0.3333333333333333
+T_NK_label,Sample11,RT,NK,235.0,449.0,0.5233853006681515
+T_NK_label,Sample12,FUS+RT,NK,73.0,171.0,0.4269005847953216
+T_NK_label,Sample13,Control,NK,170.0,376.0,0.4521276595744681
+T_NK_label,Sample14,FUS,NK,74.0,183.0,0.40437158469945356
+T_NK_label,Sample15,RT,NK,6.0,23.0,0.2608695652173913
+T_NK_label,Sample2,FUS,NK,357.0,1684.0,0.21199524940617578
+T_NK_label,Sample5,Control,NK,13.0,39.0,0.3333333333333333
+T_NK_label,Sample6,FUS,NK,184.0,589.0,0.31239388794567063
+T_NK_label,Sample7,RT,NK,178.0,1100.0,0.1618181818181818
+T_NK_label,Sample8,FUS+RT,NK,59.0,144.0,0.4097222222222222
+T_NK_label,Sample1,Control,proliferating_T_NK,60.0,1567.0,0.03828972559029994
+T_NK_label,Sample10,FUS,proliferating_T_NK,4.0,33.0,0.12121212121212122
+T_NK_label,Sample11,RT,proliferating_T_NK,2.0,449.0,0.004454342984409799
+T_NK_label,Sample12,FUS+RT,proliferating_T_NK,1.0,171.0,0.005847953216374269
+T_NK_label,Sample13,Control,proliferating_T_NK,3.0,376.0,0.007978723404255319
+T_NK_label,Sample14,FUS,proliferating_T_NK,1.0,183.0,0.00546448087431694
+T_NK_label,Sample15,RT,proliferating_T_NK,0.0,23.0,0.0
+T_NK_label,Sample2,FUS,proliferating_T_NK,75.0,1684.0,0.04453681710213777
+T_NK_label,Sample5,Control,proliferating_T_NK,2.0,39.0,0.05128205128205128
+T_NK_label,Sample6,FUS,proliferating_T_NK,10.0,589.0,0.01697792869269949
+T_NK_label,Sample7,RT,proliferating_T_NK,47.0,1100.0,0.042727272727272725
+T_NK_label,Sample8,FUS+RT,proliferating_T_NK,2.0,144.0,0.013888888888888888
+T_NK_label,Sample1,Control,regulatory_T,143.0,1567.0,0.09125717932354818
+T_NK_label,Sample10,FUS,regulatory_T,1.0,33.0,0.030303030303030304
+T_NK_label,Sample11,RT,regulatory_T,33.0,449.0,0.07349665924276169
+T_NK_label,Sample12,FUS+RT,regulatory_T,16.0,171.0,0.0935672514619883
+T_NK_label,Sample13,Control,regulatory_T,23.0,376.0,0.061170212765957445
+T_NK_label,Sample14,FUS,regulatory_T,7.0,183.0,0.03825136612021858
+T_NK_label,Sample15,RT,regulatory_T,1.0,23.0,0.043478260869565216
+T_NK_label,Sample2,FUS,regulatory_T,349.0,1684.0,0.20724465558194774
+T_NK_label,Sample5,Control,regulatory_T,1.0,39.0,0.02564102564102564
+T_NK_label,Sample6,FUS,regulatory_T,26.0,589.0,0.044142614601018676
+T_NK_label,Sample7,RT,regulatory_T,162.0,1100.0,0.14727272727272728
+T_NK_label,Sample8,FUS+RT,regulatory_T,13.0,144.0,0.09027777777777778
+tumour_state,Sample1,Control,AC_like,12.0,24.0,0.5
+tumour_state,Sample10,FUS,AC_like,9.0,35.0,0.2571428571428571
+tumour_state,Sample11,RT,AC_like,22.0,110.0,0.2
+tumour_state,Sample12,FUS+RT,AC_like,8.0,35.0,0.22857142857142856
+tumour_state,Sample13,Control,AC_like,10.0,56.0,0.17857142857142858
+tumour_state,Sample14,FUS,AC_like,18.0,53.0,0.33962264150943394
+tumour_state,Sample16,FUS+RT,AC_like,7.0,42.0,0.16666666666666666
+tumour_state,Sample2,FUS,AC_like,10.0,38.0,0.2631578947368421
+tumour_state,Sample5,Control,AC_like,7.0,28.0,0.25
+tumour_state,Sample6,FUS,AC_like,85.0,402.0,0.21144278606965175
+tumour_state,Sample7,RT,AC_like,12.0,32.0,0.375
+tumour_state,Sample1,Control,MES_like,5.0,24.0,0.20833333333333334
+tumour_state,Sample10,FUS,MES_like,2.0,35.0,0.05714285714285714
+tumour_state,Sample11,RT,MES_like,29.0,110.0,0.2636363636363636
+tumour_state,Sample12,FUS+RT,MES_like,10.0,35.0,0.2857142857142857
+tumour_state,Sample13,Control,MES_like,4.0,56.0,0.07142857142857142
+tumour_state,Sample14,FUS,MES_like,7.0,53.0,0.1320754716981132
+tumour_state,Sample16,FUS+RT,MES_like,6.0,42.0,0.14285714285714285
+tumour_state,Sample2,FUS,MES_like,1.0,38.0,0.02631578947368421
+tumour_state,Sample5,Control,MES_like,1.0,28.0,0.03571428571428571
+tumour_state,Sample6,FUS,MES_like,29.0,402.0,0.07213930348258707
+tumour_state,Sample7,RT,MES_like,7.0,32.0,0.21875
+tumour_state,Sample1,Control,OC_like,1.0,24.0,0.041666666666666664
+tumour_state,Sample10,FUS,OC_like,2.0,35.0,0.05714285714285714
+tumour_state,Sample11,RT,OC_like,2.0,110.0,0.01818181818181818
+tumour_state,Sample12,FUS+RT,OC_like,5.0,35.0,0.14285714285714285
+tumour_state,Sample13,Control,OC_like,3.0,56.0,0.05357142857142857
+tumour_state,Sample14,FUS,OC_like,3.0,53.0,0.05660377358490566
+tumour_state,Sample16,FUS+RT,OC_like,6.0,42.0,0.14285714285714285
+tumour_state,Sample2,FUS,OC_like,4.0,38.0,0.10526315789473684
+tumour_state,Sample5,Control,OC_like,3.0,28.0,0.10714285714285714
+tumour_state,Sample6,FUS,OC_like,16.0,402.0,0.03980099502487562
+tumour_state,Sample7,RT,OC_like,0.0,32.0,0.0
+tumour_state,Sample1,Control,OPC_like,1.0,24.0,0.041666666666666664
+tumour_state,Sample10,FUS,OPC_like,9.0,35.0,0.2571428571428571
+tumour_state,Sample11,RT,OPC_like,7.0,110.0,0.06363636363636363
+tumour_state,Sample12,FUS+RT,OPC_like,2.0,35.0,0.05714285714285714
+tumour_state,Sample13,Control,OPC_like,20.0,56.0,0.35714285714285715
+tumour_state,Sample14,FUS,OPC_like,10.0,53.0,0.18867924528301888
+tumour_state,Sample16,FUS+RT,OPC_like,6.0,42.0,0.14285714285714285
+tumour_state,Sample2,FUS,OPC_like,16.0,38.0,0.42105263157894735
+tumour_state,Sample5,Control,OPC_like,12.0,28.0,0.42857142857142855
+tumour_state,Sample6,FUS,OPC_like,140.0,402.0,0.3482587064676617
+tumour_state,Sample7,RT,OPC_like,3.0,32.0,0.09375
+tumour_state,Sample1,Control,cycling,5.0,24.0,0.20833333333333334
+tumour_state,Sample10,FUS,cycling,13.0,35.0,0.37142857142857144
+tumour_state,Sample11,RT,cycling,49.0,110.0,0.44545454545454544
+tumour_state,Sample12,FUS+RT,cycling,9.0,35.0,0.2571428571428571
+tumour_state,Sample13,Control,cycling,19.0,56.0,0.3392857142857143
+tumour_state,Sample14,FUS,cycling,14.0,53.0,0.2641509433962264
+tumour_state,Sample16,FUS+RT,cycling,17.0,42.0,0.40476190476190477
+tumour_state,Sample2,FUS,cycling,7.0,38.0,0.18421052631578946
+tumour_state,Sample5,Control,cycling,5.0,28.0,0.17857142857142858
+tumour_state,Sample6,FUS,cycling,127.0,402.0,0.31592039800995025
+tumour_state,Sample7,RT,cycling,9.0,32.0,0.28125
+tumour_state,Sample1,Control,unassigned,0.0,24.0,0.0
+tumour_state,Sample10,FUS,unassigned,0.0,35.0,0.0
+tumour_state,Sample11,RT,unassigned,1.0,110.0,0.00909090909090909
+tumour_state,Sample12,FUS+RT,unassigned,1.0,35.0,0.02857142857142857
+tumour_state,Sample13,Control,unassigned,0.0,56.0,0.0
+tumour_state,Sample14,FUS,unassigned,1.0,53.0,0.018867924528301886
+tumour_state,Sample16,FUS+RT,unassigned,0.0,42.0,0.0
+tumour_state,Sample2,FUS,unassigned,0.0,38.0,0.0
+tumour_state,Sample5,Control,unassigned,0.0,28.0,0.0
+tumour_state,Sample6,FUS,unassigned,5.0,402.0,0.012437810945273632
+tumour_state,Sample7,RT,unassigned,1.0,32.0,0.03125
+tumour_program,Sample1,Control,p1,0.0,24.0,0.0
+tumour_program,Sample10,FUS,p1,3.0,35.0,0.08571428571428572
+tumour_program,Sample11,RT,p1,14.0,110.0,0.12727272727272726
+tumour_program,Sample12,FUS+RT,p1,2.0,35.0,0.05714285714285714
+tumour_program,Sample13,Control,p1,3.0,56.0,0.05357142857142857
+tumour_program,Sample14,FUS,p1,2.0,53.0,0.03773584905660377
+tumour_program,Sample16,FUS+RT,p1,4.0,42.0,0.09523809523809523
+tumour_program,Sample2,FUS,p1,5.0,38.0,0.13157894736842105
+tumour_program,Sample5,Control,p1,1.0,28.0,0.03571428571428571
+tumour_program,Sample6,FUS,p1,22.0,402.0,0.05472636815920398
+tumour_program,Sample7,RT,p1,3.0,32.0,0.09375
+tumour_program,Sample1,Control,p2,5.0,24.0,0.20833333333333334
+tumour_program,Sample10,FUS,p2,6.0,35.0,0.17142857142857143
+tumour_program,Sample11,RT,p2,2.0,110.0,0.01818181818181818
+tumour_program,Sample12,FUS+RT,p2,5.0,35.0,0.14285714285714285
+tumour_program,Sample13,Control,p2,5.0,56.0,0.08928571428571429
+tumour_program,Sample14,FUS,p2,13.0,53.0,0.24528301886792453
+tumour_program,Sample16,FUS+RT,p2,10.0,42.0,0.23809523809523808
+tumour_program,Sample2,FUS,p2,8.0,38.0,0.21052631578947367
+tumour_program,Sample5,Control,p2,4.0,28.0,0.14285714285714285
+tumour_program,Sample6,FUS,p2,37.0,402.0,0.09203980099502487
+tumour_program,Sample7,RT,p2,6.0,32.0,0.1875
+tumour_program,Sample1,Control,p3,1.0,24.0,0.041666666666666664
+tumour_program,Sample10,FUS,p3,0.0,35.0,0.0
+tumour_program,Sample11,RT,p3,5.0,110.0,0.045454545454545456
+tumour_program,Sample12,FUS+RT,p3,3.0,35.0,0.08571428571428572
+tumour_program,Sample13,Control,p3,1.0,56.0,0.017857142857142856
+tumour_program,Sample14,FUS,p3,1.0,53.0,0.018867924528301886
+tumour_program,Sample16,FUS+RT,p3,1.0,42.0,0.023809523809523808
+tumour_program,Sample2,FUS,p3,1.0,38.0,0.02631578947368421
+tumour_program,Sample5,Control,p3,0.0,28.0,0.0
+tumour_program,Sample6,FUS,p3,11.0,402.0,0.02736318407960199
+tumour_program,Sample7,RT,p3,1.0,32.0,0.03125
+tumour_program,Sample1,Control,p4,5.0,24.0,0.20833333333333334
+tumour_program,Sample10,FUS,p4,0.0,35.0,0.0
+tumour_program,Sample11,RT,p4,36.0,110.0,0.32727272727272727
+tumour_program,Sample12,FUS+RT,p4,4.0,35.0,0.11428571428571428
+tumour_program,Sample13,Control,p4,7.0,56.0,0.125
+tumour_program,Sample14,FUS,p4,4.0,53.0,0.07547169811320754
+tumour_program,Sample16,FUS+RT,p4,3.0,42.0,0.07142857142857142
+tumour_program,Sample2,FUS,p4,1.0,38.0,0.02631578947368421
+tumour_program,Sample5,Control,p4,2.0,28.0,0.07142857142857142
+tumour_program,Sample6,FUS,p4,20.0,402.0,0.04975124378109453
+tumour_program,Sample7,RT,p4,6.0,32.0,0.1875
+tumour_program,Sample1,Control,p5,0.0,24.0,0.0
+tumour_program,Sample10,FUS,p5,2.0,35.0,0.05714285714285714
+tumour_program,Sample11,RT,p5,1.0,110.0,0.00909090909090909
+tumour_program,Sample12,FUS+RT,p5,0.0,35.0,0.0
+tumour_program,Sample13,Control,p5,0.0,56.0,0.0
+tumour_program,Sample14,FUS,p5,1.0,53.0,0.018867924528301886
+tumour_program,Sample16,FUS+RT,p5,1.0,42.0,0.023809523809523808
+tumour_program,Sample2,FUS,p5,0.0,38.0,0.0
+tumour_program,Sample5,Control,p5,0.0,28.0,0.0
+tumour_program,Sample6,FUS,p5,34.0,402.0,0.0845771144278607
+tumour_program,Sample7,RT,p5,1.0,32.0,0.03125
+tumour_program,Sample1,Control,p6,1.0,24.0,0.041666666666666664
+tumour_program,Sample10,FUS,p6,2.0,35.0,0.05714285714285714
+tumour_program,Sample11,RT,p6,1.0,110.0,0.00909090909090909
+tumour_program,Sample12,FUS+RT,p6,1.0,35.0,0.02857142857142857
+tumour_program,Sample13,Control,p6,10.0,56.0,0.17857142857142858
+tumour_program,Sample14,FUS,p6,5.0,53.0,0.09433962264150944
+tumour_program,Sample16,FUS+RT,p6,3.0,42.0,0.07142857142857142
+tumour_program,Sample2,FUS,p6,6.0,38.0,0.15789473684210525
+tumour_program,Sample5,Control,p6,6.0,28.0,0.21428571428571427
+tumour_program,Sample6,FUS,p6,100.0,402.0,0.24875621890547264
+tumour_program,Sample7,RT,p6,4.0,32.0,0.125
+tumour_program,Sample1,Control,p7,0.0,24.0,0.0
+tumour_program,Sample10,FUS,p7,0.0,35.0,0.0
+tumour_program,Sample11,RT,p7,2.0,110.0,0.01818181818181818
+tumour_program,Sample12,FUS+RT,p7,0.0,35.0,0.0
+tumour_program,Sample13,Control,p7,0.0,56.0,0.0
+tumour_program,Sample14,FUS,p7,0.0,53.0,0.0
+tumour_program,Sample16,FUS+RT,p7,0.0,42.0,0.0
+tumour_program,Sample2,FUS,p7,0.0,38.0,0.0
+tumour_program,Sample5,Control,p7,0.0,28.0,0.0
+tumour_program,Sample6,FUS,p7,3.0,402.0,0.007462686567164179
+tumour_program,Sample7,RT,p7,1.0,32.0,0.03125
+tumour_program,Sample1,Control,p8,12.0,24.0,0.5
+tumour_program,Sample10,FUS,p8,20.0,35.0,0.5714285714285714
+tumour_program,Sample11,RT,p8,40.0,110.0,0.36363636363636365
+tumour_program,Sample12,FUS+RT,p8,20.0,35.0,0.5714285714285714
+tumour_program,Sample13,Control,p8,23.0,56.0,0.4107142857142857
+tumour_program,Sample14,FUS,p8,21.0,53.0,0.39622641509433965
+tumour_program,Sample16,FUS+RT,p8,19.0,42.0,0.4523809523809524
+tumour_program,Sample2,FUS,p8,13.0,38.0,0.34210526315789475
+tumour_program,Sample5,Control,p8,14.0,28.0,0.5
+tumour_program,Sample6,FUS,p8,149.0,402.0,0.3706467661691542
+tumour_program,Sample7,RT,p8,10.0,32.0,0.3125
+tumour_program,Sample1,Control,p9,0.0,24.0,0.0
+tumour_program,Sample10,FUS,p9,2.0,35.0,0.05714285714285714
+tumour_program,Sample11,RT,p9,9.0,110.0,0.08181818181818182
+tumour_program,Sample12,FUS+RT,p9,0.0,35.0,0.0
+tumour_program,Sample13,Control,p9,7.0,56.0,0.125
+tumour_program,Sample14,FUS,p9,6.0,53.0,0.11320754716981132
+tumour_program,Sample16,FUS+RT,p9,1.0,42.0,0.023809523809523808
+tumour_program,Sample2,FUS,p9,4.0,38.0,0.10526315789473684
+tumour_program,Sample5,Control,p9,1.0,28.0,0.03571428571428571
+tumour_program,Sample6,FUS,p9,26.0,402.0,0.06467661691542288
+tumour_program,Sample7,RT,p9,0.0,32.0,0.0
+score:cnmf_usage:tumour,Sample1,Control,p1,,,0.06469176538709628
+score:cnmf_usage:tumour,Sample10,FUS,p1,,,0.11607671296399673
+score:cnmf_usage:tumour,Sample11,RT,p1,,,0.1202977095927042
+score:cnmf_usage:tumour,Sample12,FUS+RT,p1,,,0.10009303906071441
+score:cnmf_usage:tumour,Sample13,Control,p1,,,0.09914636409995548
+score:cnmf_usage:tumour,Sample14,FUS,p1,,,0.103921151199435
+score:cnmf_usage:tumour,Sample16,FUS+RT,p1,,,0.12638651498317385
+score:cnmf_usage:tumour,Sample2,FUS,p1,,,0.07281731651325518
+score:cnmf_usage:tumour,Sample5,Control,p1,,,0.05431240659050775
+score:cnmf_usage:tumour,Sample6,FUS,p1,,,0.09891624101162982
+score:cnmf_usage:tumour,Sample7,RT,p1,,,0.09960076956696697
+score:cnmf_usage:tumour,Sample1,Control,p2,,,0.23780614746965745
+score:cnmf_usage:tumour,Sample10,FUS,p2,,,0.21012310283016478
+score:cnmf_usage:tumour,Sample11,RT,p2,,,0.09932464093476863
+score:cnmf_usage:tumour,Sample12,FUS+RT,p2,,,0.18735863635857744
+score:cnmf_usage:tumour,Sample13,Control,p2,,,0.13608091971757494
+score:cnmf_usage:tumour,Sample14,FUS,p2,,,0.2224315558683498
+score:cnmf_usage:tumour,Sample16,FUS+RT,p2,,,0.20810248519071442
+score:cnmf_usage:tumour,Sample2,FUS,p2,,,0.19458359467497469
+score:cnmf_usage:tumour,Sample5,Control,p2,,,0.1517710513683367
+score:cnmf_usage:tumour,Sample6,FUS,p2,,,0.12184733806436368
+score:cnmf_usage:tumour,Sample7,RT,p2,,,0.18207784733310992
+score:cnmf_usage:tumour,Sample1,Control,p3,,,0.03129642038507304
+score:cnmf_usage:tumour,Sample10,FUS,p3,,,0.015870640691344962
+score:cnmf_usage:tumour,Sample11,RT,p3,,,0.06386865728010875
+score:cnmf_usage:tumour,Sample12,FUS+RT,p3,,,0.08676799100867742
+score:cnmf_usage:tumour,Sample13,Control,p3,,,0.06346381240626038
+score:cnmf_usage:tumour,Sample14,FUS,p3,,,0.04416369138493723
+score:cnmf_usage:tumour,Sample16,FUS+RT,p3,,,0.034873356134822404
+score:cnmf_usage:tumour,Sample2,FUS,p3,,,0.04045687580431215
+score:cnmf_usage:tumour,Sample5,Control,p3,,,0.04855151420576525
+score:cnmf_usage:tumour,Sample6,FUS,p3,,,0.04078979843219889
+score:cnmf_usage:tumour,Sample7,RT,p3,,,0.04976941280879145
+score:cnmf_usage:tumour,Sample1,Control,p4,,,0.21145572092733692
+score:cnmf_usage:tumour,Sample10,FUS,p4,,,0.019776173120535884
+score:cnmf_usage:tumour,Sample11,RT,p4,,,0.2446843406029258
+score:cnmf_usage:tumour,Sample12,FUS+RT,p4,,,0.14777447288174891
+score:cnmf_usage:tumour,Sample13,Control,p4,,,0.15279715101111363
+score:cnmf_usage:tumour,Sample14,FUS,p4,,,0.09191672987634816
+score:cnmf_usage:tumour,Sample16,FUS+RT,p4,,,0.09695232014527289
+score:cnmf_usage:tumour,Sample2,FUS,p4,,,0.12907097502129858
+score:cnmf_usage:tumour,Sample5,Control,p4,,,0.14579468400957932
+score:cnmf_usage:tumour,Sample6,FUS,p4,,,0.0813786877153497
+score:cnmf_usage:tumour,Sample7,RT,p4,,,0.24285342411346525
+score:cnmf_usage:tumour,Sample1,Control,p5,,,0.04400722748640282
+score:cnmf_usage:tumour,Sample10,FUS,p5,,,0.06157912217144944
+score:cnmf_usage:tumour,Sample11,RT,p5,,,0.038857818024294104
+score:cnmf_usage:tumour,Sample12,FUS+RT,p5,,,0.031650775811614504
+score:cnmf_usage:tumour,Sample13,Control,p5,,,0.03280361206625331
+score:cnmf_usage:tumour,Sample14,FUS,p5,,,0.05533586379746239
+score:cnmf_usage:tumour,Sample16,FUS+RT,p5,,,0.05086515456471775
+score:cnmf_usage:tumour,Sample2,FUS,p5,,,0.07113370128820921
+score:cnmf_usage:tumour,Sample5,Control,p5,,,0.06826017009945463
+score:cnmf_usage:tumour,Sample6,FUS,p5,,,0.09507953067979553
+score:cnmf_usage:tumour,Sample7,RT,p5,,,0.06545229354642636
+score:cnmf_usage:tumour,Sample1,Control,p6,,,0.04983044266406783
+score:cnmf_usage:tumour,Sample10,FUS,p6,,,0.08108665749458206
+score:cnmf_usage:tumour,Sample11,RT,p6,,,0.03084906344980454
+score:cnmf_usage:tumour,Sample12,FUS+RT,p6,,,0.01855810193433451
+score:cnmf_usage:tumour,Sample13,Control,p6,,,0.11348488012727323
+score:cnmf_usage:tumour,Sample14,FUS,p6,,,0.06816020846084833
+score:cnmf_usage:tumour,Sample16,FUS+RT,p6,,,0.055183057374748774
+score:cnmf_usage:tumour,Sample2,FUS,p6,,,0.11246925596351195
+score:cnmf_usage:tumour,Sample5,Control,p6,,,0.12912421759141185
+score:cnmf_usage:tumour,Sample6,FUS,p6,,,0.16227235743397264
+score:cnmf_usage:tumour,Sample7,RT,p6,,,0.08403597982391514
+score:cnmf_usage:tumour,Sample1,Control,p7,,,0.01642067637247573
+score:cnmf_usage:tumour,Sample10,FUS,p7,,,0.04048794426380272
+score:cnmf_usage:tumour,Sample11,RT,p7,,,0.033480524214806524
+score:cnmf_usage:tumour,Sample12,FUS+RT,p7,,,0.026199648492127088
+score:cnmf_usage:tumour,Sample13,Control,p7,,,0.02201703731640048
+score:cnmf_usage:tumour,Sample14,FUS,p7,,,0.024581063581230106
+score:cnmf_usage:tumour,Sample16,FUS+RT,p7,,,0.011897132205332566
+score:cnmf_usage:tumour,Sample2,FUS,p7,,,0.04010199537535054
+score:cnmf_usage:tumour,Sample5,Control,p7,,,0.019830121976126002
+score:cnmf_usage:tumour,Sample6,FUS,p7,,,0.027337467453462286
+score:cnmf_usage:tumour,Sample7,RT,p7,,,0.0587844633029108
+score:cnmf_usage:tumour,Sample1,Control,p8,,,0.2861125950104598
+score:cnmf_usage:tumour,Sample10,FUS,p8,,,0.3327464246871425
+score:cnmf_usage:tumour,Sample11,RT,p8,,,0.2598793593182245
+score:cnmf_usage:tumour,Sample12,FUS+RT,p8,,,0.347671632092753
+score:cnmf_usage:tumour,Sample13,Control,p8,,,0.24665296015541402
+score:cnmf_usage:tumour,Sample14,FUS,p8,,,0.291762194336007
+score:cnmf_usage:tumour,Sample16,FUS+RT,p8,,,0.32596762990797223
+score:cnmf_usage:tumour,Sample2,FUS,p8,,,0.21564634017194337
+score:cnmf_usage:tumour,Sample5,Control,p8,,,0.3189049092836395
+score:cnmf_usage:tumour,Sample6,FUS,p8,,,0.24510933150051578
+score:cnmf_usage:tumour,Sample7,RT,p8,,,0.1758869490965553
+score:cnmf_usage:tumour,Sample1,Control,p9,,,0.058379004297430113
+score:cnmf_usage:tumour,Sample10,FUS,p9,,,0.1222532217769809
+score:cnmf_usage:tumour,Sample11,RT,p9,,,0.10875788658236299
+score:cnmf_usage:tumour,Sample12,FUS+RT,p9,,,0.053925702359452786
+score:cnmf_usage:tumour,Sample13,Control,p9,,,0.1335532630997545
+score:cnmf_usage:tumour,Sample14,FUS,p9,,,0.09772754149538199
+score:cnmf_usage:tumour,Sample16,FUS+RT,p9,,,0.08977234949324515
+score:cnmf_usage:tumour,Sample2,FUS,p9,,,0.1237199451871444
+score:cnmf_usage:tumour,Sample5,Control,p9,,,0.06345092487517899
+score:cnmf_usage:tumour,Sample6,FUS,p9,,,0.1272692477087117
+score:cnmf_usage:tumour,Sample7,RT,p9,,,0.04153886040785884
+score:human_state_score:tumour,Sample1,Control,score_OPC_like,,,0.005933614465193408
+score:human_state_score:tumour,Sample10,FUS,score_OPC_like,,,0.09889139660456381
+score:human_state_score:tumour,Sample11,RT,score_OPC_like,,,-0.0020370911855202164
+score:human_state_score:tumour,Sample12,FUS+RT,score_OPC_like,,,-0.03176780999834447
+score:human_state_score:tumour,Sample13,Control,score_OPC_like,,,0.1323089220354512
+score:human_state_score:tumour,Sample14,FUS,score_OPC_like,,,0.040594533690054946
+score:human_state_score:tumour,Sample16,FUS+RT,score_OPC_like,,,0.0010124453736947469
+score:human_state_score:tumour,Sample2,FUS,score_OPC_like,,,0.18851391546754098
+score:human_state_score:tumour,Sample5,Control,score_OPC_like,,,0.1823505318064493
+score:human_state_score:tumour,Sample6,FUS,score_OPC_like,,,0.16794233273675105
+score:human_state_score:tumour,Sample7,RT,score_OPC_like,,,-0.0032830506114520154
+score:human_state_score:tumour,Sample1,Control,score_AC_like,,,0.1732376979865139
+score:human_state_score:tumour,Sample10,FUS,score_AC_like,,,0.13928643996425571
+score:human_state_score:tumour,Sample11,RT,score_AC_like,,,0.11896118341608017
+score:human_state_score:tumour,Sample12,FUS+RT,score_AC_like,,,0.14547277920565652
+score:human_state_score:tumour,Sample13,Control,score_AC_like,,,0.07085153887763383
+score:human_state_score:tumour,Sample14,FUS,score_AC_like,,,0.12447405633569146
+score:human_state_score:tumour,Sample16,FUS+RT,score_AC_like,,,0.09071483845131881
+score:human_state_score:tumour,Sample2,FUS,score_AC_like,,,0.15373772492562474
+score:human_state_score:tumour,Sample5,Control,score_AC_like,,,0.10313633591408926
+score:human_state_score:tumour,Sample6,FUS,score_AC_like,,,0.0691392858589582
+score:human_state_score:tumour,Sample7,RT,score_AC_like,,,0.2160979071309162
+score:human_state_score:tumour,Sample1,Control,score_OC_like,,,-0.009963642714810789
+score:human_state_score:tumour,Sample10,FUS,score_OC_like,,,0.034434762664519225
+score:human_state_score:tumour,Sample11,RT,score_OC_like,,,-0.07189793749929574
+score:human_state_score:tumour,Sample12,FUS+RT,score_OC_like,,,-0.04306939125034194
+score:human_state_score:tumour,Sample13,Control,score_OC_like,,,-0.029026093022868682
+score:human_state_score:tumour,Sample14,FUS,score_OC_like,,,-0.015565662510443933
+score:human_state_score:tumour,Sample16,FUS+RT,score_OC_like,,,-0.023389605316079216
+score:human_state_score:tumour,Sample2,FUS,score_OC_like,,,0.026905331415942382
+score:human_state_score:tumour,Sample5,Control,score_OC_like,,,0.005971444320077493
+score:human_state_score:tumour,Sample6,FUS,score_OC_like,,,-0.010697899805253907
+score:human_state_score:tumour,Sample7,RT,score_OC_like,,,-0.050908339156279694
+score:human_state_score:tumour,Sample1,Control,score_MES_like,,,0.026034450499062375
+score:human_state_score:tumour,Sample10,FUS,score_MES_like,,,-0.04265086178536632
+score:human_state_score:tumour,Sample11,RT,score_MES_like,,,0.1396003027434411
+score:human_state_score:tumour,Sample12,FUS+RT,score_MES_like,,,0.10670052755829802
+score:human_state_score:tumour,Sample13,Control,score_MES_like,,,-0.06102246889744768
+score:human_state_score:tumour,Sample14,FUS,score_MES_like,,,0.0008231879740026782
+score:human_state_score:tumour,Sample16,FUS+RT,score_MES_like,,,0.031637942853697365
+score:human_state_score:tumour,Sample2,FUS,score_MES_like,,,-0.05045476372053528
+score:human_state_score:tumour,Sample5,Control,score_MES_like,,,-0.049900328146478955
+score:human_state_score:tumour,Sample6,FUS,score_MES_like,,,-0.050241255860213524
+score:human_state_score:tumour,Sample7,RT,score_MES_like,,,0.06394392637583173
+score:human_state_score:tumour,Sample1,Control,score_cycling,,,0.051452076273666776
+score:human_state_score:tumour,Sample10,FUS,score_cycling,,,0.11624405867298805
+score:human_state_score:tumour,Sample11,RT,score_cycling,,,0.18227454924008774
+score:human_state_score:tumour,Sample12,FUS+RT,score_cycling,,,0.03490147597344713
+score:human_state_score:tumour,Sample13,Control,score_cycling,,,0.021066224559656017
+score:human_state_score:tumour,Sample14,FUS,score_cycling,,,0.04446710138714145
+score:human_state_score:tumour,Sample16,FUS+RT,score_cycling,,,0.08082551300912288
+score:human_state_score:tumour,Sample2,FUS,score_cycling,,,-0.032697042804517296
+score:human_state_score:tumour,Sample5,Control,score_cycling,,,-0.02741512400363241
+score:human_state_score:tumour,Sample6,FUS,score_cycling,,,0.10914768016639531
+score:human_state_score:tumour,Sample7,RT,score_cycling,,,0.04069838801175789
+score:human_MP_ucell:tumour,Sample1,Control,MP1_cycling,,,0.04786757007241249
+score:human_MP_ucell:tumour,Sample10,FUS,MP1_cycling,,,0.07228859513998032
+score:human_MP_ucell:tumour,Sample11,RT,MP1_cycling,,,0.07936709374189377
+score:human_MP_ucell:tumour,Sample12,FUS+RT,MP1_cycling,,,0.0605231411755085
+score:human_MP_ucell:tumour,Sample13,Control,MP1_cycling,,,0.06028931587934494
+score:human_MP_ucell:tumour,Sample14,FUS,MP1_cycling,,,0.06013324484229088
+score:human_MP_ucell:tumour,Sample16,FUS+RT,MP1_cycling,,,0.055829644203186035
+score:human_MP_ucell:tumour,Sample2,FUS,MP1_cycling,,,0.049362506717443466
+score:human_MP_ucell:tumour,Sample5,Control,MP1_cycling,,,0.046646732836961746
+score:human_MP_ucell:tumour,Sample6,FUS,MP1_cycling,,,0.07543031126260757
+score:human_MP_ucell:tumour,Sample7,RT,MP1_cycling,,,0.056194283068180084
+score:human_MP_ucell:tumour,Sample1,Control,MP10_AC_like,,,0.03449537232518196
+score:human_MP_ucell:tumour,Sample10,FUS,MP10_AC_like,,,0.043737780302762985
+score:human_MP_ucell:tumour,Sample11,RT,MP10_AC_like,,,0.04374949261546135
+score:human_MP_ucell:tumour,Sample12,FUS+RT,MP10_AC_like,,,0.04495301470160484
+score:human_MP_ucell:tumour,Sample13,Control,MP10_AC_like,,,0.03941494598984718
+score:human_MP_ucell:tumour,Sample14,FUS,MP10_AC_like,,,0.03711823746562004
+score:human_MP_ucell:tumour,Sample16,FUS+RT,MP10_AC_like,,,0.0299701951444149
+score:human_MP_ucell:tumour,Sample2,FUS,MP10_AC_like,,,0.04469766095280647
+score:human_MP_ucell:tumour,Sample5,Control,MP10_AC_like,,,0.03587830439209938
+score:human_MP_ucell:tumour,Sample6,FUS,MP10_AC_like,,,0.04305996000766754
+score:human_MP_ucell:tumour,Sample7,RT,MP10_AC_like,,,0.061222221702337265
+score:human_MP_ucell:tumour,Sample1,Control,MP11_cycling,,,0.02693191170692444
+score:human_MP_ucell:tumour,Sample10,FUS,MP11_cycling,,,0.03166411444544792
+score:human_MP_ucell:tumour,Sample11,RT,MP11_cycling,,,0.03248388692736626
+score:human_MP_ucell:tumour,Sample12,FUS+RT,MP11_cycling,,,0.024400698021054268
+score:human_MP_ucell:tumour,Sample13,Control,MP11_cycling,,,0.0334763340651989
+score:human_MP_ucell:tumour,Sample14,FUS,MP11_cycling,,,0.02915477752685547
+score:human_MP_ucell:tumour,Sample16,FUS+RT,MP11_cycling,,,0.027574332430958748
+score:human_MP_ucell:tumour,Sample2,FUS,MP11_cycling,,,0.024012623354792595
+score:human_MP_ucell:tumour,Sample5,Control,MP11_cycling,,,0.030587108805775642
+score:human_MP_ucell:tumour,Sample6,FUS,MP11_cycling,,,0.040741194039583206
+score:human_MP_ucell:tumour,Sample7,RT,MP11_cycling,,,0.031675051897764206
+score:human_MP_ucell:tumour,Sample1,Control,MP14_AC_like,,,0.03260907903313637
+score:human_MP_ucell:tumour,Sample10,FUS,MP14_AC_like,,,0.03791103512048721
+score:human_MP_ucell:tumour,Sample11,RT,MP14_AC_like,,,0.042171988636255264
+score:human_MP_ucell:tumour,Sample12,FUS+RT,MP14_AC_like,,,0.04289895296096802
+score:human_MP_ucell:tumour,Sample13,Control,MP14_AC_like,,,0.03742261976003647
+score:human_MP_ucell:tumour,Sample14,FUS,MP14_AC_like,,,0.03265991806983948
+score:human_MP_ucell:tumour,Sample16,FUS+RT,MP14_AC_like,,,0.030286487191915512
+score:human_MP_ucell:tumour,Sample2,FUS,MP14_AC_like,,,0.039358366280794144
+score:human_MP_ucell:tumour,Sample5,Control,MP14_AC_like,,,0.03837543725967407
+score:human_MP_ucell:tumour,Sample6,FUS,MP14_AC_like,,,0.03557422384619713
+score:human_MP_ucell:tumour,Sample7,RT,MP14_AC_like,,,0.04638389125466347
+score:human_MP_ucell:tumour,Sample1,Control,MP15_AC_like,,,0.038783591240644455
+score:human_MP_ucell:tumour,Sample10,FUS,MP15_AC_like,,,0.04761107265949249
+score:human_MP_ucell:tumour,Sample11,RT,MP15_AC_like,,,0.048956096172332764
+score:human_MP_ucell:tumour,Sample12,FUS+RT,MP15_AC_like,,,0.05542546883225441
+score:human_MP_ucell:tumour,Sample13,Control,MP15_AC_like,,,0.04067704826593399
+score:human_MP_ucell:tumour,Sample14,FUS,MP15_AC_like,,,0.04127892479300499
+score:human_MP_ucell:tumour,Sample16,FUS+RT,MP15_AC_like,,,0.036016795784235
+score:human_MP_ucell:tumour,Sample2,FUS,MP15_AC_like,,,0.047450631856918335
+score:human_MP_ucell:tumour,Sample5,Control,MP15_AC_like,,,0.037815336138010025
+score:human_MP_ucell:tumour,Sample6,FUS,MP15_AC_like,,,0.044675882905721664
+score:human_MP_ucell:tumour,Sample7,RT,MP15_AC_like,,,0.06489486247301102
+score:human_MP_ucell:tumour,Sample1,Control,MP3_OPC_like,,,0.054101187735795975
+score:human_MP_ucell:tumour,Sample10,FUS,MP3_OPC_like,,,0.07495296001434326
+score:human_MP_ucell:tumour,Sample11,RT,MP3_OPC_like,,,0.04905107989907265
+score:human_MP_ucell:tumour,Sample12,FUS+RT,MP3_OPC_like,,,0.05196443200111389
+score:human_MP_ucell:tumour,Sample13,Control,MP3_OPC_like,,,0.07081474363803864
+score:human_MP_ucell:tumour,Sample14,FUS,MP3_OPC_like,,,0.057526376098394394
+score:human_MP_ucell:tumour,Sample16,FUS+RT,MP3_OPC_like,,,0.04727696627378464
+score:human_MP_ucell:tumour,Sample2,FUS,MP3_OPC_like,,,0.09028588980436325
+score:human_MP_ucell:tumour,Sample5,Control,MP3_OPC_like,,,0.0700201615691185
+score:human_MP_ucell:tumour,Sample6,FUS,MP3_OPC_like,,,0.08155617862939835
+score:human_MP_ucell:tumour,Sample7,RT,MP3_OPC_like,,,0.056477680802345276
+score:human_MP_ucell:tumour,Sample1,Control,MP4_hypoxia,,,0.041058022528886795
+score:human_MP_ucell:tumour,Sample10,FUS,MP4_hypoxia,,,0.037454817444086075
+score:human_MP_ucell:tumour,Sample11,RT,MP4_hypoxia,,,0.05350774526596069
+score:human_MP_ucell:tumour,Sample12,FUS+RT,MP4_hypoxia,,,0.050651006400585175
+score:human_MP_ucell:tumour,Sample13,Control,MP4_hypoxia,,,0.03880621865391731
+score:human_MP_ucell:tumour,Sample14,FUS,MP4_hypoxia,,,0.040157511830329895
+score:human_MP_ucell:tumour,Sample16,FUS+RT,MP4_hypoxia,,,0.04396948963403702
+score:human_MP_ucell:tumour,Sample2,FUS,MP4_hypoxia,,,0.042326509952545166
+score:human_MP_ucell:tumour,Sample5,Control,MP4_hypoxia,,,0.034966930747032166
+score:human_MP_ucell:tumour,Sample6,FUS,MP4_hypoxia,,,0.0406096912920475
+score:human_MP_ucell:tumour,Sample7,RT,MP4_hypoxia,,,0.05358009412884712
+score:human_MP_ucell:tumour,Sample1,Control,MP5_OC_like,,,0.047872886061668396
+score:human_MP_ucell:tumour,Sample10,FUS,MP5_OC_like,,,0.07944720983505249
+score:human_MP_ucell:tumour,Sample11,RT,MP5_OC_like,,,0.0511799082159996
+score:human_MP_ucell:tumour,Sample12,FUS+RT,MP5_OC_like,,,0.0508219450712204
+score:human_MP_ucell:tumour,Sample13,Control,MP5_OC_like,,,0.07028196007013321
+score:human_MP_ucell:tumour,Sample14,FUS,MP5_OC_like,,,0.06174733489751816
+score:human_MP_ucell:tumour,Sample16,FUS+RT,MP5_OC_like,,,0.04917667433619499
+score:human_MP_ucell:tumour,Sample2,FUS,MP5_OC_like,,,0.08326926082372665
+score:human_MP_ucell:tumour,Sample5,Control,MP5_OC_like,,,0.06947619467973709
+score:human_MP_ucell:tumour,Sample6,FUS,MP5_OC_like,,,0.08314469456672668
+score:human_MP_ucell:tumour,Sample7,RT,MP5_OC_like,,,0.05029211938381195
+score:human_MP_ucell:tumour,Sample1,Control,MP6_OPC_like,,,0.03251566365361214
+score:human_MP_ucell:tumour,Sample10,FUS,MP6_OPC_like,,,0.045212361961603165
+score:human_MP_ucell:tumour,Sample11,RT,MP6_OPC_like,,,0.03415783494710922
+score:human_MP_ucell:tumour,Sample12,FUS+RT,MP6_OPC_like,,,0.03621317073702812
+score:human_MP_ucell:tumour,Sample13,Control,MP6_OPC_like,,,0.048569779843091965
+score:human_MP_ucell:tumour,Sample14,FUS,MP6_OPC_like,,,0.03644225746393204
+score:human_MP_ucell:tumour,Sample16,FUS+RT,MP6_OPC_like,,,0.036582741886377335
+score:human_MP_ucell:tumour,Sample2,FUS,MP6_OPC_like,,,0.058443453162908554
+score:human_MP_ucell:tumour,Sample5,Control,MP6_OPC_like,,,0.04138677939772606
+score:human_MP_ucell:tumour,Sample6,FUS,MP6_OPC_like,,,0.053975071758031845
+score:human_MP_ucell:tumour,Sample7,RT,MP6_OPC_like,,,0.0412752665579319
+score:human_MP_ucell:tumour,Sample1,Control,MP7_AC_like,,,0.022873306646943092
+score:human_MP_ucell:tumour,Sample10,FUS,MP7_AC_like,,,0.030205808579921722
+score:human_MP_ucell:tumour,Sample11,RT,MP7_AC_like,,,0.03192158043384552
+score:human_MP_ucell:tumour,Sample12,FUS+RT,MP7_AC_like,,,0.030278513208031654
+score:human_MP_ucell:tumour,Sample13,Control,MP7_AC_like,,,0.029725609347224236
+score:human_MP_ucell:tumour,Sample14,FUS,MP7_AC_like,,,0.027943549677729607
+score:human_MP_ucell:tumour,Sample16,FUS+RT,MP7_AC_like,,,0.02080604061484337
+score:human_MP_ucell:tumour,Sample2,FUS,MP7_AC_like,,,0.03422464802861214
+score:human_MP_ucell:tumour,Sample5,Control,MP7_AC_like,,,0.025900116190314293
+score:human_MP_ucell:tumour,Sample6,FUS,MP7_AC_like,,,0.034451402723789215
+score:human_MP_ucell:tumour,Sample7,RT,MP7_AC_like,,,0.04256351664662361
+score:human_MP_ucell:tumour,Sample1,Control,MP8_MES_like,,,0.03725581243634224
+score:human_MP_ucell:tumour,Sample10,FUS,MP8_MES_like,,,0.038963012397289276
+score:human_MP_ucell:tumour,Sample11,RT,MP8_MES_like,,,0.06352586299180984
+score:human_MP_ucell:tumour,Sample12,FUS+RT,MP8_MES_like,,,0.06281838566064835
+score:human_MP_ucell:tumour,Sample13,Control,MP8_MES_like,,,0.04170653223991394
+score:human_MP_ucell:tumour,Sample14,FUS,MP8_MES_like,,,0.046340059489011765
+score:human_MP_ucell:tumour,Sample16,FUS+RT,MP8_MES_like,,,0.04625120013952255
+score:human_MP_ucell:tumour,Sample2,FUS,MP8_MES_like,,,0.04448286443948746
+score:human_MP_ucell:tumour,Sample5,Control,MP8_MES_like,,,0.04632890224456787
+score:human_MP_ucell:tumour,Sample6,FUS,MP8_MES_like,,,0.0403427816927433
+score:human_MP_ucell:tumour,Sample7,RT,MP8_MES_like,,,0.059054020792245865
+score:human_MP_ucell:tumour,Sample1,Control,MP9_novel_MP9,,,0.007000000681728125
+score:human_MP_ucell:tumour,Sample10,FUS,MP9_novel_MP9,,,0.008235065266489983
+score:human_MP_ucell:tumour,Sample11,RT,MP9_novel_MP9,,,0.00805716309696436
+score:human_MP_ucell:tumour,Sample12,FUS+RT,MP9_novel_MP9,,,0.00764155900105834
+score:human_MP_ucell:tumour,Sample13,Control,MP9_novel_MP9,,,0.007000000216066837
+score:human_MP_ucell:tumour,Sample14,FUS,MP9_novel_MP9,,,0.008831904269754887
+score:human_MP_ucell:tumour,Sample16,FUS+RT,MP9_novel_MP9,,,0.008671356365084648
+score:human_MP_ucell:tumour,Sample2,FUS,MP9_novel_MP9,,,0.007497607730329037
+score:human_MP_ucell:tumour,Sample5,Control,MP9_novel_MP9,,,0.0075530302710831165
+score:human_MP_ucell:tumour,Sample6,FUS,MP9_novel_MP9,,,0.007889002561569214
+score:human_MP_ucell:tumour,Sample7,RT,MP9_novel_MP9,,,0.010630682110786438
+score:pseudobulk_geneset:tumour,Sample6,FUS,Cholesterol_biosynthesis,,,0.43276944756507874
+score:pseudobulk_geneset:tumour,Sample11,RT,Cholesterol_biosynthesis,,,-0.2347715198993683
+score:pseudobulk_geneset:tumour,Sample13,Control,Cholesterol_biosynthesis,,,0.24246148765087128
+score:pseudobulk_geneset:tumour,Sample14,FUS,Cholesterol_biosynthesis,,,0.017836909741163254
+score:pseudobulk_geneset:tumour,Sample16,FUS+RT,Cholesterol_biosynthesis,,,0.5085364580154419
+score:pseudobulk_geneset:tumour,Sample2,FUS,Cholesterol_biosynthesis,,,0.026102770119905472
+score:pseudobulk_geneset:tumour,Sample10,FUS,Cholesterol_biosynthesis,,,0.04175492003560066
+score:pseudobulk_geneset:tumour,Sample12,FUS+RT,Cholesterol_biosynthesis,,,-0.6426355838775635
+score:pseudobulk_geneset:tumour,Sample7,RT,Cholesterol_biosynthesis,,,0.47529157996177673
+score:pseudobulk_geneset:tumour,Sample5,Control,Cholesterol_biosynthesis,,,-0.4038892388343811
+score:pseudobulk_geneset:tumour,Sample1,Control,Cholesterol_biosynthesis,,,-0.46345847845077515
+score:pseudobulk_geneset:tumour,Sample6,FUS,Cycling_markers,,,0.44697287678718567
+score:pseudobulk_geneset:tumour,Sample11,RT,Cycling_markers,,,0.8866602182388306
+score:pseudobulk_geneset:tumour,Sample13,Control,Cycling_markers,,,-0.24679990112781525
+score:pseudobulk_geneset:tumour,Sample14,FUS,Cycling_markers,,,-0.3314898908138275
+score:pseudobulk_geneset:tumour,Sample16,FUS+RT,Cycling_markers,,,0.1759217381477356
+score:pseudobulk_geneset:tumour,Sample2,FUS,Cycling_markers,,,-0.27300235629081726
+score:pseudobulk_geneset:tumour,Sample10,FUS,Cycling_markers,,,0.2702811360359192
+score:pseudobulk_geneset:tumour,Sample12,FUS+RT,Cycling_markers,,,-0.03879432752728462
+score:pseudobulk_geneset:tumour,Sample7,RT,Cycling_markers,,,-0.4941791892051697
+score:pseudobulk_geneset:tumour,Sample5,Control,Cycling_markers,,,-0.6116108298301697
+score:pseudobulk_geneset:tumour,Sample1,Control,Cycling_markers,,,0.21603965759277344
+score:pseudobulk_geneset:tumour,Sample6,FUS,Glycolysis,,,-0.60427325963974
+score:pseudobulk_geneset:tumour,Sample11,RT,Glycolysis,,,0.3455407917499542
+score:pseudobulk_geneset:tumour,Sample13,Control,Glycolysis,,,-0.22343900799751282
+score:pseudobulk_geneset:tumour,Sample14,FUS,Glycolysis,,,-0.25070494413375854
+score:pseudobulk_geneset:tumour,Sample16,FUS+RT,Glycolysis,,,-0.15777577459812164
+score:pseudobulk_geneset:tumour,Sample2,FUS,Glycolysis,,,0.10352393239736557
+score:pseudobulk_geneset:tumour,Sample10,FUS,Glycolysis,,,-0.4303579330444336
+score:pseudobulk_geneset:tumour,Sample12,FUS+RT,Glycolysis,,,0.20844528079032898
+score:pseudobulk_geneset:tumour,Sample7,RT,Glycolysis,,,0.46732985973358154
+score:pseudobulk_geneset:tumour,Sample5,Control,Glycolysis,,,0.1076589822769165
+score:pseudobulk_geneset:tumour,Sample1,Control,Glycolysis,,,0.43405258655548096
+score:pseudobulk_geneset:tumour,Sample6,FUS,Hypoxia,,,-0.18184606730937958
+score:pseudobulk_geneset:tumour,Sample11,RT,Hypoxia,,,-0.2709673345088959
+score:pseudobulk_geneset:tumour,Sample13,Control,Hypoxia,,,-0.15400691330432892
+score:pseudobulk_geneset:tumour,Sample14,FUS,Hypoxia,,,-0.4281270205974579
+score:pseudobulk_geneset:tumour,Sample16,FUS+RT,Hypoxia,,,-0.12557591497898102
+score:pseudobulk_geneset:tumour,Sample2,FUS,Hypoxia,,,-0.07036232203245163
+score:pseudobulk_geneset:tumour,Sample10,FUS,Hypoxia,,,-0.6580713987350464
+score:pseudobulk_geneset:tumour,Sample12,FUS+RT,Hypoxia,,,0.3964143693447113
+score:pseudobulk_geneset:tumour,Sample7,RT,Hypoxia,,,1.007649540901184
+score:pseudobulk_geneset:tumour,Sample5,Control,Hypoxia,,,0.07249724119901657
+score:pseudobulk_geneset:tumour,Sample1,Control,Hypoxia,,,0.4123972952365875
+score:pseudobulk_geneset:tumour,Sample6,FUS,IEG_dissociation,,,-0.5156168341636658
+score:pseudobulk_geneset:tumour,Sample11,RT,IEG_dissociation,,,0.003492119489237666
+score:pseudobulk_geneset:tumour,Sample13,Control,IEG_dissociation,,,-0.5157782435417175
+score:pseudobulk_geneset:tumour,Sample14,FUS,IEG_dissociation,,,0.07140634953975677
+score:pseudobulk_geneset:tumour,Sample16,FUS+RT,IEG_dissociation,,,0.04574279859662056
+score:pseudobulk_geneset:tumour,Sample2,FUS,IEG_dissociation,,,-0.29408252239227295
+score:pseudobulk_geneset:tumour,Sample10,FUS,IEG_dissociation,,,-0.533009946346283
+score:pseudobulk_geneset:tumour,Sample12,FUS+RT,IEG_dissociation,,,0.8979058265686035
+score:pseudobulk_geneset:tumour,Sample7,RT,IEG_dissociation,,,0.39396268129348755
+score:pseudobulk_geneset:tumour,Sample5,Control,IEG_dissociation,,,0.19625404477119446
+score:pseudobulk_geneset:tumour,Sample1,Control,IEG_dissociation,,,0.24972489476203918
+score:pseudobulk_geneset:tumour,Sample6,FUS,Interferon,,,0.1438773274421692
+score:pseudobulk_geneset:tumour,Sample11,RT,Interferon,,,0.3084644079208374
+score:pseudobulk_geneset:tumour,Sample13,Control,Interferon,,,-0.04402754828333855
+score:pseudobulk_geneset:tumour,Sample14,FUS,Interferon,,,-0.09058655798435211
+score:pseudobulk_geneset:tumour,Sample16,FUS+RT,Interferon,,,-0.24400131404399872
+score:pseudobulk_geneset:tumour,Sample2,FUS,Interferon,,,0.6382015943527222
+score:pseudobulk_geneset:tumour,Sample10,FUS,Interferon,,,-1.8949220180511475
+score:pseudobulk_geneset:tumour,Sample12,FUS+RT,Interferon,,,0.7805548310279846
+score:pseudobulk_geneset:tumour,Sample7,RT,Interferon,,,0.5385231375694275
+score:pseudobulk_geneset:tumour,Sample5,Control,Interferon,,,0.00868282187730074
+score:pseudobulk_geneset:tumour,Sample1,Control,Interferon,,,-0.14476653933525085
+score:pseudobulk_geneset:tumour,Sample6,FUS,OXPHOS_nuclear,,,-0.5353989601135254
+score:pseudobulk_geneset:tumour,Sample11,RT,OXPHOS_nuclear,,,0.43659090995788574
+score:pseudobulk_geneset:tumour,Sample13,Control,OXPHOS_nuclear,,,-0.34916239976882935
+score:pseudobulk_geneset:tumour,Sample14,FUS,OXPHOS_nuclear,,,-0.3342467248439789
+score:pseudobulk_geneset:tumour,Sample16,FUS+RT,OXPHOS_nuclear,,,0.60498046875
+score:pseudobulk_geneset:tumour,Sample2,FUS,OXPHOS_nuclear,,,0.22187112271785736
+score:pseudobulk_geneset:tumour,Sample10,FUS,OXPHOS_nuclear,,,0.17463313043117523
+score:pseudobulk_geneset:tumour,Sample12,FUS+RT,OXPHOS_nuclear,,,0.16979564726352692
+score:pseudobulk_geneset:tumour,Sample7,RT,OXPHOS_nuclear,,,-0.15504968166351318
+score:pseudobulk_geneset:tumour,Sample5,Control,OXPHOS_nuclear,,,-0.2458827644586563
+score:pseudobulk_geneset:tumour,Sample1,Control,OXPHOS_nuclear,,,0.01187183242291212
+score:pseudobulk_geneset:tumour,Sample6,FUS,Stress_HSP,,,-0.6528396010398865
+score:pseudobulk_geneset:tumour,Sample11,RT,Stress_HSP,,,0.28715941309928894
+score:pseudobulk_geneset:tumour,Sample13,Control,Stress_HSP,,,0.07113106548786163
+score:pseudobulk_geneset:tumour,Sample14,FUS,Stress_HSP,,,0.1804773062467575
+score:pseudobulk_geneset:tumour,Sample16,FUS+RT,Stress_HSP,,,0.4471632242202759
+score:pseudobulk_geneset:tumour,Sample2,FUS,Stress_HSP,,,-0.30170854926109314
+score:pseudobulk_geneset:tumour,Sample10,FUS,Stress_HSP,,,-0.35825875401496887
+score:pseudobulk_geneset:tumour,Sample12,FUS+RT,Stress_HSP,,,0.4254089593887329
+score:pseudobulk_geneset:tumour,Sample7,RT,Stress_HSP,,,-0.20318184792995453
+score:pseudobulk_geneset:tumour,Sample5,Control,Stress_HSP,,,0.15986917912960052
+score:pseudobulk_geneset:tumour,Sample1,Control,Stress_HSP,,,-0.0552188940346241
+score:pseudobulk_geneset:Microglia,Sample2,FUS,Cholesterol_biosynthesis,,,-0.6766405701637268
+score:pseudobulk_geneset:Microglia,Sample6,FUS,Cholesterol_biosynthesis,,,0.40552669763565063
+score:pseudobulk_geneset:Microglia,Sample1,Control,Cholesterol_biosynthesis,,,0.16509117186069489
+score:pseudobulk_geneset:Microglia,Sample7,RT,Cholesterol_biosynthesis,,,-0.15129046142101288
+score:pseudobulk_geneset:Microglia,Sample14,FUS,Cholesterol_biosynthesis,,,0.09161312878131866
+score:pseudobulk_geneset:Microglia,Sample12,FUS+RT,Cholesterol_biosynthesis,,,0.23972655832767487
+score:pseudobulk_geneset:Microglia,Sample13,Control,Cholesterol_biosynthesis,,,0.2589108347892761
+score:pseudobulk_geneset:Microglia,Sample11,RT,Cholesterol_biosynthesis,,,0.4238411784172058
+score:pseudobulk_geneset:Microglia,Sample10,FUS,Cholesterol_biosynthesis,,,-0.13998115062713623
+score:pseudobulk_geneset:Microglia,Sample8,FUS+RT,Cholesterol_biosynthesis,,,-0.2956084907054901
+score:pseudobulk_geneset:Microglia,Sample5,Control,Cholesterol_biosynthesis,,,-0.21484582126140594
+score:pseudobulk_geneset:Microglia,Sample15,RT,Cholesterol_biosynthesis,,,0.6168709397315979
+score:pseudobulk_geneset:Microglia,Sample9,Control,Cholesterol_biosynthesis,,,0.1422727257013321
+score:pseudobulk_geneset:Microglia,Sample16,FUS+RT,Cholesterol_biosynthesis,,,-0.2793750762939453
+score:pseudobulk_geneset:Microglia,Sample4,FUS+RT,Cholesterol_biosynthesis,,,-0.5861119627952576
+score:pseudobulk_geneset:Microglia,Sample2,FUS,Cycling_markers,,,0.2319604456424713
+score:pseudobulk_geneset:Microglia,Sample6,FUS,Cycling_markers,,,1.2506383657455444
+score:pseudobulk_geneset:Microglia,Sample1,Control,Cycling_markers,,,1.0024333000183105
+score:pseudobulk_geneset:Microglia,Sample7,RT,Cycling_markers,,,-0.02364790253341198
+score:pseudobulk_geneset:Microglia,Sample14,FUS,Cycling_markers,,,0.674723744392395
+score:pseudobulk_geneset:Microglia,Sample12,FUS+RT,Cycling_markers,,,-0.6302880048751831
+score:pseudobulk_geneset:Microglia,Sample13,Control,Cycling_markers,,,0.2173174023628235
+score:pseudobulk_geneset:Microglia,Sample11,RT,Cycling_markers,,,-0.7097719311714172
+score:pseudobulk_geneset:Microglia,Sample10,FUS,Cycling_markers,,,0.9899992346763611
+score:pseudobulk_geneset:Microglia,Sample8,FUS+RT,Cycling_markers,,,-0.2139744907617569
+score:pseudobulk_geneset:Microglia,Sample5,Control,Cycling_markers,,,-0.09926512837409973
+score:pseudobulk_geneset:Microglia,Sample15,RT,Cycling_markers,,,-1.2296643257141113
+score:pseudobulk_geneset:Microglia,Sample9,Control,Cycling_markers,,,-0.6777669787406921
+score:pseudobulk_geneset:Microglia,Sample16,FUS+RT,Cycling_markers,,,0.052396222949028015
+score:pseudobulk_geneset:Microglia,Sample4,FUS+RT,Cycling_markers,,,-0.8350898027420044
+score:pseudobulk_geneset:Microglia,Sample2,FUS,Glycolysis,,,-0.45929664373397827
+score:pseudobulk_geneset:Microglia,Sample6,FUS,Glycolysis,,,-0.11451205611228943
+score:pseudobulk_geneset:Microglia,Sample1,Control,Glycolysis,,,-0.0743817389011383
+score:pseudobulk_geneset:Microglia,Sample7,RT,Glycolysis,,,-0.23306982219219208
+score:pseudobulk_geneset:Microglia,Sample14,FUS,Glycolysis,,,0.019867433235049248
+score:pseudobulk_geneset:Microglia,Sample12,FUS+RT,Glycolysis,,,-0.19359223544597626
+score:pseudobulk_geneset:Microglia,Sample13,Control,Glycolysis,,,-0.3991527259349823
+score:pseudobulk_geneset:Microglia,Sample11,RT,Glycolysis,,,0.4394284784793854
+score:pseudobulk_geneset:Microglia,Sample10,FUS,Glycolysis,,,-0.21085554361343384
+score:pseudobulk_geneset:Microglia,Sample8,FUS+RT,Glycolysis,,,0.5060010552406311
+score:pseudobulk_geneset:Microglia,Sample5,Control,Glycolysis,,,0.9794824123382568
+score:pseudobulk_geneset:Microglia,Sample15,RT,Glycolysis,,,-0.3821805715560913
+score:pseudobulk_geneset:Microglia,Sample9,Control,Glycolysis,,,-0.2689637839794159
+score:pseudobulk_geneset:Microglia,Sample16,FUS+RT,Glycolysis,,,0.01096557267010212
+score:pseudobulk_geneset:Microglia,Sample4,FUS+RT,Glycolysis,,,0.38026556372642517
+score:pseudobulk_geneset:Microglia,Sample2,FUS,Hypoxia,,,-0.5377350449562073
+score:pseudobulk_geneset:Microglia,Sample6,FUS,Hypoxia,,,-0.010472826659679413
+score:pseudobulk_geneset:Microglia,Sample1,Control,Hypoxia,,,-0.47614020109176636
+score:pseudobulk_geneset:Microglia,Sample7,RT,Hypoxia,,,-0.2331194430589676
+score:pseudobulk_geneset:Microglia,Sample14,FUS,Hypoxia,,,0.009209566749632359
+score:pseudobulk_geneset:Microglia,Sample12,FUS+RT,Hypoxia,,,0.12201675772666931
+score:pseudobulk_geneset:Microglia,Sample13,Control,Hypoxia,,,-0.2261877954006195
+score:pseudobulk_geneset:Microglia,Sample11,RT,Hypoxia,,,0.5085674524307251
+score:pseudobulk_geneset:Microglia,Sample10,FUS,Hypoxia,,,0.10218006372451782
+score:pseudobulk_geneset:Microglia,Sample8,FUS+RT,Hypoxia,,,-0.001685114111751318
+score:pseudobulk_geneset:Microglia,Sample5,Control,Hypoxia,,,0.1718100756406784
+score:pseudobulk_geneset:Microglia,Sample15,RT,Hypoxia,,,0.21182380616664886
+score:pseudobulk_geneset:Microglia,Sample9,Control,Hypoxia,,,0.23363830149173737
+score:pseudobulk_geneset:Microglia,Sample16,FUS+RT,Hypoxia,,,0.21285350620746613
+score:pseudobulk_geneset:Microglia,Sample4,FUS+RT,Hypoxia,,,-0.08675692230463028
+score:pseudobulk_geneset:Microglia,Sample2,FUS,IEG_dissociation,,,-0.21749794483184814
+score:pseudobulk_geneset:Microglia,Sample6,FUS,IEG_dissociation,,,-0.13809901475906372
+score:pseudobulk_geneset:Microglia,Sample1,Control,IEG_dissociation,,,-0.15514804422855377
+score:pseudobulk_geneset:Microglia,Sample7,RT,IEG_dissociation,,,-0.11145339906215668
+score:pseudobulk_geneset:Microglia,Sample14,FUS,IEG_dissociation,,,0.11442902684211731
+score:pseudobulk_geneset:Microglia,Sample12,FUS+RT,IEG_dissociation,,,0.5977776646614075
+score:pseudobulk_geneset:Microglia,Sample13,Control,IEG_dissociation,,,0.6215379238128662
+score:pseudobulk_geneset:Microglia,Sample11,RT,IEG_dissociation,,,0.2598501443862915
+score:pseudobulk_geneset:Microglia,Sample10,FUS,IEG_dissociation,,,0.5668083429336548
+score:pseudobulk_geneset:Microglia,Sample8,FUS+RT,IEG_dissociation,,,-0.0018423161236569285
+score:pseudobulk_geneset:Microglia,Sample5,Control,IEG_dissociation,,,-0.5430120229721069
+score:pseudobulk_geneset:Microglia,Sample15,RT,IEG_dissociation,,,0.4001041054725647
+score:pseudobulk_geneset:Microglia,Sample9,Control,IEG_dissociation,,,-0.061236005276441574
+score:pseudobulk_geneset:Microglia,Sample16,FUS+RT,IEG_dissociation,,,-0.30174264311790466
+score:pseudobulk_geneset:Microglia,Sample4,FUS+RT,IEG_dissociation,,,-1.0304770469665527
+score:pseudobulk_geneset:Microglia,Sample2,FUS,Interferon,,,0.7320112586021423
+score:pseudobulk_geneset:Microglia,Sample6,FUS,Interferon,,,-0.17308075726032257
+score:pseudobulk_geneset:Microglia,Sample1,Control,Interferon,,,0.884240984916687
+score:pseudobulk_geneset:Microglia,Sample7,RT,Interferon,,,0.7413167357444763
+score:pseudobulk_geneset:Microglia,Sample14,FUS,Interferon,,,-0.4886978566646576
+score:pseudobulk_geneset:Microglia,Sample12,FUS+RT,Interferon,,,0.20964288711547852
+score:pseudobulk_geneset:Microglia,Sample13,Control,Interferon,,,0.5670548677444458
+score:pseudobulk_geneset:Microglia,Sample11,RT,Interferon,,,1.1994376182556152
+score:pseudobulk_geneset:Microglia,Sample10,FUS,Interferon,,,-0.8910207152366638
+score:pseudobulk_geneset:Microglia,Sample8,FUS+RT,Interferon,,,0.31104469299316406
+score:pseudobulk_geneset:Microglia,Sample5,Control,Interferon,,,0.548348069190979
+score:pseudobulk_geneset:Microglia,Sample15,RT,Interferon,,,-1.1123075485229492
+score:pseudobulk_geneset:Microglia,Sample9,Control,Interferon,,,-1.2964471578598022
+score:pseudobulk_geneset:Microglia,Sample16,FUS+RT,Interferon,,,-1.0789896249771118
+score:pseudobulk_geneset:Microglia,Sample4,FUS+RT,Interferon,,,-0.15255028009414673
+score:pseudobulk_geneset:Microglia,Sample2,FUS,OXPHOS_nuclear,,,-0.35199958086013794
+score:pseudobulk_geneset:Microglia,Sample6,FUS,OXPHOS_nuclear,,,1.0551296472549438
+score:pseudobulk_geneset:Microglia,Sample1,Control,OXPHOS_nuclear,,,0.43669310212135315
+score:pseudobulk_geneset:Microglia,Sample7,RT,OXPHOS_nuclear,,,-0.3370974659919739
+score:pseudobulk_geneset:Microglia,Sample14,FUS,OXPHOS_nuclear,,,0.30261367559432983
+score:pseudobulk_geneset:Microglia,Sample12,FUS+RT,OXPHOS_nuclear,,,-0.5070786476135254
+score:pseudobulk_geneset:Microglia,Sample13,Control,OXPHOS_nuclear,,,-0.41762804985046387
+score:pseudobulk_geneset:Microglia,Sample11,RT,OXPHOS_nuclear,,,-0.09015532582998276
+score:pseudobulk_geneset:Microglia,Sample10,FUS,OXPHOS_nuclear,,,-0.5365385413169861
+score:pseudobulk_geneset:Microglia,Sample8,FUS+RT,OXPHOS_nuclear,,,0.321540504693985
+score:pseudobulk_geneset:Microglia,Sample5,Control,OXPHOS_nuclear,,,0.6968844532966614
+score:pseudobulk_geneset:Microglia,Sample15,RT,OXPHOS_nuclear,,,-0.4977385699748993
+score:pseudobulk_geneset:Microglia,Sample9,Control,OXPHOS_nuclear,,,-1.6674727201461792
+score:pseudobulk_geneset:Microglia,Sample16,FUS+RT,OXPHOS_nuclear,,,0.8296611309051514
+score:pseudobulk_geneset:Microglia,Sample4,FUS+RT,OXPHOS_nuclear,,,0.7631841897964478
+score:pseudobulk_geneset:Microglia,Sample2,FUS,Stress_HSP,,,-0.24784182012081146
+score:pseudobulk_geneset:Microglia,Sample6,FUS,Stress_HSP,,,0.16897501051425934
+score:pseudobulk_geneset:Microglia,Sample1,Control,Stress_HSP,,,-0.32718485593795776
+score:pseudobulk_geneset:Microglia,Sample7,RT,Stress_HSP,,,-0.6061455011367798
+score:pseudobulk_geneset:Microglia,Sample14,FUS,Stress_HSP,,,0.32004988193511963
+score:pseudobulk_geneset:Microglia,Sample12,FUS+RT,Stress_HSP,,,0.5090478658676147
+score:pseudobulk_geneset:Microglia,Sample13,Control,Stress_HSP,,,0.7507743835449219
+score:pseudobulk_geneset:Microglia,Sample11,RT,Stress_HSP,,,0.38321810960769653
+score:pseudobulk_geneset:Microglia,Sample10,FUS,Stress_HSP,,,0.5481785535812378
+score:pseudobulk_geneset:Microglia,Sample8,FUS+RT,Stress_HSP,,,0.034108273684978485
+score:pseudobulk_geneset:Microglia,Sample5,Control,Stress_HSP,,,-0.5538145899772644
+score:pseudobulk_geneset:Microglia,Sample15,RT,Stress_HSP,,,0.03884253650903702
+score:pseudobulk_geneset:Microglia,Sample9,Control,Stress_HSP,,,-0.4239838421344757
+score:pseudobulk_geneset:Microglia,Sample16,FUS+RT,Stress_HSP,,,0.18579073250293732
+score:pseudobulk_geneset:Microglia,Sample4,FUS+RT,Stress_HSP,,,-0.780015766620636
+score:pseudobulk_geneset:Mono/Macro,Sample1,Control,Cholesterol_biosynthesis,,,0.3620597720146179
+score:pseudobulk_geneset:Mono/Macro,Sample2,FUS,Cholesterol_biosynthesis,,,-0.017776768654584885
+score:pseudobulk_geneset:Mono/Macro,Sample11,RT,Cholesterol_biosynthesis,,,-0.296845018863678
+score:pseudobulk_geneset:Mono/Macro,Sample6,FUS,Cholesterol_biosynthesis,,,0.9365348219871521
+score:pseudobulk_geneset:Mono/Macro,Sample7,RT,Cholesterol_biosynthesis,,,-0.5353031754493713
+score:pseudobulk_geneset:Mono/Macro,Sample13,Control,Cholesterol_biosynthesis,,,0.08561161160469055
+score:pseudobulk_geneset:Mono/Macro,Sample12,FUS+RT,Cholesterol_biosynthesis,,,-0.23220005631446838
+score:pseudobulk_geneset:Mono/Macro,Sample14,FUS,Cholesterol_biosynthesis,,,1.0042897462844849
+score:pseudobulk_geneset:Mono/Macro,Sample8,FUS+RT,Cholesterol_biosynthesis,,,-0.3294067680835724
+score:pseudobulk_geneset:Mono/Macro,Sample10,FUS,Cholesterol_biosynthesis,,,0.2099800556898117
+score:pseudobulk_geneset:Mono/Macro,Sample5,Control,Cholesterol_biosynthesis,,,-0.44291260838508606
+score:pseudobulk_geneset:Mono/Macro,Sample4,FUS+RT,Cholesterol_biosynthesis,,,-0.744031548500061
+score:pseudobulk_geneset:Mono/Macro,Sample1,Control,Cycling_markers,,,0.3510484993457794
+score:pseudobulk_geneset:Mono/Macro,Sample2,FUS,Cycling_markers,,,-0.028226975351572037
+score:pseudobulk_geneset:Mono/Macro,Sample11,RT,Cycling_markers,,,-1.008760929107666
+score:pseudobulk_geneset:Mono/Macro,Sample6,FUS,Cycling_markers,,,-0.12972499430179596
+score:pseudobulk_geneset:Mono/Macro,Sample7,RT,Cycling_markers,,,-0.5269184112548828
+score:pseudobulk_geneset:Mono/Macro,Sample13,Control,Cycling_markers,,,-0.6442273855209351
+score:pseudobulk_geneset:Mono/Macro,Sample12,FUS+RT,Cycling_markers,,,-0.9368938207626343
+score:pseudobulk_geneset:Mono/Macro,Sample14,FUS,Cycling_markers,,,1.706449031829834
+score:pseudobulk_geneset:Mono/Macro,Sample8,FUS+RT,Cycling_markers,,,0.0033400182146579027
+score:pseudobulk_geneset:Mono/Macro,Sample10,FUS,Cycling_markers,,,-0.03707319125533104
+score:pseudobulk_geneset:Mono/Macro,Sample5,Control,Cycling_markers,,,0.6888546347618103
+score:pseudobulk_geneset:Mono/Macro,Sample4,FUS+RT,Cycling_markers,,,0.562134325504303
+score:pseudobulk_geneset:Mono/Macro,Sample1,Control,Glycolysis,,,-0.0895039513707161
+score:pseudobulk_geneset:Mono/Macro,Sample2,FUS,Glycolysis,,,-0.3839232623577118
+score:pseudobulk_geneset:Mono/Macro,Sample11,RT,Glycolysis,,,1.0110299587249756
+score:pseudobulk_geneset:Mono/Macro,Sample6,FUS,Glycolysis,,,-0.08749185502529144
+score:pseudobulk_geneset:Mono/Macro,Sample7,RT,Glycolysis,,,-0.10398168116807938
+score:pseudobulk_geneset:Mono/Macro,Sample13,Control,Glycolysis,,,0.15740112960338593
+score:pseudobulk_geneset:Mono/Macro,Sample12,FUS+RT,Glycolysis,,,0.2838120460510254
+score:pseudobulk_geneset:Mono/Macro,Sample14,FUS,Glycolysis,,,-0.5877172350883484
+score:pseudobulk_geneset:Mono/Macro,Sample8,FUS+RT,Glycolysis,,,0.33622848987579346
+score:pseudobulk_geneset:Mono/Macro,Sample10,FUS,Glycolysis,,,-0.9998970031738281
+score:pseudobulk_geneset:Mono/Macro,Sample5,Control,Glycolysis,,,0.5465376377105713
+score:pseudobulk_geneset:Mono/Macro,Sample4,FUS+RT,Glycolysis,,,-0.08249625563621521
+score:pseudobulk_geneset:Mono/Macro,Sample1,Control,Hypoxia,,,-0.18503190577030182
+score:pseudobulk_geneset:Mono/Macro,Sample2,FUS,Hypoxia,,,-0.3850412666797638
+score:pseudobulk_geneset:Mono/Macro,Sample11,RT,Hypoxia,,,0.7653677463531494
+score:pseudobulk_geneset:Mono/Macro,Sample6,FUS,Hypoxia,,,-0.05717017129063606
+score:pseudobulk_geneset:Mono/Macro,Sample7,RT,Hypoxia,,,-0.3549431562423706
+score:pseudobulk_geneset:Mono/Macro,Sample13,Control,Hypoxia,,,-0.21073679625988007
+score:pseudobulk_geneset:Mono/Macro,Sample12,FUS+RT,Hypoxia,,,0.23581989109516144
+score:pseudobulk_geneset:Mono/Macro,Sample14,FUS,Hypoxia,,,0.24311386048793793
+score:pseudobulk_geneset:Mono/Macro,Sample8,FUS+RT,Hypoxia,,,0.09583764523267746
+score:pseudobulk_geneset:Mono/Macro,Sample10,FUS,Hypoxia,,,-0.8441893458366394
+score:pseudobulk_geneset:Mono/Macro,Sample5,Control,Hypoxia,,,0.6710882186889648
+score:pseudobulk_geneset:Mono/Macro,Sample4,FUS+RT,Hypoxia,,,0.02588488720357418
+score:pseudobulk_geneset:Mono/Macro,Sample1,Control,IEG_dissociation,,,-0.6490111351013184
+score:pseudobulk_geneset:Mono/Macro,Sample2,FUS,IEG_dissociation,,,-0.5132828950881958
+score:pseudobulk_geneset:Mono/Macro,Sample11,RT,IEG_dissociation,,,0.5136301517486572
+score:pseudobulk_geneset:Mono/Macro,Sample6,FUS,IEG_dissociation,,,0.14633353054523468
+score:pseudobulk_geneset:Mono/Macro,Sample7,RT,IEG_dissociation,,,-0.3739496171474457
+score:pseudobulk_geneset:Mono/Macro,Sample13,Control,IEG_dissociation,,,0.6724448800086975
+score:pseudobulk_geneset:Mono/Macro,Sample12,FUS+RT,IEG_dissociation,,,0.4936389923095703
+score:pseudobulk_geneset:Mono/Macro,Sample14,FUS,IEG_dissociation,,,0.6038880348205566
+score:pseudobulk_geneset:Mono/Macro,Sample8,FUS+RT,IEG_dissociation,,,0.07085985690355301
+score:pseudobulk_geneset:Mono/Macro,Sample10,FUS,IEG_dissociation,,,-0.05057511106133461
+score:pseudobulk_geneset:Mono/Macro,Sample5,Control,IEG_dissociation,,,-0.00452453875914216
+score:pseudobulk_geneset:Mono/Macro,Sample4,FUS+RT,IEG_dissociation,,,-0.9094522595405579
+score:pseudobulk_geneset:Mono/Macro,Sample1,Control,Interferon,,,-0.2600559592247009
+score:pseudobulk_geneset:Mono/Macro,Sample2,FUS,Interferon,,,-0.2967856824398041
+score:pseudobulk_geneset:Mono/Macro,Sample11,RT,Interferon,,,1.345679759979248
+score:pseudobulk_geneset:Mono/Macro,Sample6,FUS,Interferon,,,0.4980872869491577
+score:pseudobulk_geneset:Mono/Macro,Sample7,RT,Interferon,,,-0.1468469500541687
+score:pseudobulk_geneset:Mono/Macro,Sample13,Control,Interferon,,,1.3272267580032349
+score:pseudobulk_geneset:Mono/Macro,Sample12,FUS+RT,Interferon,,,0.48528096079826355
+score:pseudobulk_geneset:Mono/Macro,Sample14,FUS,Interferon,,,-0.10123341530561447
+score:pseudobulk_geneset:Mono/Macro,Sample8,FUS+RT,Interferon,,,-0.5378178358078003
+score:pseudobulk_geneset:Mono/Macro,Sample10,FUS,Interferon,,,-0.9035375118255615
+score:pseudobulk_geneset:Mono/Macro,Sample5,Control,Interferon,,,-0.4513297379016876
+score:pseudobulk_geneset:Mono/Macro,Sample4,FUS+RT,Interferon,,,-0.9586681723594666
+score:pseudobulk_geneset:Mono/Macro,Sample1,Control,OXPHOS_nuclear,,,0.5954107642173767
+score:pseudobulk_geneset:Mono/Macro,Sample2,FUS,OXPHOS_nuclear,,,0.07831066846847534
+score:pseudobulk_geneset:Mono/Macro,Sample11,RT,OXPHOS_nuclear,,,-0.3201245367527008
+score:pseudobulk_geneset:Mono/Macro,Sample6,FUS,OXPHOS_nuclear,,,0.4691131114959717
+score:pseudobulk_geneset:Mono/Macro,Sample7,RT,OXPHOS_nuclear,,,0.6415268182754517
+score:pseudobulk_geneset:Mono/Macro,Sample13,Control,OXPHOS_nuclear,,,-0.7707470655441284
+score:pseudobulk_geneset:Mono/Macro,Sample12,FUS+RT,OXPHOS_nuclear,,,0.2359948754310608
+score:pseudobulk_geneset:Mono/Macro,Sample14,FUS,OXPHOS_nuclear,,,-1.452919602394104
+score:pseudobulk_geneset:Mono/Macro,Sample8,FUS+RT,OXPHOS_nuclear,,,0.17248396575450897
+score:pseudobulk_geneset:Mono/Macro,Sample10,FUS,OXPHOS_nuclear,,,-0.0783783495426178
+score:pseudobulk_geneset:Mono/Macro,Sample5,Control,OXPHOS_nuclear,,,-0.3377378284931183
+score:pseudobulk_geneset:Mono/Macro,Sample4,FUS+RT,OXPHOS_nuclear,,,0.7670718431472778
+score:pseudobulk_geneset:Mono/Macro,Sample1,Control,Stress_HSP,,,-0.47334685921669006
+score:pseudobulk_geneset:Mono/Macro,Sample2,FUS,Stress_HSP,,,-0.3713558614253998
+score:pseudobulk_geneset:Mono/Macro,Sample11,RT,Stress_HSP,,,0.5946503281593323
+score:pseudobulk_geneset:Mono/Macro,Sample6,FUS,Stress_HSP,,,0.011742258444428444
+score:pseudobulk_geneset:Mono/Macro,Sample7,RT,Stress_HSP,,,-0.6531726717948914
+score:pseudobulk_geneset:Mono/Macro,Sample13,Control,Stress_HSP,,,0.41050976514816284
+score:pseudobulk_geneset:Mono/Macro,Sample12,FUS+RT,Stress_HSP,,,0.7725903391838074
+score:pseudobulk_geneset:Mono/Macro,Sample14,FUS,Stress_HSP,,,0.5128239989280701
+score:pseudobulk_geneset:Mono/Macro,Sample8,FUS+RT,Stress_HSP,,,-0.35054847598075867
+score:pseudobulk_geneset:Mono/Macro,Sample10,FUS,Stress_HSP,,,0.24739743769168854
+score:pseudobulk_geneset:Mono/Macro,Sample5,Control,Stress_HSP,,,0.0055605266243219376
+score:pseudobulk_geneset:Mono/Macro,Sample4,FUS+RT,Stress_HSP,,,-0.7068468332290649
+score:pseudobulk_geneset:T cells,Sample2,FUS,Cholesterol_biosynthesis,,,-0.015888268128037453
+score:pseudobulk_geneset:T cells,Sample1,Control,Cholesterol_biosynthesis,,,0.10133067518472672
+score:pseudobulk_geneset:T cells,Sample7,RT,Cholesterol_biosynthesis,,,0.02870427817106247
+score:pseudobulk_geneset:T cells,Sample6,FUS,Cholesterol_biosynthesis,,,0.21148113906383514
+score:pseudobulk_geneset:T cells,Sample11,RT,Cholesterol_biosynthesis,,,-0.3416096270084381
+score:pseudobulk_geneset:T cells,Sample13,Control,Cholesterol_biosynthesis,,,-0.30889561772346497
+score:pseudobulk_geneset:T cells,Sample14,FUS,Cholesterol_biosynthesis,,,0.17490015923976898
+score:pseudobulk_geneset:T cells,Sample12,FUS+RT,Cholesterol_biosynthesis,,,-0.24008150398731232
+score:pseudobulk_geneset:T cells,Sample8,FUS+RT,Cholesterol_biosynthesis,,,-0.3154471516609192
+score:pseudobulk_geneset:T cells,Sample10,FUS,Cholesterol_biosynthesis,,,0.08712641149759293
+score:pseudobulk_geneset:T cells,Sample5,Control,Cholesterol_biosynthesis,,,0.6183791160583496
+score:pseudobulk_geneset:T cells,Sample2,FUS,Cycling_markers,,,1.1009089946746826
+score:pseudobulk_geneset:T cells,Sample1,Control,Cycling_markers,,,0.673186182975769
+score:pseudobulk_geneset:T cells,Sample7,RT,Cycling_markers,,,0.5719949007034302
+score:pseudobulk_geneset:T cells,Sample6,FUS,Cycling_markers,,,0.16457606852054596
+score:pseudobulk_geneset:T cells,Sample11,RT,Cycling_markers,,,-0.5961692333221436
+score:pseudobulk_geneset:T cells,Sample13,Control,Cycling_markers,,,-0.7473973631858826
+score:pseudobulk_geneset:T cells,Sample14,FUS,Cycling_markers,,,-0.9560980796813965
+score:pseudobulk_geneset:T cells,Sample12,FUS+RT,Cycling_markers,,,-0.06122180446982384
+score:pseudobulk_geneset:T cells,Sample8,FUS+RT,Cycling_markers,,,-0.8982362151145935
+score:pseudobulk_geneset:T cells,Sample10,FUS,Cycling_markers,,,0.8270736932754517
+score:pseudobulk_geneset:T cells,Sample5,Control,Cycling_markers,,,-0.07861755788326263
+score:pseudobulk_geneset:T cells,Sample2,FUS,Glycolysis,,,0.5567249059677124
+score:pseudobulk_geneset:T cells,Sample1,Control,Glycolysis,,,0.5552929043769836
+score:pseudobulk_geneset:T cells,Sample7,RT,Glycolysis,,,0.3656822144985199
+score:pseudobulk_geneset:T cells,Sample6,FUS,Glycolysis,,,-0.23573294281959534
+score:pseudobulk_geneset:T cells,Sample11,RT,Glycolysis,,,0.1922319531440735
+score:pseudobulk_geneset:T cells,Sample13,Control,Glycolysis,,,-0.35970252752304077
+score:pseudobulk_geneset:T cells,Sample14,FUS,Glycolysis,,,-0.7452259659767151
+score:pseudobulk_geneset:T cells,Sample12,FUS+RT,Glycolysis,,,0.24148054420948029
+score:pseudobulk_geneset:T cells,Sample8,FUS+RT,Glycolysis,,,-0.08444572240114212
+score:pseudobulk_geneset:T cells,Sample10,FUS,Glycolysis,,,-0.4829079210758209
+score:pseudobulk_geneset:T cells,Sample5,Control,Glycolysis,,,-0.0033968896605074406
+score:pseudobulk_geneset:T cells,Sample2,FUS,Hypoxia,,,0.40846970677375793
+score:pseudobulk_geneset:T cells,Sample1,Control,Hypoxia,,,0.3520183861255646
+score:pseudobulk_geneset:T cells,Sample7,RT,Hypoxia,,,-0.1513015329837799
+score:pseudobulk_geneset:T cells,Sample6,FUS,Hypoxia,,,-0.26019152998924255
+score:pseudobulk_geneset:T cells,Sample11,RT,Hypoxia,,,-0.0360107459127903
+score:pseudobulk_geneset:T cells,Sample13,Control,Hypoxia,,,-0.5732669234275818
+score:pseudobulk_geneset:T cells,Sample14,FUS,Hypoxia,,,-0.11142473667860031
+score:pseudobulk_geneset:T cells,Sample12,FUS+RT,Hypoxia,,,0.09455114603042603
+score:pseudobulk_geneset:T cells,Sample8,FUS+RT,Hypoxia,,,0.05605463311076164
+score:pseudobulk_geneset:T cells,Sample10,FUS,Hypoxia,,,0.1359821856021881
+score:pseudobulk_geneset:T cells,Sample5,Control,Hypoxia,,,0.08512049913406372
+score:pseudobulk_geneset:T cells,Sample2,FUS,IEG_dissociation,,,-0.11373915523290634
+score:pseudobulk_geneset:T cells,Sample1,Control,IEG_dissociation,,,0.0007673670188523829
+score:pseudobulk_geneset:T cells,Sample7,RT,IEG_dissociation,,,-0.41197875142097473
+score:pseudobulk_geneset:T cells,Sample6,FUS,IEG_dissociation,,,-0.4232538342475891
+score:pseudobulk_geneset:T cells,Sample11,RT,IEG_dissociation,,,0.5311719179153442
+score:pseudobulk_geneset:T cells,Sample13,Control,IEG_dissociation,,,0.3938881456851959
+score:pseudobulk_geneset:T cells,Sample14,FUS,IEG_dissociation,,,0.09375818818807602
+score:pseudobulk_geneset:T cells,Sample12,FUS+RT,IEG_dissociation,,,0.3881891965866089
+score:pseudobulk_geneset:T cells,Sample8,FUS+RT,IEG_dissociation,,,0.03645034506917
+score:pseudobulk_geneset:T cells,Sample10,FUS,IEG_dissociation,,,-0.41212502121925354
+score:pseudobulk_geneset:T cells,Sample5,Control,IEG_dissociation,,,-0.08312807977199554
+score:pseudobulk_geneset:T cells,Sample2,FUS,Interferon,,,-0.4820069968700409
+score:pseudobulk_geneset:T cells,Sample1,Control,Interferon,,,-1.2285956144332886
+score:pseudobulk_geneset:T cells,Sample7,RT,Interferon,,,-0.28626328706741333
+score:pseudobulk_geneset:T cells,Sample6,FUS,Interferon,,,0.548397958278656
+score:pseudobulk_geneset:T cells,Sample11,RT,Interferon,,,1.241515874862671
+score:pseudobulk_geneset:T cells,Sample13,Control,Interferon,,,1.1649361848831177
+score:pseudobulk_geneset:T cells,Sample14,FUS,Interferon,,,-0.17058783769607544
+score:pseudobulk_geneset:T cells,Sample12,FUS+RT,Interferon,,,0.2353818565607071
+score:pseudobulk_geneset:T cells,Sample8,FUS+RT,Interferon,,,0.11212624609470367
+score:pseudobulk_geneset:T cells,Sample10,FUS,Interferon,,,-1.1407886743545532
+score:pseudobulk_geneset:T cells,Sample5,Control,Interferon,,,0.005884225480258465
+score:pseudobulk_geneset:T cells,Sample2,FUS,OXPHOS_nuclear,,,0.21610796451568604
+score:pseudobulk_geneset:T cells,Sample1,Control,OXPHOS_nuclear,,,0.23320333659648895
+score:pseudobulk_geneset:T cells,Sample7,RT,OXPHOS_nuclear,,,1.019155740737915
+score:pseudobulk_geneset:T cells,Sample6,FUS,OXPHOS_nuclear,,,0.6359451413154602
+score:pseudobulk_geneset:T cells,Sample11,RT,OXPHOS_nuclear,,,-0.3356913924217224
+score:pseudobulk_geneset:T cells,Sample13,Control,OXPHOS_nuclear,,,-0.5914140343666077
+score:pseudobulk_geneset:T cells,Sample14,FUS,OXPHOS_nuclear,,,-0.8166991472244263
+score:pseudobulk_geneset:T cells,Sample12,FUS+RT,OXPHOS_nuclear,,,0.2592274248600006
+score:pseudobulk_geneset:T cells,Sample8,FUS+RT,OXPHOS_nuclear,,,-0.13984908163547516
+score:pseudobulk_geneset:T cells,Sample10,FUS,OXPHOS_nuclear,,,-0.2182142585515976
+score:pseudobulk_geneset:T cells,Sample5,Control,OXPHOS_nuclear,,,-0.2617698609828949
+score:pseudobulk_geneset:T cells,Sample2,FUS,Stress_HSP,,,-0.1042010560631752
+score:pseudobulk_geneset:T cells,Sample1,Control,Stress_HSP,,,0.11763045191764832
+score:pseudobulk_geneset:T cells,Sample7,RT,Stress_HSP,,,-0.3863835036754608
+score:pseudobulk_geneset:T cells,Sample6,FUS,Stress_HSP,,,-0.319040447473526
+score:pseudobulk_geneset:T cells,Sample11,RT,Stress_HSP,,,0.6328331828117371
+score:pseudobulk_geneset:T cells,Sample13,Control,Stress_HSP,,,0.35228073596954346
+score:pseudobulk_geneset:T cells,Sample14,FUS,Stress_HSP,,,0.015364025719463825
+score:pseudobulk_geneset:T cells,Sample12,FUS+RT,Stress_HSP,,,0.6879156231880188
+score:pseudobulk_geneset:T cells,Sample8,FUS+RT,Stress_HSP,,,-0.5144572854042053
+score:pseudobulk_geneset:T cells,Sample10,FUS,Stress_HSP,,,-0.32411277294158936
+score:pseudobulk_geneset:T cells,Sample5,Control,Stress_HSP,,,-0.15783043205738068
+score:pseudobulk_geneset:NK cells,Sample2,FUS,Cholesterol_biosynthesis,,,-0.07318384945392609
+score:pseudobulk_geneset:NK cells,Sample1,Control,Cholesterol_biosynthesis,,,-0.10928544402122498
+score:pseudobulk_geneset:NK cells,Sample11,RT,Cholesterol_biosynthesis,,,-0.15022701025009155
+score:pseudobulk_geneset:NK cells,Sample6,FUS,Cholesterol_biosynthesis,,,0.39721930027008057
+score:pseudobulk_geneset:NK cells,Sample7,RT,Cholesterol_biosynthesis,,,-0.2453465610742569
+score:pseudobulk_geneset:NK cells,Sample13,Control,Cholesterol_biosynthesis,,,0.2573505938053131
+score:pseudobulk_geneset:NK cells,Sample14,FUS,Cholesterol_biosynthesis,,,0.7050199508666992
+score:pseudobulk_geneset:NK cells,Sample12,FUS+RT,Cholesterol_biosynthesis,,,-0.26964646577835083
+score:pseudobulk_geneset:NK cells,Sample8,FUS+RT,Cholesterol_biosynthesis,,,-0.5118992328643799
+score:pseudobulk_geneset:NK cells,Sample2,FUS,Cycling_markers,,,-0.122882179915905
+score:pseudobulk_geneset:NK cells,Sample1,Control,Cycling_markers,,,-0.2995757758617401
+score:pseudobulk_geneset:NK cells,Sample11,RT,Cycling_markers,,,-0.423112154006958
+score:pseudobulk_geneset:NK cells,Sample6,FUS,Cycling_markers,,,1.205933928489685
+score:pseudobulk_geneset:NK cells,Sample7,RT,Cycling_markers,,,0.07686801254749298
+score:pseudobulk_geneset:NK cells,Sample13,Control,Cycling_markers,,,-0.0746445283293724
+score:pseudobulk_geneset:NK cells,Sample14,FUS,Cycling_markers,,,-0.07017207145690918
+score:pseudobulk_geneset:NK cells,Sample12,FUS+RT,Cycling_markers,,,0.10021262615919113
+score:pseudobulk_geneset:NK cells,Sample8,FUS+RT,Cycling_markers,,,-0.39262694120407104
+score:pseudobulk_geneset:NK cells,Sample2,FUS,Glycolysis,,,-0.14434443414211273
+score:pseudobulk_geneset:NK cells,Sample1,Control,Glycolysis,,,-0.35991576313972473
+score:pseudobulk_geneset:NK cells,Sample11,RT,Glycolysis,,,0.22482061386108398
+score:pseudobulk_geneset:NK cells,Sample6,FUS,Glycolysis,,,-0.030796825885772705
+score:pseudobulk_geneset:NK cells,Sample7,RT,Glycolysis,,,0.3033229112625122
+score:pseudobulk_geneset:NK cells,Sample13,Control,Glycolysis,,,-0.253125935792923
+score:pseudobulk_geneset:NK cells,Sample14,FUS,Glycolysis,,,-0.1645107865333557
+score:pseudobulk_geneset:NK cells,Sample12,FUS+RT,Glycolysis,,,0.5772395730018616
+score:pseudobulk_geneset:NK cells,Sample8,FUS+RT,Glycolysis,,,-0.15268798172473907
+score:pseudobulk_geneset:NK cells,Sample2,FUS,Hypoxia,,,-0.1817261278629303
+score:pseudobulk_geneset:NK cells,Sample1,Control,Hypoxia,,,-0.22057650983333588
+score:pseudobulk_geneset:NK cells,Sample11,RT,Hypoxia,,,0.30224961042404175
+score:pseudobulk_geneset:NK cells,Sample6,FUS,Hypoxia,,,-0.22054481506347656
+score:pseudobulk_geneset:NK cells,Sample7,RT,Hypoxia,,,-0.04188821464776993
+score:pseudobulk_geneset:NK cells,Sample13,Control,Hypoxia,,,0.07214054465293884
+score:pseudobulk_geneset:NK cells,Sample14,FUS,Hypoxia,,,0.19195237755775452
+score:pseudobulk_geneset:NK cells,Sample12,FUS+RT,Hypoxia,,,0.5684621930122375
+score:pseudobulk_geneset:NK cells,Sample8,FUS+RT,Hypoxia,,,-0.4700673222541809
+score:pseudobulk_geneset:NK cells,Sample2,FUS,IEG_dissociation,,,-0.5671781301498413
+score:pseudobulk_geneset:NK cells,Sample1,Control,IEG_dissociation,,,-0.3221331536769867
+score:pseudobulk_geneset:NK cells,Sample11,RT,IEG_dissociation,,,0.37232211232185364
+score:pseudobulk_geneset:NK cells,Sample6,FUS,IEG_dissociation,,,-0.30746567249298096
+score:pseudobulk_geneset:NK cells,Sample7,RT,IEG_dissociation,,,-0.864714503288269
+score:pseudobulk_geneset:NK cells,Sample13,Control,IEG_dissociation,,,0.8349980711936951
+score:pseudobulk_geneset:NK cells,Sample14,FUS,IEG_dissociation,,,0.7169806361198425
+score:pseudobulk_geneset:NK cells,Sample12,FUS+RT,IEG_dissociation,,,-0.023315725848078728
+score:pseudobulk_geneset:NK cells,Sample8,FUS+RT,IEG_dissociation,,,0.16050682961940765
+score:pseudobulk_geneset:NK cells,Sample2,FUS,Interferon,,,-0.1769660860300064
+score:pseudobulk_geneset:NK cells,Sample1,Control,Interferon,,,-0.6905975937843323
+score:pseudobulk_geneset:NK cells,Sample11,RT,Interferon,,,1.2190988063812256
+score:pseudobulk_geneset:NK cells,Sample6,FUS,Interferon,,,-0.3096766769886017
+score:pseudobulk_geneset:NK cells,Sample7,RT,Interferon,,,-0.05956030264496803
+score:pseudobulk_geneset:NK cells,Sample13,Control,Interferon,,,0.9357293248176575
+score:pseudobulk_geneset:NK cells,Sample14,FUS,Interferon,,,-0.603722333908081
+score:pseudobulk_geneset:NK cells,Sample12,FUS+RT,Interferon,,,-0.6386941075325012
+score:pseudobulk_geneset:NK cells,Sample8,FUS+RT,Interferon,,,0.3243899643421173
+score:pseudobulk_geneset:NK cells,Sample2,FUS,OXPHOS_nuclear,,,-0.4827350080013275
+score:pseudobulk_geneset:NK cells,Sample1,Control,OXPHOS_nuclear,,,-0.5199885964393616
+score:pseudobulk_geneset:NK cells,Sample11,RT,OXPHOS_nuclear,,,0.05031760409474373
+score:pseudobulk_geneset:NK cells,Sample6,FUS,OXPHOS_nuclear,,,0.12068285793066025
+score:pseudobulk_geneset:NK cells,Sample7,RT,OXPHOS_nuclear,,,0.730229914188385
+score:pseudobulk_geneset:NK cells,Sample13,Control,OXPHOS_nuclear,,,-0.3410918414592743
+score:pseudobulk_geneset:NK cells,Sample14,FUS,OXPHOS_nuclear,,,-0.3740776777267456
+score:pseudobulk_geneset:NK cells,Sample12,FUS+RT,OXPHOS_nuclear,,,0.4494974613189697
+score:pseudobulk_geneset:NK cells,Sample8,FUS+RT,OXPHOS_nuclear,,,0.3671649396419525
+score:pseudobulk_geneset:NK cells,Sample2,FUS,Stress_HSP,,,-0.5928996205329895
+score:pseudobulk_geneset:NK cells,Sample1,Control,Stress_HSP,,,-0.14020700752735138
+score:pseudobulk_geneset:NK cells,Sample11,RT,Stress_HSP,,,0.6682114601135254
+score:pseudobulk_geneset:NK cells,Sample6,FUS,Stress_HSP,,,-0.3964609205722809
+score:pseudobulk_geneset:NK cells,Sample7,RT,Stress_HSP,,,-1.0016347169876099
+score:pseudobulk_geneset:NK cells,Sample13,Control,Stress_HSP,,,0.5738368034362793
+score:pseudobulk_geneset:NK cells,Sample14,FUS,Stress_HSP,,,0.6145772933959961
+score:pseudobulk_geneset:NK cells,Sample12,FUS+RT,Stress_HSP,,,0.46077242493629456
+score:pseudobulk_geneset:NK cells,Sample8,FUS+RT,Stress_HSP,,,-0.18619392812252045

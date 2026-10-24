@@ -1,0 +1,24 @@
+{
+ "script": "scripts/m05_state_comparison.py",
+ "utc": "2026-10-21T22:11:57Z",
+ "inputs_sha256": {
+  "mouse_comparison/data/processed/mouse_all_hs.h5ad": "a1e097e90ac90d617e82d6627d6800b031df7caa7dcad2b83998f6804320d7f0",
+  "mouse_comparison/data/processed/mouse_tumour_calls.csv": "162a7ccceffae68164db01ecf658ac6ddb1dda3727e1799f5bc17db1ce91782b",
+  "mouse_comparison/data/interim/mouse_qc.csv": "af5eb98e2b40ba79dc5026dc950e63208db4e06f6c0ee94645003ad38ff3d5ff",
+  "results/tables/metaprogram_genes.csv": "d3d39200e2c09e581d4f6b01cd177e9e724818b1e4d718a7d81c1ff22c17f99f",
+  "results/tables/metaprogram_families.csv": "5437047befccea01a707095aff53273aee514de76fbbab96c0fb238ec180934c",
+  "results/tables/metaprogram_family_composition_assayz.csv": "e6fd1d116279c0915f0a49ea12e8c961013463705d9961938990d71c0b54d2b2",
+  "results/tables/malignant_state_assignment.csv.gz": "f7190db3576b877abe8709784e4d26d48321e7be9a56aef733a43b350dc3558d",
+  "results/tables/c2l_signatures_mp.csv": "1771350c22d26dc2f15b40011bc08f947c8fca1802d28ed0a01e3b11b3003e2a",
+  "results/tables/genesets/reference_gene_sets_scripted.csv": "9ffc333d38ccdca6bad03301d415ede970e3d92f1cd5c977d33aa9da3ec60edf"
+ },
+ "argv": [
+  "--force"
+ ],
+ "definitions": {
+  "primary": 891,
+  "all_tumour": 1479,
+  "author_glial": 3618,
+  "author_all": 46532
+ }
+}
