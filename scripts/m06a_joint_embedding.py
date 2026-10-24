@@ -118,98 +118,146 @@ def figure(ho, mo):
     from dmg_atlas.figstyle import apply_figure_style, letter
     apply_figure_style()
 
-    # Legends sit BELOW each panel with space reserved explicitly (fig.subplots_adjust, no bbox_inches='tight'),
-    # labels are short and carry no counts - the counts live in the caption and in m06a_human_subpopulations.csv.
-    SHORT = {"Neuronal-like tumor": "Neuronal-like", "Purkinje-like tumor": "Purkinje-like",
-             "OPC-like tumor cells": "OPC-like", "Astrocyte-like tumor cells": "Astrocyte-like",
-             "Meningeal fibroblasts (VLMC)": "Meningeal fibro.", "Choroid plexus epithelial cells": "Choroid plexus",
-             "Mono/Macro": "Mono/Macro", "B/Plasma": "B/Plasma", "Vascular cells": "Vascular",
-             "T cells": "T cells", "NK cells": "NK cells", "Microglia": "Microglia",
-             "Neutrophils": "Neutrophils", "pDC": "pDC"}
+    # Clusters are named IN the plot, not in a legend: the reader goes straight from cluster to name with no
+    # colour-matching step. A population is labelled only if it is big enough and spatially coherent enough to carry a
+    # label (>= MIN_LABEL cells and median absolute deviation below MAX_SPREAD of the panel width); anything else is
+    # left unlabelled and named in the caption, which is more honest than a label pointing at scattered dust.
+    MIN_LABEL, MAX_SPREAD = 150, 0.22
     STATE_COL = {"OPC_like": "#de2d26", "AC_like": "#fd8d3c", "OC_like": "#8c510a", "MES_like": "#762a83",
                  "cycling": "#111111", "unassigned": "#cccccc"}
-    # Malignant subpopulations keep the warm/black family (STATE_COL); microenvironment lineages use cool colours, so
-    # that normal astrocyte is not confusable with AC-like and oligodendrocyte is not confusable with MES-like - the two
-    # pairs this report contrasts.
     LIN_COL = {"myeloid": "#2b6cb0", "T_NK": "#38a169", "oligodendrocyte": "#00b8d4", "astrocyte": "#0f766e",
                "neuron": "#718096", "vascular": "#d53f8c", "Unknown": "#e2e8f0", "malignant": "#9aa5b1"}
     PRETTY = {"OPC_like": "OPC-like", "AC_like": "AC-like", "OC_like": "OC-like", "MES_like": "MES-like",
-              "cycling": "cycling", "unassigned": "no state call", "malignant": "malignant, no state call",
-              "T_NK": "T/NK", "Unknown": "unannotated"}
+              "cycling": "cycling", "unassigned": "no state call", "malignant": "malignant\n(no state call)",
+              "T_NK": "T/NK", "Unknown": "unannotated", "Neuronal-like tumor": "Neuronal-like",
+              "Purkinje-like tumor": "Purkinje-like", "OPC-like tumor cells": "OPC-like",
+              "Astrocyte-like tumor cells": "Astrocyte-like", "Meningeal fibroblasts (VLMC)": "Meningeal fibro.",
+              "Choroid plexus epithelial cells": "Choroid plexus"}
 
-    def legend_below(ax, ncol):
-        ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.015), ncol=ncol, fontsize=7, markerscale=9,
-                  frameon=False, handletextpad=0.25, columnspacing=0.9, labelspacing=0.35, borderpad=0.0)
+    BACKGROUND = {"unassigned", "Unknown", "malignant"}   # named in the caption, not on the plot
+
+    def dark(c):
+        """Darken a colour so pale palette entries stay legible as text."""
+        import matplotlib.colors as mc
+        r, g, b = mc.to_rgb(c)
+        return (r * 0.62, g * 0.62, b * 0.62)
+
+    def anchor(g):
+        """Anchor a label at the densest part of the population, not its median - a median can land inside
+        another cluster when the population is scattered (OC-like is the case that forced this)."""
+        x, y = g.iloc[:, 0].values, g.iloc[:, 1].values
+        if len(x) < 400:
+            return float(np.median(x)), float(np.median(y))
+        H, xe, ye = np.histogram2d(x, y, bins=24)
+        i, j = np.unravel_index(np.argmax(H), H.shape)
+        return float((xe[i] + xe[i + 1]) / 2), float((ye[j] + ye[j + 1]) / 2)
+
+    def place_labels(ax, items, fontsize):
+        """items = [(x, y, label, colour, n)]; biggest populations claim their spot first, the rest are
+        repelled until they clear previously placed labels."""
+        xr = np.ptp(ax.get_xlim()) or 1.0
+        yr = np.ptp(ax.get_ylim()) or 1.0
+        placed = []
+        for x, y, lab, col, n in sorted(items, key=lambda t: -t[4]):
+            dx, dy = 0.090 * xr, 0.055 * yr * (1 + lab.count("\n"))
+            for step in range(80):
+                clash = [(px, py) for px, py in placed if abs(x - px) < dx and abs(y - py) < dy]
+                if not clash:
+                    break
+                py = clash[0][1]
+                y += (0.013 * yr) * (1 if y >= py else -1)
+            placed.append((x, y))
+            t = ax.text(x, y, lab, fontsize=fontsize, fontweight="bold", ha="center", va="center",
+                        color=dark(col), zorder=6)
+            t.set_path_effects([mpe.withStroke(linewidth=2.6, foreground="white")])
+
+    def annotate(ax, coords, series, palette, fontsize=8, min_label=None):
+        min_label = MIN_LABEL if min_label is None else min_label
+        items, skipped = [], []
+        xr = np.ptp(ax.get_xlim()) or 1.0
+        for lab, idx in series.groupby(series).groups.items():
+            g = coords.loc[idx]
+            spread = np.median(np.abs(g.iloc[:, 0] - g.iloc[:, 0].median())) / xr
+            if lab in BACKGROUND or len(g) < min_label or spread > MAX_SPREAD:
+                skipped.append(f"{PRETTY.get(lab, lab)} ({len(g)})")
+                continue
+            x, y = anchor(g)
+            items.append((x, y, PRETTY.get(lab, lab), palette.get(lab, "0.35"), len(g)))
+        place_labels(ax, items, fontsize)
+        return skipped
 
     xy = ho[["umap_1", "umap_2"]].values
-    fig, axes = plt.subplots(2, 2, figsize=(11.5, 12.2))
+    fig, axes = plt.subplots(2, 2, figsize=(11.5, 11.0))
+    unlabelled = {}
 
-    # (a) human annotation: malignant subpopulations drawn last so they sit on top
+    # (a) human annotation
     ax = axes[0, 0]
-    cats = list(ho["annotation"].value_counts().index)
-    for lab in sorted(cats, key=lambda c: c in STATE_COL):
+    for lab in sorted(ho["annotation"].unique(), key=lambda c: c in STATE_COL):
         g = ho[ho["annotation"].eq(lab)]
         ax.scatter(g.umap_1, g.umap_2, s=0.35, lw=0, rasterized=True,
-                   color=STATE_COL.get(lab, LIN_COL.get(lab, "0.7")), label=PRETTY.get(lab, lab))
+                   color=STATE_COL.get(lab, LIN_COL.get(lab, "0.75")))
     ax.set(xticks=[], yticks=[])
-    legend_below(ax, 4)
+    unlabelled["a"] = annotate(ax, ho[["umap_1", "umap_2"]], ho["annotation"],
+                               {**LIN_COL, **STATE_COL}, fontsize=8.5)
     letter(ax, "a", title="Human atlas annotation")
 
     # (b) mouse author annotation
     ax = axes[0, 1]
-    ax.scatter(xy[:, 0], xy[:, 1], s=0.3, c="0.90", lw=0, rasterized=True)
-    labs = mo["author_label"].astype(str)
-    cats = list(labs.value_counts().index)
-    pal = dict(zip(cats, (list(plt.cm.tab20.colors) * 2)[:len(cats)]))
+    ax.scatter(xy[:, 0], xy[:, 1], s=0.3, c="0.92", lw=0, rasterized=True)
+    labs_b = mo["author_label"].astype(str)
+    cats = list(labs_b.value_counts().index)
+    pal_b = dict(zip(cats, (list(plt.cm.tab20.colors) * 2)[:len(cats)]))
     for lab in cats:
-        g = mo[labs.eq(lab)]
-        ax.scatter(g.umap_ref_1, g.umap_ref_2, s=1.1 if len(g) > 2000 else 3.0, color=pal[lab], lw=0,
-                   rasterized=True, label=SHORT.get(lab, lab))
+        g = mo[labs_b.eq(lab)]
+        ax.scatter(g.umap_ref_1, g.umap_ref_2, s=1.3 if len(g) > 2000 else 3.5, color=pal_b[lab], lw=0,
+                   rasterized=True)
     ax.set(xticks=[], yticks=[])
-    legend_below(ax, 4)
+    unlabelled["b"] = annotate(ax, mo[["umap_ref_1", "umap_ref_2"]], labs_b, pal_b, fontsize=8, min_label=1000)
     letter(ax, "b", title="Mouse, author annotation")
 
     # (c) transferred lineage
     ax = axes[1, 0]
-    ax.scatter(xy[:, 0], xy[:, 1], s=0.3, c="0.90", lw=0, rasterized=True)
+    ax.scatter(xy[:, 0], xy[:, 1], s=0.3, c="0.92", lw=0, rasterized=True)
     pl = mo["predicted_lineage"].astype(str)
     for lab in list(pl.value_counts().index):
         g = mo[pl.eq(lab)]
-        ax.scatter(g.umap_ref_1, g.umap_ref_2, s=1.1, color=LIN_COL.get(lab, "0.5"), lw=0, rasterized=True,
-                   label=PRETTY.get(lab, lab))
+        ax.scatter(g.umap_ref_1, g.umap_ref_2, s=1.3, color=LIN_COL.get(lab, "0.5"), lw=0, rasterized=True)
     ax.set(xticks=[], yticks=[])
-    legend_below(ax, 4)
+    unlabelled["c"] = annotate(ax, mo[["umap_ref_1", "umap_ref_2"]], pl, LIN_COL, fontsize=8.5)
     letter(ax, "c", title="Mouse, lineage transferred from the human reference")
 
-    # (d) mouse tumour cells by best-scoring human subpopulation, zoomed to the malignant territory.
-    # 891 points spread over the whole embedding cannot be read, so the axes are cropped to where the human malignant
-    # cells sit and each human subpopulation's territory is named in place; the mouse points are read against those.
+    # (d) mouse tumour cells on the human malignant territory, zoomed
     ax = axes[1, 1]
     mal = ho[ho["state_raw"].notna() & ho["state_raw"].ne("unassigned")]
     x0, x1 = np.percentile(mal.umap_1, [0.5, 99.5]); y0, y1 = np.percentile(mal.umap_2, [0.5, 99.5])
     mx, my = 0.06 * (x1 - x0), 0.06 * (y1 - y0)
-    ax.scatter(xy[:, 0], xy[:, 1], s=0.3, c="0.93", lw=0, rasterized=True)
-    ax.scatter(mal.umap_1, mal.umap_2, s=0.4, c="0.82", lw=0, rasterized=True)
-    for lab in ["OPC_like", "AC_like", "OC_like", "MES_like", "cycling"]:
-        g = mal[mal["state_raw"].eq(lab)]
-        if len(g) < 50:
-            continue
-        t = ax.text(np.median(g.umap_1), np.median(g.umap_2), PRETTY[lab], fontsize=8, fontweight="bold",
-                    ha="center", va="center", color=STATE_COL[lab], zorder=5)
-        t.set_path_effects([mpe.withStroke(linewidth=2.4, foreground="white")])
-    st = mo["mouse_state_raw"].astype(str)
-    for lab in [c for c in ["OPC_like", "cycling", "AC_like", "MES_like", "OC_like", "unassigned"] if (st == c).any()]:
-        g = mo[st.eq(lab)]
-        ax.scatter(g.umap_ref_1, g.umap_ref_2, s=14, color=STATE_COL.get(lab, "0.5"), lw=0.3, edgecolor="white",
-                   rasterized=True, label=f"{PRETTY.get(lab, lab)} ({len(g)})", zorder=4)
+    ax.scatter(xy[:, 0], xy[:, 1], s=0.3, c="0.94", lw=0, rasterized=True)
+    ax.scatter(mal.umap_1, mal.umap_2, s=0.4, c="0.84", lw=0, rasterized=True)
     ax.set(xticks=[], yticks=[], xlim=(x0 - mx, x1 + mx), ylim=(y0 - my, y1 + my))
-    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.015), ncol=3, fontsize=7, markerscale=1.8,
-              frameon=False, handletextpad=0.5, columnspacing=1.6, labelspacing=0.45, borderpad=0.0)
+    place_labels(ax, [(*anchor(mal[mal["state_raw"].eq(l)][["umap_1", "umap_2"]]), PRETTY[l] + "\n(human)",
+                       STATE_COL[l], (mal["state_raw"] == l).sum())
+                      for l in ["OPC_like", "AC_like", "OC_like", "MES_like", "cycling"]
+                      if (mal["state_raw"] == l).sum() >= 50], 7.5)
+    st = mo["mouse_state_raw"].astype(str)
+    counts = []
+    for lab in ["OPC_like", "cycling", "AC_like", "MES_like", "OC_like"]:
+        g = mo[st.eq(lab)]
+        if not len(g):
+            continue
+        ax.scatter(g.umap_ref_1, g.umap_ref_2, s=15, color=STATE_COL[lab], lw=0.3, edgecolor="white",
+                   rasterized=True, zorder=4)
+        counts.append(f"{PRETTY[lab]} {len(g)}")
+    ax.text(0.015, 0.985, "mouse tumour cells (filled, white edge)\n" + ", ".join(counts),
+            transform=ax.transAxes, fontsize=6.5, va="top", ha="left",
+            bbox=dict(boxstyle="round,pad=0.3", facecolor="white", edgecolor="0.8", linewidth=0.5))
     letter(ax, "d", title="Mouse tumour cells on the human malignant territory")
 
-    fig.subplots_adjust(left=0.02, right=0.98, top=0.955, bottom=0.055, wspace=0.06, hspace=0.30)
+    fig.subplots_adjust(left=0.02, right=0.98, top=0.955, bottom=0.015, wspace=0.06, hspace=0.12)
     fig.savefig(OUT["fig"], dpi=300)
     plt.close(fig)
+    for k, v in unlabelled.items():
+        if v:
+            LOG.write(f"panel {k}: too small or too diffuse to label in-plot, name these in the caption -> {v}")
 
 
 if __name__ == "__main__":

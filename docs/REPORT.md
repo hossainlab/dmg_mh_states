@@ -68,16 +68,20 @@ two metaprograms that met the atlas's replication rule.
 
 ![Figure 2](../results/figures/m06a_joint_embedding.png)
 
-**Figure 2 - the human annotation first, then the mouse on the same axes.** (a) the human atlas, malignant cells coloured
-by subpopulation (warm colours and black) and the microenvironment by lineage (cool colours), so that AC-like tumour is
-not confusable with normal astrocyte nor MES-like with oligodendrocyte; (b) mouse cells placed by their 15 nearest
-reference neighbours, coloured by the author annotation; (c) the same cells coloured by the lineage the human model
-transfers to them; (d) the 891 QC-pass mouse tumour cells, zoomed to the human malignant territory, coloured by the human
-subpopulation they score highest for (OPC-like 230, cycling 285, AC-like 215, MES-like 102, OC-like 49); the bold
-labels mark where each human subpopulation sits, so the mouse points are read against those regions. Human cell counts per subpopulation are in the
-table above; mouse counts per author label are in `m06_projection_by_label.csv`. The point to make: panels (a) and (d)
-are the direct comparison - the mouse tumour cells land in the OPC-like and cycling territory and not in the AC-like or
-MES-like one.
+**Figure 2 - the human annotation first, then the mouse on the same axes.** Populations are named in the plot rather
+than in a legend; a name is placed at the densest point of its population, and populations too small or too scattered to
+carry a legible label are named here instead. (a) the human atlas, malignant cells coloured by subpopulation (warm
+colours and black) and the microenvironment by lineage (cool colours), so AC-like tumour is not confusable with normal
+astrocyte nor MES-like with oligodendrocyte; unlabelled in grey are 89,924 unannotated cells, 3,928 malignant cells
+without a state call and 509 unassigned. (b) mouse cells placed by their 15 nearest reference neighbours, coloured by
+the author annotation; only populations above 1,000 cells are named, the remainder being Astrocyte-like (372),
+B/Plasma (370), Choroid plexus (297), Meningeal fibroblasts (351), Neutrophils (250), Vascular (347) and pDC (465).
+(c) the same cells coloured by the lineage the human model transfers to them; 13,585 cells predicted malignant are the
+unlabelled grey. (d) the 891 QC-pass mouse tumour cells, zoomed to the human malignant territory and drawn filled with
+white edges (OPC-like 230, cycling 285, AC-like 215, MES-like 102, OC-like 49); the bold names mark where each human
+subpopulation sits, so the mouse points are read against those regions. The point to make: panels (a) and (d) are the
+direct comparison - the mouse tumour cells pile into the OPC-like and cycling regions, and the MES-like region is
+essentially empty of them.
 
 ## Question 1 - does the mouse model contain these four subpopulations?
 
