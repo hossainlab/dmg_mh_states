@@ -281,8 +281,10 @@ large as the difference between arms.
 ## What this analysis cannot support
 
 1. **Power.** Two to four mice per arm, and the tumour analyses rest on 11 mice of which only 2 are RT and 2 FUS+RT.
-   Across 222 pathway/TF tests, 36 programme tests and 82,632 gene tests, nothing reaches q < 0.1; the lowest q in the
-   gene-level analysis is 0.568. These are hypotheses.
+   Across 222 pathway/TF tests, 36 programme tests and 82,632 immune gene tests, nothing reaches q < 0.1; the lowest q
+   in the immune gene-level analysis is 0.568. These are hypotheses. The tumour pseudobulk DE is the single exception
+   (12 of 245,308 tests at q < 0.1, `Ptprz1` and `Vim` leading), and even there the effect rests on two RT and two
+   FUS+RT animals.
 2. **Tumour-cell yield.** 891 QC-pass tumour cells for the whole experiment, 45 % of them from one mouse (Sample6); one
    mouse has none. Any per-arm tumour statistic rests on tens of cells per animal.
 3. **Tissue sampling.** The immune fraction swings 5-77 % between mice and cerebellar neurons reach ~80 %; this
