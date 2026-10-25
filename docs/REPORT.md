@@ -204,7 +204,9 @@ border-associated and proliferating myeloid populations seen in patients.
 
 ## Question 2 - how do FUS, RT and FUS+RT affect tumour states and the microenvironment?
 
-**Nothing survives multiple-testing correction in any of the new analyses.** The unit is the mouse throughout; tumour
+**Nothing survives correction in the pathway, transcription-factor or immune layers. The tumour's own transcriptome is
+the exception** - gene-level DE and the human gene-set scores both move with RT and FUS+RT, and those are the only
+treatment results in this study that clear correction. The unit is the mouse throughout; tumour
 analyses use the 11 mice with >= 20 QC-pass tumour cells (Control 3, FUS 4, RT 2, FUS+RT 2), immune analyses every mouse
 with >= 50 cells in the compartment (myeloid 15 mice, T/NK 9).
 
@@ -213,7 +215,8 @@ with >= 50 cells in the compartment (myeloid 15 mice, T/NK 9).
 | tumour pathway + TF activity (`m10`) | 222 | 0.228 | Androgen pathway up with RT (+1.65, p 0.005); NR3C1 TF up with FUS+RT (+1.86, p 0.004) |
 | immune programmes (`m10`) | 36 | 0.459 | myeloid immune suppression up with FUS+RT (+0.042 on a control mean of 0.164, p 0.026) |
 | immune gene-level DE (`m10`) | 82,632 | 0.568 | `Il1a` down with RT in myeloid (p 0.013); `Trem2` up with FUS+RT in T/NK (p 0.027) |
-| composition, state scores, DE (`m08`) | 320 + 528 | 0.006 | human MP4 hypoxia up with RT (q 0.006), MP8 MES-like (q 0.041) |
+| composition + state/MP scores (`m08`) | 320 + 528 | 0.006 | human MP4 hypoxia up with RT (q 0.006), MP8 MES-like (q 0.041) |
+| tumour gene-level DE (`m08`) | 245,308 | 0.000058 | `Ptprz1` down 3.5 log2FC with FUS+RT (q 5.8e-05); `Vim` up 2.2 (q 0.010) |
 
 Composition itself is flat under the primary model: of its 160 contrasts exactly one reaches q < 0.1 (OC-like state
 share, FUS+RT vs RT, q = 0.0986, on 2 versus 2 mice). **Refitting the same 160 contrasts with the inferred processing
@@ -238,6 +241,15 @@ hypoxia gene set rising with RT (q = 0.006) and MP8 MES-like (q = 0.041). Runnin
 the same 11 mice gives **no hypoxia effect whatsoever: +0.31, p = 0.877**. The two readouts disagree, so the RT to
 hypoxia/MES shift rests on one gene-set method, in two RT mice, and should be treated as a hypothesis rather than the
 study's finding.
+
+**The gene-level result is the sturdier one, and it is not about hypoxia.** Of 245,308 pseudobulk tests, 12 reach
+q < 0.1, all of them in tumour cells and all in an RT-containing arm; FUS alone moves no gene at all (0 up, 0 down).
+The direction is consistent: progenitor and matrix genes fall - `Ptprz1` -3.49 log2FC (q 5.8e-05 FUS+RT vs Control,
+-2.77 q 0.016 against RT alone), `Tnr` -4.22 (q 0.025), `Igsf9b` -2.82, `Neu4` -3.67, `Mga` -2.84, `Nsd2` -2.63 - while
+`Vim` rises (+2.22, q 0.010 FUS+RT; +2.11, q 0.044 RT alone) along with `Tmsb4x` (+1.40, q 0.071). Losing PTPRZ1 and
+tenascin-R while gaining vimentin is a coherent move away from the OPC-like programme, and it is the one treatment
+effect here supported at the level of individual genes rather than of a score. It should still be read against the
+design: 11 mice, of which 2 are RT and 2 FUS+RT, so a single animal carries substantial weight.
 
 **Immune programmes.** Scored with AUCell inside each compartment, using mouse-nomenclature marker sets listed in
 `m10_treatment_programmes.py` and their coverage in `m10_programme_coverage.csv`:
