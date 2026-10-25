@@ -54,6 +54,23 @@ import dmg_atlas.utils as U  # noqa: E402
 import numpy as np, pandas as pd, scipy.sparse as sp, anndata as ad, scanpy as sc  # noqa: E402
 import scipy.stats as ss  # noqa: E402
 from mouse_cmp import INTERIM, PROCESSED, RESULTS, LOGS, HUMAN  # noqa: E402
+from mouse_cmp.figio import PAGE_W, save_figure, panel, pretty
+
+
+def _xlab(h):
+    """Column header -> short axis label; the raw Liu 2022 signature names are 24 characters each."""
+    head, _, tail = h.partition("|")
+    s = head + (" " + tail.split(":")[-1][:18] if tail else "")
+    return pretty(s.replace("Liu2022_TableS2a_", "Liu 2022 ").replace("Liu2022_DE_author_", "Liu 2022 DE"))
+
+
+def _cut(s, n=26):
+    """Truncate a gene string on a gene boundary - a mid-symbol cut reads as a typo in print."""
+    s = str(s)
+    if len(s) <= n:
+        return s
+    keep = s[:n].rsplit(";", 1)[0]
+    return (keep or s[:n]) + ";..."  # noqa: E402
 from mouse_cmp.common import provenance, skip_existing, bh  # noqa: E402
 from dmg_atlas.states import STATE_GENE_SETS  # noqa: E402
 from dmg_atlas import metaprograms as MP  # noqa: E402
@@ -216,19 +233,20 @@ with log.step("write + figure"):
     usages.to_parquet(OUTS[8])
 
     apply_figure_style()
-    fig = plt.figure(figsize=(7.4, 9.6)); gs = fig.add_gridspec(3, 2, height_ratios=[1.25, 1, 1.1], hspace=0.6, wspace=0.55)
+    fig = plt.figure(figsize=(PAGE_W, 8.6)); gs = fig.add_gridspec(3, 2, height_ratios=[1.25, 1, 1.1], hspace=0.6, wspace=0.55,
+                                             left=0.25, right=0.965, top=0.955, bottom=0.14)
     ax = fig.add_subplot(gs[0, :])
     hc_order = ["malignant_OPC_like", "malignant_OC_like", "malignant_AC_like", "malignant_MES_like", "malignant_cycling", "malignant_hypoxia",
                 "malignant_novel_MP15", "astrocyte", "oligodendrocyte", "neuron", "myeloid", "T_NK", "vascular"]
     M_ = XC.pivot(index="mouse_group", columns="human_class", values="rho")[hc_order]
     M_ = M_.loc[sorted(M_.index, key=lambda x: (not x.startswith("tumour"), x))]
     im = ax.imshow(M_.values, cmap="RdBu_r", vmin=-0.6, vmax=0.6, aspect="auto")
-    ax.set_xticks(range(M_.shape[1]), [c.replace("malignant_", "mal. ") for c in M_.columns], rotation=45, ha="right")
-    ax.set_yticks(range(M_.shape[0]), [f"{i} (n={int((o.group == i).sum())})" for i in M_.index])
+    ax.set_xticks(range(M_.shape[1]), [pretty(c.replace("malignant_", "mal. ")) for c in M_.columns], rotation=45, ha="right")
+    ax.set_yticks(range(M_.shape[0]), [pretty(f"{i} (n={int((o.group == i).sum())})") for i in M_.index])
     for i in range(M_.shape[0]):
         for j in range(M_.shape[1]):
             ax.text(j, i, f"{M_.values[i, j]:.2f}", ha="center", va="center", fontsize=5)
-    fig.colorbar(im, ax=ax, shrink=0.8, label="Spearman rho"); ax.set_title("a  mouse cluster vs human class (z-scored pseudobulk, 2,000 genes)", loc="left")
+    fig.colorbar(im, ax=ax, shrink=0.8, label="Spearman rho"); panel(ax, "a", "Mouse cluster versus human class")
     ax = fig.add_subplot(gs[1, 0])
     sp_ = PROPS[PROPS.rule == "state_raw_mouse_mean"].pivot_table(index="set", columns="state", values="proportion").fillna(0)
     sp_ = sp_.loc[[s for s in ["primary", "all_tumour", "author_glial", "author_all", "human_cells", "human_nuclei", "human_all"] if s in sp_.index]]
@@ -236,25 +254,24 @@ with log.step("write + figure"):
     left = np.zeros(len(sp_))
     for st in cols:
         if st in sp_:
-            ax.barh(range(len(sp_)), sp_[st], left=left, color=cols[st], label=st); left += sp_[st].values
-    ax.set_yticks(range(len(sp_)), sp_.index); ax.invert_yaxis(); ax.set_xlabel("mean proportion per mouse / patient sample")
-    ax.legend(fontsize=5, ncol=3, bbox_to_anchor=(0, -0.35), loc="upper left", frameon=False); ax.set_title("b  human state sets, raw argmax", loc="left")
+            ax.barh(range(len(sp_)), sp_[st], left=left, color=cols[st], label=pretty(st)); left += sp_[st].values
+    ax.set_yticks(range(len(sp_)), [pretty(i) for i in sp_.index]); ax.invert_yaxis(); ax.set_xlabel("mean proportion per mouse / patient sample")
+    ax.legend(fontsize=6, ncol=3, bbox_to_anchor=(0, -0.32), loc="upper left", frameon=False); panel(ax, "b", "Human state sets, raw argmax")
     ax = fig.add_subplot(gs[1, 1])
     lm = MPU[MPU.lineage].set_index("metaprogram")
     yy = np.arange(len(lm))
     ax.scatter(lm.median_tumour, yy, c="k", s=12, label="mouse tumour", zorder=3)
     for g_, c_ in [("astrocyte (normal)", "#d98b2b"), ("granule-like neuron", "#8a63b5"), ("Microglia", "#4f9a55"), ("OPC-like (normal call)", "#7fb3e0")]:
         ax.scatter(lm[f"median_{g_}"], yy, s=8, c=c_, label=g_, alpha=0.8)
-    ax.set_yticks(yy, [f"{i} {lm.family[i]}" for i in lm.index]); ax.invert_yaxis(); ax.set_xlabel("median UCell (human MP top-50)")
-    ax.legend(fontsize=5, frameon=False, loc="lower right"); ax.set_title("c  human lineage MPs in mouse cells", loc="left")
+    ax.set_yticks(yy, [pretty(f"{i} {lm.family[i]}") for i in lm.index]); ax.invert_yaxis(); ax.set_xlabel("median UCell (human MP top-50)")
+    ax.legend(fontsize=6, frameon=False, loc="lower right"); panel(ax, "c", "Human lineage MPs in mouse cells")
     ax = fig.add_subplot(gs[2, :])
     sub = OVL[OVL.run == "pooled_primary"].copy(); sub["mlq"] = -np.log10(sub.q.clip(lower=1e-30))
     hs_order = [k for k in hsets if not k.startswith("Liu")] + sorted(k for k in hsets if k.startswith("Liu"))
     Mq = sub.pivot(index="program", columns="human_set", values="mlq")[hs_order]
     im = ax.imshow(Mq.values, cmap="Greys", vmin=0, vmax=10, aspect="auto")
-    ax.set_xticks(range(Mq.shape[1]), [h.split("|")[0] + (" " + h.split("|")[1].split(":")[-1][:18] if "|" in h else "").replace("Liu2022_TableS2a_", "Liu ") for h in Mq.columns],
-                  rotation=60, ha="right", fontsize=5)
-    ax.set_yticks(range(Mq.shape[0]), [f"{p.split('|')[-1]}: {tops.loc[('pooled_primary', p)][:40]}" for p in Mq.index], fontsize=5)
-    fig.colorbar(im, ax=ax, shrink=0.8, label="-log10 q (hypergeom.)"); ax.set_title("d  mouse de novo programmes (pooled primary) vs human MPs / Liu 2022", loc="left")
-    fig.savefig(OUTS[9], dpi=200, bbox_inches="tight"); plt.close(fig)
+    ax.set_xticks(range(Mq.shape[1]), [_xlab(h) for h in Mq.columns], rotation=90, ha="center", fontsize=5)
+    ax.set_yticks(range(Mq.shape[0]), [f"{p.split('|')[-1]}: {_cut(tops.loc[('pooled_primary', p)])}" for p in Mq.index], fontsize=5)
+    fig.colorbar(im, ax=ax, shrink=0.8, label="-log10 q (hypergeom.)"); panel(ax, "d", "Mouse de novo programmes versus human MPs")
+    save_figure(fig, OUTS[9], log)
     provenance(OUTS, [IN, CALLS, QC, *H.values()], "scripts/m05_state_comparison.py", {"definitions": {k: int(v.sum()) for k, v in DEF.items()}})

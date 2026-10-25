@@ -30,6 +30,7 @@ import numpy as np, pandas as pd, anndata as ad, scipy.sparse as sp  # noqa: E40
 import scipy.stats as ss  # noqa: E402
 from dmg_atlas.states import STATE_GENE_SETS  # noqa: E402
 from mouse_cmp import INTERIM, PROCESSED, RESULTS, LOGS, HUMAN, EXTERNAL, ATLAS_ROOT  # noqa: E402
+from mouse_cmp.figio import PAGE_W, save_figure, panel, pretty  # noqa: E402
 from mouse_cmp.common import provenance, skip_existing  # noqa: E402
 
 LOG = U.StepLogger(LOGS / "m09_subpopulation_evidence.log", context="m09_subpopulation_evidence")
@@ -191,17 +192,17 @@ def figure(mk, pa, ta, corr):
     sys.path.insert(0, str(ATLAS_ROOT / "src"))
     from dmg_atlas.figstyle import apply_figure_style, letter
     apply_figure_style()
-    fig, axes = plt.subplots(2, 2, figsize=(12.5, 10))
+    fig, axes = plt.subplots(2, 2, figsize=(PAGE_W, 6.4))
 
     ax = axes[0, 0]
     d = mk.dropna(subset=["mouse_tumour_detect_frac", "human_subpop_detect_frac"])
     for s, g in d.groupby("subpopulation"):
-        ax.scatter(g.human_subpop_detect_frac, g.mouse_tumour_detect_frac, s=14, label=f"{s} ({len(g)})", alpha=0.85)
+        ax.scatter(g.human_subpop_detect_frac, g.mouse_tumour_detect_frac, s=14, label=f"{pretty(s)} ({len(g)})", alpha=0.85)
     ax.plot([0, 1], [0, 1], ls=":", c="0.5", lw=0.8)
     ax.set(xlabel="detected in human cells of that subpopulation", ylabel="detected in mouse tumour cells",
            xlim=(-0.02, 1.02), ylim=(-0.02, 1.02))
-    ax.legend(fontsize=6, frameon=False, loc="lower right")
-    letter(ax, "a", title="Marker genes, gene by gene")
+    ax.legend(fontsize=6, frameon=False, loc="upper left")
+    panel(ax, "a", "Marker genes, gene by gene")
 
     ax = axes[0, 1]
     piv = pa.pivot_table(index="pathway", columns="group", values="activity")
@@ -210,10 +211,10 @@ def figure(mk, pa, ta, corr):
     v = np.nanmax(np.abs(piv.values))
     im = ax.imshow(piv.values, cmap="RdBu_r", vmin=-v, vmax=v, aspect="auto")
     ax.set(yticks=range(piv.shape[0]), yticklabels=piv.index, xticks=range(piv.shape[1]))
-    ax.set_xticklabels([c.replace("human:", "H ").replace("mouse:", "M ") for c in piv.columns], rotation=90, fontsize=6)
+    ax.set_xticklabels([pretty(c.replace("human:", "H ").replace("mouse:", "M ")) for c in piv.columns], rotation=90, fontsize=6)
     ax.axvline(sum(c.startswith("human:") for c in piv.columns) - 0.5, color="k", lw=1)
     plt.colorbar(im, ax=ax, shrink=0.7, label="PROGENy activity")
-    letter(ax, "b", title="Pathway activity, human and mouse")
+    panel(ax, "b", "Pathway activity, human and mouse")
 
     ax = axes[1, 0]
     sel = ta[(ta.species == "human") & ta.group.isin([f"human:{s}" for s in STATES])]
@@ -224,15 +225,15 @@ def figure(mk, pa, ta, corr):
     v = np.nanmax(np.abs(piv2.values))
     im = ax.imshow(piv2.values, cmap="PuOr_r", vmin=-v, vmax=v, aspect="auto")
     ax.set(yticks=range(piv2.shape[0]), yticklabels=piv2.index, xticks=range(piv2.shape[1]))
-    ax.set_xticklabels([c.replace("human:", "H ").replace("mouse:", "M ") for c in piv2.columns], rotation=90, fontsize=6)
+    ax.set_xticklabels([pretty(c.replace("human:", "H ").replace("mouse:", "M ")) for c in piv2.columns], rotation=90, fontsize=6)
     ax.axvline(sum(c.startswith("human:") for c in piv2.columns) - 0.5, color="k", lw=1)
     plt.colorbar(im, ax=ax, shrink=0.7, label="CollecTRI activity")
-    letter(ax, "c", title="Transcription-factor activity")
+    panel(ax, "c", "Transcription-factor activity")
 
     ax = axes[1, 1]
     piv3 = corr.pivot(index="mouse_group", columns="human_subpopulation", values="rho")
-    piv3.columns = [c.replace("human:", "") for c in piv3.columns]
-    piv3.index = [i.replace("mouse:", "") for i in piv3.index]
+    piv3.columns = [pretty(c.replace("human:", "")) for c in piv3.columns]
+    piv3.index = [pretty(i.replace("mouse:", "")) for i in piv3.index]
     im = ax.imshow(piv3.values, cmap="RdBu_r", vmin=-0.6, vmax=0.6, aspect="auto")
     ax.set(xticks=range(piv3.shape[1]), yticks=range(piv3.shape[0]), yticklabels=piv3.index)
     ax.set_xticklabels(piv3.columns, rotation=45, ha="right")
@@ -241,13 +242,18 @@ def figure(mk, pa, ta, corr):
             ax.text(j, i, f"{piv3.values[i, j]:.2f}", ha="center", va="center", fontsize=6,
                     color="white" if abs(piv3.values[i, j]) > 0.35 else "black")
     plt.colorbar(im, ax=ax, shrink=0.7, label="Spearman rho")
-    letter(ax, "d", title="Pseudobulk correlation per subpopulation")
+    panel(ax, "d", "Pseudobulk correlation per subpopulation")
 
     fig.tight_layout()
-    fig.savefig(OUT["fig"], dpi=300)
-    plt.close(fig)
+    save_figure(fig, OUT["fig"], LOG)
 
 
 if __name__ == "__main__":
-    p = argparse.ArgumentParser(); p.add_argument("--force", action="store_true")
-    main(p.parse_args().force)
+    p = argparse.ArgumentParser()
+    p.add_argument("--force", action="store_true")
+    p.add_argument("--refigure", action="store_true", help="redraw the figure from the saved tables, no recompute")
+    a = p.parse_args()
+    if a.refigure:
+        figure(pd.read_csv(OUT["markers"]), pd.read_csv(OUT["paths"]), pd.read_csv(OUT["tfs"]), pd.read_csv(OUT["corr"]))
+    else:
+        main(a.force)

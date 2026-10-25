@@ -48,6 +48,7 @@ import scipy.stats as ss, scipy.special as spc  # noqa: E402
 import statsmodels.api as sm  # noqa: E402
 from statsmodels.nonparametric.smoothers_lowess import lowess  # noqa: E402
 from mouse_cmp import INTERIM, PROCESSED, EXTERNAL, RESULTS, LOGS, HUMAN, ATLAS_ROOT  # noqa: E402
+from mouse_cmp.figio import PAGE_W, save_figure, pretty  # noqa: E402
 from mouse_cmp.common import provenance, skip_existing, bh, sample_block, ARMS  # noqa: E402
 from dmg_atlas import metaprograms as MP  # noqa: E402
 from dmg_atlas.figstyle import apply_figure_style  # noqa: E402
@@ -255,8 +256,15 @@ with log.step("write + figure"):
               ("T_NK_label", "NK", "NK / T+NK"), ("tumour_state", "cycling", "cycling / tumour (state)")]
     sc_panels = [("human_MP_ucell", "tumour", "MP4_hypoxia", "tumour: MP4 hypoxia UCell"), ("human_MP_ucell", "tumour", "MP8_MES_like", "tumour: MP8 MES-like UCell"),
                  ("pseudobulk_geneset", "tumour", "Interferon", "tumour IFN set score"), ("pseudobulk_geneset", "Microglia", "Interferon", "microglia IFN set score")]
-    fig, axes = plt.subplots(3, 4, figsize=(7.4, 7.0), gridspec_kw=dict(hspace=0.95, wspace=0.55)); axes = axes.ravel()
+    fig, axes = plt.subplots(3, 4, figsize=(PAGE_W, 6.6), gridspec_kw=dict(hspace=0.85, wspace=0.52,
+                                                            left=0.085, right=0.995, top=0.945, bottom=0.085)); axes = axes.ravel()
     rng = np.random.default_rng(0)
+
+    def _stat(r):
+        """The three contrast p-values, wrapped onto two lines - one line overran a 30 mm panel."""
+        parts = [f"{k.split('_')[0].replace('FUS+RT', 'F+R')} {r.p[k]:.2g}"
+                 for k in ["FUS_vs_Control", "RT_vs_Control", "FUS+RT_vs_Control"] if k in r.index]
+        return "p: " + " | ".join(parts[:2]) + ("\n" + " | ".join(parts[2:]) if parts[2:] else "")
 
     def dots(ax, d, title, stat):
         for j, a_ in enumerate(ARMS):
@@ -264,18 +272,19 @@ with log.step("write + figure"):
             ax.scatter(j + rng.uniform(-0.12, 0.12, len(v)), v, s=10, color=acol[a_], zorder=3)
             if len(v):
                 ax.hlines(v.mean(), j - 0.25, j + 0.25, color="k", lw=0.8)
-        ax.set_xticks(range(4), ARMS, rotation=45, ha="right"); ax.set_title(f"{title}\n{stat}", fontsize=5.5, loc="left")
+        ax.set_xticks(range(4), ARMS, rotation=45, ha="right")
+        ax.tick_params(axis="x", labelsize=5.5)
+        ax.set_title(f"{pretty(title)}\n{stat}", fontsize=5.5, loc="left")
 
     for i, (s_, c_, t_) in enumerate(panels):
         d = PM[(PM.set == s_) & (PM.category == c_)]
         r = COMPR[(COMPR.set == s_) & (COMPR.category == c_) & (COMPR.model == "arm")].set_index("contrast")
-        stat = "p: " + " | ".join(f"{k.split('_')[0].replace('FUS+RT', 'F+R')} {r.p[k]:.2g}" for k in ["FUS_vs_Control", "RT_vs_Control", "FUS+RT_vs_Control"] if k in r.index)
+        stat = _stat(r)
         dots(axes[i], d, t_, stat)
     for i, (f_, pop, sc_, t_) in enumerate(sc_panels):
         d = PM[(PM.set == f"score:{f_}:{pop}") & (PM.category == sc_)]
         r = SC[(SC.family == f_) & (SC.population == pop) & (SC.score == sc_) & (SC.model == "arm")].set_index("contrast")
-        stat = "p: " + " | ".join(f"{k.split('_')[0].replace('FUS+RT', 'F+R')} {r.p[k]:.2g}" for k in ["FUS_vs_Control", "RT_vs_Control", "FUS+RT_vs_Control"] if k in r.index)
+        stat = _stat(r)
         dots(axes[8 + i], d, t_, stat)
-    fig.suptitle("Per-mouse values (dots), arm means (bars); p from mouse-level models vs Control (exploratory; 2-4 mice per arm)", fontsize=6.5, y=0.995)
-    fig.savefig(OUTS[5], dpi=200, bbox_inches="tight"); plt.close(fig)
+    save_figure(fig, OUTS[5], log)
     provenance(OUTS, [IN, QC, ORTH, CALLS, USE, PROGS, STS, TME, MPG, FAM, GS], "scripts/m08_treatment_effects.py")

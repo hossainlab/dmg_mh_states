@@ -32,6 +32,7 @@ import dmg_atlas.utils as U  # noqa: E402
 import numpy as np, pandas as pd, anndata as ad, scipy.sparse as sp  # noqa: E402
 import statsmodels.api as sm  # noqa: E402
 from mouse_cmp import INTERIM, PROCESSED, RESULTS, LOGS, EXTERNAL, ATLAS_ROOT  # noqa: E402
+from mouse_cmp.figio import PAGE_W, save_figure, panel, pretty  # noqa: E402
 from mouse_cmp.common import provenance, skip_existing, bh  # noqa: E402
 
 LOG = U.StepLogger(LOGS / "m10_treatment_programmes.log", context="m10_treatment_programmes")
@@ -197,7 +198,7 @@ def figure(tum, prog, tst, de):
     sys.path.insert(0, str(ATLAS_ROOT / "src"))
     from dmg_atlas.figstyle import apply_figure_style, letter
     apply_figure_style()
-    fig, axes = plt.subplots(2, 2, figsize=(12.5, 9.5))
+    fig, axes = plt.subplots(2, 2, figsize=(PAGE_W, 6.2))
     COL = {"Control": "#4a5568", "FUS": "#2b6cb0", "RT": "#de2d26", "FUS+RT": "#805ad5"}
 
     ax = axes[0, 0]
@@ -212,7 +213,7 @@ def figure(tum, prog, tst, de):
             if qp.values[i, j] < 0.1:
                 ax.text(j, i, "*", ha="center", va="center", fontsize=9)
     plt.colorbar(im, ax=ax, shrink=0.75, label="activity change vs control")
-    letter(ax, "a", title="Tumour pathway activity by arm")
+    panel(ax, "a", "Tumour pathway activity by arm")
 
     ax = axes[0, 1]
     pm = prog[prog.compartment == "T_NK"].groupby(["mouse", "arm"])[["T_cell_dysfunction", "T_cell_activation"]].mean().reset_index()
@@ -220,7 +221,7 @@ def figure(tum, prog, tst, de):
         ax.scatter(g.T_cell_activation, g.T_cell_dysfunction, s=42, color=COL.get(arm, "0.5"), label=f"{arm} ({len(g)})")
     ax.set(xlabel="T-cell activation (AUCell)", ylabel="T-cell dysfunction (AUCell)")
     ax.legend(fontsize=6, frameon=False)
-    letter(ax, "b", title="T/NK compartment, one point per mouse")
+    panel(ax, "b", "T/NK compartment, per mouse")
 
     ax = axes[1, 0]
     d2 = tst.copy()
@@ -228,14 +229,14 @@ def figure(tum, prog, tst, de):
     piv2 = d2.pivot_table(index="lab", columns="contrast", values="estimate")
     q2 = d2.pivot_table(index="lab", columns="contrast", values="q")
     im = ax.imshow(piv2.values, cmap="PuOr_r", vmin=-np.nanmax(abs(piv2.values)), vmax=np.nanmax(abs(piv2.values)), aspect="auto")
-    ax.set(yticks=range(piv2.shape[0]), yticklabels=piv2.index, xticks=range(piv2.shape[1]))
+    ax.set(yticks=range(piv2.shape[0]), yticklabels=[pretty(i) for i in piv2.index], xticks=range(piv2.shape[1]))
     ax.set_xticklabels([c.replace("_vs_Control", "") for c in piv2.columns], rotation=0)
     for i in range(piv2.shape[0]):
         for j in range(piv2.shape[1]):
             if q2.values[i, j] < 0.1:
                 ax.text(j, i, "*", ha="center", va="center", fontsize=9)
     plt.colorbar(im, ax=ax, shrink=0.75, label="AUCell change vs control")
-    letter(ax, "c", title="Immune programmes by arm")
+    panel(ax, "c", "Immune programmes by arm")
 
     ax = axes[1, 1]
     # the two best-ranked programme tests of the 36: myeloid immune suppression (p 0.026) and T/NK T-cell
@@ -251,14 +252,23 @@ def figure(tum, prog, tst, de):
             ax.hlines(v.mean(), i * 5 + j - 0.3, i * 5 + j + 0.3, color=COL[arm], lw=1.6)
     ax.set(xticks=[0, 1, 2, 3, 5, 6, 7, 8], xticklabels=order * 2, ylabel="AUCell score (mean per mouse)")
     ax.tick_params(axis="x", rotation=60, labelsize=6)
-    ax.text(1.5, ax.get_ylim()[1] * 0.995, "myeloid: immune suppression (15 mice, p 0.026)", ha="center", fontsize=6)
-    ax.text(6.5, ax.get_ylim()[1] * 0.995, "T/NK: T-cell activation (9 mice, p 0.101)", ha="center", fontsize=6)
-    ax.legend(fontsize=6, frameon=False, loc="lower left")
-    letter(ax, "d", title="The two best-ranked programme tests, per mouse")
+    lo, hi = ax.get_ylim()
+    ax.set_ylim(lo, hi + 0.10 * (hi - lo))  # headroom for the two group labels
+    # arms are already named on the x axis, so a legend would only repeat them over the points
+    ax.text(1.5, hi + 0.085 * (hi - lo), "myeloid:\nimmune suppression", ha="center", va="top", fontsize=5.5)
+    ax.text(6.5, hi + 0.085 * (hi - lo), "T/NK:\nT-cell activation", ha="center", va="top", fontsize=5.5)
+    panel(ax, "d", "Best-ranked programme tests")
 
-    fig.tight_layout(); fig.savefig(OUT["fig"], dpi=300); plt.close(fig)
+    fig.tight_layout()
+    save_figure(fig, OUT["fig"], LOG)
 
 
 if __name__ == "__main__":
-    p = argparse.ArgumentParser(); p.add_argument("--force", action="store_true")
-    main(p.parse_args().force)
+    p = argparse.ArgumentParser()
+    p.add_argument("--force", action="store_true")
+    p.add_argument("--refigure", action="store_true", help="redraw the figure from the saved tables, no recompute")
+    a = p.parse_args()
+    if a.refigure:
+        figure(pd.read_csv(OUT["tum"]), pd.read_csv(OUT["prog"]), pd.read_csv(OUT["tests"]), pd.read_csv(OUT["de"]))
+    else:
+        main(a.force)

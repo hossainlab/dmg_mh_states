@@ -47,6 +47,7 @@ import dmg_atlas.utils as U  # noqa: E402
 import numpy as np, pandas as pd, scipy.sparse as sp, anndata as ad, scanpy as sc  # noqa: E402
 from infercnvpy.tl._infercnv import _running_mean_by_chromosome  # noqa: E402
 from mouse_cmp import INTERIM, PROCESSED, EXTERNAL, RESULTS, LOGS  # noqa: E402
+from mouse_cmp.figio import PAGE_W, save_figure, panel  # noqa: E402
 from mouse_cmp.common import provenance, skip_existing  # noqa: E402
 from dmg_atlas.figstyle import apply_figure_style  # noqa: E402
 import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt  # noqa: E402
@@ -163,17 +164,21 @@ with log.step("calls + tables + figure"):
     subs.to_csv(OUTS[5])
 
     apply_figure_style()
-    fig = plt.figure(figsize=(7.2, 7.2)); gs = fig.add_gridspec(2, 2, height_ratios=[1, 1.15], hspace=0.45, wspace=0.35)
+    fig = plt.figure(figsize=(PAGE_W, 7.1)); gs = fig.add_gridspec(2, 2, height_ratios=[1, 1.2], hspace=0.38, wspace=0.32,
+                                             left=0.19, right=0.965, top=0.945, bottom=0.075)
     ax = fig.add_subplot(gs[0, 0])
     order = bylab.sort_values("median_clone_r").index
     ax.boxplot([o.clone_r[o.author_label == l].dropna() for l in order], vert=False, showfliers=False, widths=0.6)
     ax.set_yticks(range(1, len(order) + 1), order); ax.axvline(thr_r, ls="--", lw=0.7, c="k")
-    ax.set_xlabel("correlation with shared tumour CNV profile\n(leave-one-mouse-out)"); ax.set_title("a  CNV clone signal by author label", loc="left")
+    ax.set_xlabel("correlation with shared tumour CNV profile\n(leave-one-mouse-out)"); panel(ax, "a", "CNV clone signal by author label")
     ax = fig.add_subplot(gs[0, 1])
     PR = pd.DataFrame(prof_rows).set_index("sample"); PR = PR[PR.n_seed >= 3].drop(columns="n_seed")
     im = ax.imshow(PR.values * 100, aspect="auto", cmap="RdBu_r", vmin=-8, vmax=8)
-    ax.set_xticks(range(PR.shape[1]), [c.replace("chr0", "").replace("chr", "") for c in PR.columns]); ax.set_yticks(range(len(PR)), PR.index)
-    ax.set_xlabel("chromosome"); ax.set_title("b  seed-cell CNV per mouse", loc="left"); fig.colorbar(im, ax=ax, shrink=0.7, label="mean CNV x100")
+    # 19 chromosomes on a half-width axis collide at any legible size, so alternate labels are blanked
+    chrom = [c.replace("chr0", "").replace("chr", "") for c in PR.columns]
+    ax.set_xticks(range(PR.shape[1]), [c if i % 2 == 0 else "" for i, c in enumerate(chrom)])
+    ax.set_yticks(range(len(PR)), PR.index)
+    ax.set_xlabel("chromosome"); panel(ax, "b", "Seed-cell CNV per mouse"); fig.colorbar(im, ax=ax, shrink=0.7, label="mean CNV x100")
     ax = fig.add_subplot(gs[1, :])
     rng = np.random.default_rng(SEED); grp = []
     for name, m in [("tumour (call)", o.tumour_call == "tumour"), ("OPC-like, normal call", opc & (o.tumour_call == "normal")),
@@ -189,8 +194,8 @@ with log.step("calls + tables + figure"):
     for c in chs[1:]:
         ax.axvline(chr_pos[c] - 0.5, c="0.6", lw=0.4)
     ax.set_xticks([(chr_pos[c] + bounds[i + 1]) / 2 for i, c in enumerate(chs)], [c.replace("chr0", "").replace("chr", "") for c in chs])
-    ax.set_yticks([]); ax.set_xlabel("chromosome (GRCm39 gene order)"); ax.set_title("c  inferred CNV, 300 random cells per group (sorted by clone_r)", loc="left")
-    fig.savefig(OUTS[6], dpi=200, bbox_inches="tight"); plt.close(fig)
+    ax.set_yticks([]); ax.set_xlabel("chromosome (GRCm39 gene order)"); panel(ax, "c", "Inferred CNV by cell group")
+    save_figure(fig, OUTS[6], log)
     provenance(OUTS, [IN, QC, ORTH], "scripts/m04_tumour_calls.py",
                {"clone_r_threshold": thr_r, "n_seed": int(seed.sum()), "tumour_subclusters": sorted(tsub)})
     log.write(f"tumour calls {(o.tumour_call == 'tumour').sum()} ({o.tumour_basis.value_counts().to_dict()}); qc_pass tumour "

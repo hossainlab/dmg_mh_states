@@ -42,6 +42,7 @@ sys.path[:0] = [str(ROOT / "src"), str(Path(_ATLAS) / "src")]  # the human atlas
 import dmg_atlas.utils as U  # noqa: E402
 import numpy as np, pandas as pd, anndata as ad  # noqa: E402
 from mouse_cmp import INTERIM, PROCESSED, RESULTS, LOGS, ATLAS_ROOT  # noqa: E402
+from mouse_cmp.figio import PAGE_W, save_figure, panel, pretty, annotate_clusters  # noqa: E402
 from mouse_cmp.common import provenance, skip_existing  # noqa: E402
 
 K = 15
@@ -202,7 +203,7 @@ def figure(per, calib, comp):
     sys.path.insert(0, str(ATLAS_ROOT / "src"))
     from dmg_atlas.figstyle import apply_figure_style, letter
     apply_figure_style()
-    fig, axes = plt.subplots(2, 2, figsize=(11, 9))
+    fig, axes = plt.subplots(2, 2, figsize=(PAGE_W, 6.6))
 
     ax = axes[0, 0]
     H = ad.read_h5ad(ATLAS_ROOT / "data/processed/dmg_atlas_v1.h5ad", backed="r")
@@ -211,11 +212,14 @@ def figure(per, calib, comp):
     pal = {"malignant": "#de2d26", "myeloid": "#2b6cb0", "T_NK": "#38a169", "oligodendrocyte": "#805ad5",
            "astrocyte": "#dd6b20", "neuron": "#718096", "vascular": "#d53f8c"}
     for lab, g in per.groupby("predicted_lineage"):
-        ax.scatter(g.umap_ref_1, g.umap_ref_2, s=1.2, lw=0, rasterized=True,
-                   color=pal.get(lab, "0.4"), label=f"{lab} ({len(g):,})")
+        ax.scatter(g.umap_ref_1, g.umap_ref_2, s=1.2, lw=0, rasterized=True, color=pal.get(lab, "0.4"))
     ax.set(xticks=[], yticks=[])
-    ax.legend(markerscale=6, fontsize=6, frameon=False, loc="upper left")
-    letter(ax, "a", title="Mouse cells placed on the human reference")
+    # lineages named in the plot: a seven-entry legend sat over the embedding it was describing
+    miss = annotate_clusters(ax, per[["umap_ref_1", "umap_ref_2"]].values, per.predicted_lineage.values,
+                             pal, fontsize=5.5, min_label=150)
+    if miss:
+        log.write(f"panel a: not labelled in plot -> {'; '.join(miss)}")
+    panel(ax, "a", "Mouse cells on the human reference")
 
     ax = axes[0, 1]
 
@@ -229,43 +233,44 @@ def figure(per, calib, comp):
     ecdf(ax, mt.uncertainty_knn, color="#742a2a", lw=1.8, ls="--", label=f"mouse, m04 tumour ({len(mt):,})")
     for st, g in Q.groupby("study", observed=True):
         ecdf(ax, g.uncertainty_knn, lw=0.9, label=f"human: {st} ({len(g):,})")
-    ax.set(xlabel="uncertainty_knn (percentile of reference 15-NN distance)",
+    ax.set(xlabel="kNN uncertainty (percentile)",
            ylabel="cumulative fraction of cells", xlim=(0, 1), ylim=(0, 1))
     ax.legend(fontsize=6, frameon=False, loc="upper left")
-    letter(ax, "b", title="Distance from the human manifold")
+    panel(ax, "b", "Distance from the human manifold")
 
     ax = axes[1, 0]
     sub = comp.loc[comp.index.isin(per.author_label.value_counts().head(12).index)]
     im = ax.imshow(sub.values, cmap="Blues", vmin=0, vmax=1, aspect="auto")
     ax.set(xticks=range(sub.shape[1]), yticks=range(sub.shape[0]), yticklabels=sub.index)
-    ax.set_xticklabels(sub.columns, rotation=45, ha="right")
+    ax.set_xticklabels([pretty(c) for c in sub.columns], rotation=90, fontsize=5.5)
     for i in range(sub.shape[0]):
         for j in range(sub.shape[1]):
             if sub.values[i, j] > 0.02:
                 ax.text(j, i, f"{sub.values[i, j]:.2f}", ha="center", va="center", fontsize=5.5,
                         color="white" if sub.values[i, j] > 0.5 else "black")
     plt.colorbar(im, ax=ax, shrink=0.7, label="fraction")
-    letter(ax, "c", title="Author label vs transferred lineage")
+    panel(ax, "c", "Author label vs transferred lineage")
 
     ax = axes[1, 1]
     c = calib.set_index("cohort")
     y = np.arange(len(c))
     col = np.where(c.species == "mouse", "#de2d26", "#2b6cb0")
-    ax.barh(y - 0.2, c.median_uncertainty_knn, height=0.38, color=col, label="median uncertainty_knn")
+    ax.barh(y - 0.2, c.median_uncertainty_knn, height=0.38, color=col, label="median kNN uncertainty")
     ax.barh(y + 0.2, c.frac_predicted_malignant, height=0.38, color=col, alpha=0.45,
-            label="fraction predicted malignant")
+            label="fraction malignant")
     for i, (u, m) in enumerate(zip(c.median_uncertainty_knn, c.frac_predicted_malignant)):
         ax.text(u + 0.01, i - 0.2, f"{u:.2f}", va="center", fontsize=5.5)
         ax.text(m + 0.01, i + 0.2, f"{m:.2f}", va="center", fontsize=5.5)
-    ax.set(yticks=y, yticklabels=c.index, xlim=(0, 1.15), xlabel="value")
+    ax.set(yticks=y, yticklabels=c.index, xlim=(0, 1.18))
     ax.tick_params(labelsize=6)
-    ax.legend(fontsize=6, frameon=False, loc="lower right")
+    ax.legend(fontsize=5.5, frameon=False, loc="upper center", bbox_to_anchor=(0.5, -0.10), ncol=2,
+              handlelength=1.2, columnspacing=1.0)
     ax.invert_yaxis()
-    letter(ax, "d", title="Mouse against the human query cohorts")
+    panel(ax, "d", "Mouse against the human query cohorts")
 
     fig.tight_layout()
-    fig.savefig(OUT["fig"], dpi=300)
-    plt.close(fig)
+    fig.subplots_adjust(bottom=0.16)  # room for the panel d legend under its axes
+    save_figure(fig, OUT["fig"], LOG)
 
 
 if __name__ == "__main__":

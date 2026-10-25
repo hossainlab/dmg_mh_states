@@ -33,6 +33,7 @@ import dmg_atlas.utils as U  # noqa: E402
 import numpy as np, pandas as pd, anndata as ad  # noqa: E402
 from dmg_atlas.states import STATE_GENE_SETS  # noqa: E402
 from mouse_cmp import RESULTS, LOGS, HUMAN, ATLAS_ROOT  # noqa: E402
+from mouse_cmp.figio import PAGE_W, save_figure  # noqa: E402
 from mouse_cmp.common import provenance, skip_existing  # noqa: E402
 
 LOG = U.StepLogger(LOGS / "m06a_joint_embedding.log", context="m06a_joint_embedding")
@@ -187,7 +188,7 @@ def figure(ho, mo):
         return skipped
 
     xy = ho[["umap_1", "umap_2"]].values
-    fig, axes = plt.subplots(2, 2, figsize=(11.5, 11.0))
+    fig, axes = plt.subplots(2, 2, figsize=(PAGE_W, 7.2))
     unlabelled = {}
 
     # (a) human annotation
@@ -252,9 +253,8 @@ def figure(ho, mo):
             bbox=dict(boxstyle="round,pad=0.3", facecolor="white", edgecolor="0.8", linewidth=0.5))
     letter(ax, "d", title="Mouse tumour cells on the human malignant territory")
 
-    fig.subplots_adjust(left=0.02, right=0.98, top=0.955, bottom=0.015, wspace=0.06, hspace=0.12)
-    fig.savefig(OUT["fig"], dpi=300)
-    plt.close(fig)
+    fig.subplots_adjust(left=0.045, right=0.985, top=0.945, bottom=0.015, wspace=0.06, hspace=0.12)
+    save_figure(fig, OUT["fig"], LOG)
     for k, v in unlabelled.items():
         if v:
             LOG.write(f"panel {k}: too small or too diffuse to label in-plot, name these in the caption -> {v}")
