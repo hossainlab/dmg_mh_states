@@ -94,11 +94,11 @@ human atlas does not have.
 
 | subpopulation | verdict | pseudobulk rho | marker detection (mouse / human) | pathway and TF evidence |
 |---|---|---|---|---|
-| cycling | **present** | **+0.47** | 0.118 / 0.506 | E2F4 5.72 (human cycling 6.97), MYC 12.81 (8.65); de novo programme p1 = MP1, 25/50 genes |
-| OPC-like | **present** | **+0.35** | 0.146 / 0.313, the best of the five | OLIG2 2.76 (human OPC-like 0.14, cycling 2.43), SOX10 1.08 (0.23) |
-| OC-like | equivocal | -0.13 | 0.064 / 0.120 | no distinguishing pathway or TF; the human subpopulation is itself tiny under the raw rule (0.7 %) |
-| AC-like | **absent** | **-0.36** | 0.084 / 0.397 | every AC-like metaprogram scores 4.9-8.7x higher in normal mouse astrocytes than in tumour |
-| MES-like | **absent** | **-0.40** | 0.040 / 0.292, the lowest of the five | PROGENy hypoxia **-14.4** in mouse tumour vs **+9.4** in human MES-like; HIF1A -1.2 vs +3.0 |
+| cycling | **present** | **+0.47** | 0.118 / 0.503 | E2F4 5.72 (human cycling 6.97), MYC 12.81 (8.65); de novo programme p1 = MP1, 25/50 genes |
+| OPC-like | **present** | **+0.35** | 0.146 / 0.330, the best of the five | OLIG2 2.76 (human OPC-like 0.14, cycling 2.43), SOX10 1.08 (0.23) |
+| OC-like | equivocal | -0.13 | 0.064 / 0.130 | no distinguishing pathway or TF; the human subpopulation is itself tiny under the raw rule (0.7 %) |
+| AC-like | **absent** | **-0.36** | 0.084 / 0.395 | every AC-like metaprogram scores 4.9-8.7x higher in normal mouse astrocytes than in tumour |
+| MES-like | **absent** | **-0.40** | 0.040 / 0.281, the lowest of the five | PROGENy hypoxia **-14.4** in mouse tumour vs **+9.4** in human MES-like; HIF1A -1.2 vs +3.0 |
 
 Correlations are Spearman over the 2,000 most variable genes of the human subpopulation pseudobulk profiles, mouse
 tumour pseudobulk against each human subpopulation (`m09_subpopulation_correlation.csv`). Marker detection is the median
@@ -316,8 +316,8 @@ Searched via PubMed (NCBI); every reference below was retrieved and its metadata
   OPC-like compartment that supplies a smaller cycling fraction and more differentiated progeny — Filbin et al. 2018,
   *Science* (PMID 29674595, doi 10.1126/science.aao4750); Liu et al. 2022, *Nat Genet* (36471067,
   10.1038/s41588-022-01236-3); Jessa et al. 2022, *Nat Genet* (36471070, 10.1038/s41588-022-01205-w); Harpaz et al. 2022,
-  *Mol Cell* (35716669, 10.1016/j.molcel.2022.05.023). Our mouse tumour cells correlating best with the human OC-like,
-  OPC-like and cycling classes, and recovering the human cycling programme de novo, is the result these papers predict.
+  *Mol Cell* (35716669, 10.1016/j.molcel.2022.05.023). Our mouse tumour cells correlating best with the human OPC-like
+  and cycling classes, and recovering the human cycling programme de novo, is the result these papers predict.
 - *So does the model's cell of origin.* Mouse DMG models initiated in oligodendrocyte-progenitor lineages reproduce an
   OPC-like tumour identity — Tomita et al. 2022, *Glia* (35524725, 10.1002/glia.24189); Misuraca et al. 2016, *Neoplasia*
   (26806352, 10.1016/j.neo.2015.12.002); and for immunocompetent pediatric DMG allografts, du Chatinier et al. 2022,
