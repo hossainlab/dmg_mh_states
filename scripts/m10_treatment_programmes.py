@@ -270,5 +270,6 @@ if __name__ == "__main__":
     a = p.parse_args()
     if a.refigure:
         figure(pd.read_csv(OUT["tum"]), pd.read_csv(OUT["prog"]), pd.read_csv(OUT["tests"]), pd.read_csv(OUT["de"]))
+        provenance([OUT["fig"]], [OUT["tum"], OUT["prog"], OUT["tests"], OUT["de"]], "scripts/m10_treatment_programmes.py")
     else:
         main(a.force)

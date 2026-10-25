@@ -1,16 +1,13 @@
 {
- "script": "m09_subpopulation_evidence.py",
- "utc": "2026-10-24T18:54:17Z",
+ "script": "scripts/m09_subpopulation_evidence.py",
+ "utc": "2026-10-25T09:35:37Z",
  "inputs_sha256": {
-  "dmg_mh_states/data/processed/mouse_all_hs.h5ad": "a1e097e90ac90d617e82d6627d6800b031df7caa7dcad2b83998f6804320d7f0",
-  "dmg_mh_states/data/processed/mouse_tumour_calls.csv": "162a7ccceffae68164db01ecf658ac6ddb1dda3727e1799f5bc17db1ce91782b",
-  "dmg_atlas/data/processed/dmg_atlas_v1.h5ad": "331a50d758b3cac2bf0ead7fbda2279af2c0e11cdd3faa8ad1171039988925ed",
-  "dmg_mh_states/data/external/collectri_human.csv": "f4706bde7185746f9263ff83ca2cc3a31078d2bb7580305cf53182fe08757f79",
-  "dmg_mh_states/data/external/progeny_human.csv": "c08df9d90ac734eff8ec9c07a09715fb4834789d13c09c3e3cc0d17424d26310"
+  "dmg_mh_states/results/tables/m09_marker_genes.csv": "3728f7a0bd6afae53bf896cade0ac46b732715a18d012c4319847623d6fd953d",
+  "dmg_mh_states/results/tables/m09_pathway_activity.csv": "daa844c01d29e8689b17dd6f065eeed885a8678f8e57b4266b3bac8e7d3b006f",
+  "dmg_mh_states/results/tables/m09_tf_activity.csv": "603ebe14b4d64e1703e252c003dc29fbecb30bb0a527469b375f26c95a787ceb",
+  "dmg_mh_states/results/tables/m09_subpopulation_correlation.csv": "3c5e682275f6aceb68341a2220cc3f4341418c023c4ddd9ab81518df724b22e0"
  },
  "argv": [
-  "--force"
- ],
- "resources": "human CollecTRI + PROGENy applied to both species on the ortholog-mapped matrices",
- "shared_genes": 12687
+  "--refigure"
+ ]
 }

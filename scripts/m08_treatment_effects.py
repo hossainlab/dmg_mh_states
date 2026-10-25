@@ -257,7 +257,7 @@ with log.step("write + figure"):
     sc_panels = [("human_MP_ucell", "tumour", "MP4_hypoxia", "tumour: MP4 hypoxia UCell"), ("human_MP_ucell", "tumour", "MP8_MES_like", "tumour: MP8 MES-like UCell"),
                  ("pseudobulk_geneset", "tumour", "Interferon", "tumour IFN set score"), ("pseudobulk_geneset", "Microglia", "Interferon", "microglia IFN set score")]
     fig, axes = plt.subplots(3, 4, figsize=(PAGE_W, 6.6), gridspec_kw=dict(hspace=0.85, wspace=0.52,
-                                                            left=0.085, right=0.995, top=0.945, bottom=0.085)); axes = axes.ravel()
+                                                            left=0.085, right=0.995, top=0.92, bottom=0.085)); axes = axes.ravel()
     rng = np.random.default_rng(0)
 
     def _stat(r):
@@ -286,5 +286,14 @@ with log.step("write + figure"):
         r = SC[(SC.family == f_) & (SC.population == pop) & (SC.score == sc_) & (SC.model == "arm")].set_index("contrast")
         stat = _stat(r)
         dots(axes[8 + i], d, t_, stat)
+    # panel letters sit above the two-line titles, so they are placed from the axes box rather than with panel()
+    for i, ax_ in enumerate(axes):
+        if not ax_.has_data():
+            ax_.set_visible(False)
+            continue
+        bb = ax_.get_position()
+        fig.text(bb.x0 - 0.018, bb.y1 + 0.044, "abcdefghijkl"[i].upper(), fontsize=8,
+                 fontweight="bold", va="bottom", ha="left")
+
     save_figure(fig, OUTS[5], log)
     provenance(OUTS, [IN, QC, ORTH, CALLS, USE, PROGS, STS, TME, MPG, FAM, GS], "scripts/m08_treatment_effects.py")

@@ -255,5 +255,6 @@ if __name__ == "__main__":
     a = p.parse_args()
     if a.refigure:
         figure(pd.read_csv(OUT["markers"]), pd.read_csv(OUT["paths"]), pd.read_csv(OUT["tfs"]), pd.read_csv(OUT["corr"]))
+        provenance([OUT["fig"]], [OUT["markers"], OUT["paths"], OUT["tfs"], OUT["corr"]], "scripts/m09_subpopulation_evidence.py")
     else:
         main(a.force)
