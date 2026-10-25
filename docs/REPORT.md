@@ -43,9 +43,12 @@ Sample6 contributes 54 % of them and one mouse has none.
 
 ![Figure 1](../results/figures/m04_tumour_calls.png)
 
-**Figure 1 - which mouse cells carry the tumour clone.** CNV score and clone correlation per author label, the shared
-clone profile across mice, and the subclusters that pass the clone-positive threshold. The point to make: tumour
-identity here is defined by copy number, not by the submitted label, and the two largest "tumour" clusters fail it.
+**Figure 1 - which mouse cells carry the tumour clone.** (a) clone correlation per author label, leave-one-mouse-out;
+the dashed line is the clone-positive threshold. (b) the shared clone profile, mean inferred CNV x100 per chromosome
+for each mouse with at least three seed cells; alternate chromosome labels are blanked so the rest stay legible.
+(c) inferred CNV along the GRCm39 gene order for 300 randomly sampled cells per group, ordered within each group by
+clone correlation. The point to make: tumour identity here is defined by copy number, not by the submitted label, and
+the two largest "tumour" clusters fail it.
 
 ## The human reference: four malignant subpopulations
 
@@ -130,9 +133,13 @@ ambient, p6 nuclear, p8 mitochondrial) still arise *within* those tumour cells, 
 
 ![Figure 4](../results/figures/m05_state_comparison.png)
 
-**Figure 4 - state scores, human metaprograms and the mouse's own programmes.** Human state scores on mouse tumour
-cells, metaprogram scores in tumour against each normal mouse population, and the de novo cNMF programmes with their
-overlap against the human metaprograms and the Liu 2022 sets. The point to make: the cycling programme is recovered
+**Figure 4 - state scores, human metaprograms and the mouse's own programmes.** (a) Spearman correlation between each
+mouse cluster and each human class on z-scored pseudobulk over 2,000 shared genes, cluster sizes in the row labels.
+(b) human state sets assigned by raw argmax, mean proportion per mouse or per patient sample under seven cell-set
+definitions. (c) median UCell score of each human lineage metaprogram (top 50 genes) in mouse tumour cells against each
+normal mouse population. (d) the nine de novo cNMF programmes of the 891-cell primary tumour set, each row labelled by
+its top genes, against the human metaprograms and the Liu 2022 signatures; colour is the hypergeometric -log10 q.
+The point to make: the cycling programme is recovered
 de novo (p1, 25 of 50 genes with MP1), but every AC-like metaprogram scores higher in normal mouse astrocytes than in
 tumour - the apparent AC-like signal is contamination, not a state.
 
@@ -164,7 +171,8 @@ zero-filled) corroborates the CNV-based tumour calls by a route that shares none
 
 **Figure 5 - the human reference model applied to the mouse cells.** (a) mouse cells on the human reference embedding,
 coloured by transferred lineage; (b) distance from the human manifold, mouse against the five human query cohorts;
-(c) author annotation against transferred lineage; (d) the same confidence statistics per cohort. The point to make:
+(c) author annotation against transferred lineage; (d) the same statistics per cohort - median kNN uncertainty (solid
+bars) and the fraction of cells predicted malignant (pale bars). The point to make:
 97.5 % of the CNV-defined tumour cells are independently called malignant by a model that never saw them, and panel (b)
 shows the mouse cells are no further from the human reference than published human DMG cohorts are.
 
@@ -186,8 +194,11 @@ denominator (`m07_celltype_proportions.csv`, rule `sample_mean_qc_pass`).
 
 ![Figure 6](../results/figures/m07_tme_comparison.png)
 
-**Figure 6 - microenvironment, mouse against patient.** Compartment composition, subcluster labels under the human
-labelling rule, and cross-species marker overlap. The point to make: the immune compartment of this model is not the
+**Figure 6 - microenvironment, mouse against patient.** (a-c) the mouse myeloid (11,621 cells), T/NK (6,378) and
+vascular (304) compartments, each clustered separately, with populations named in the plot. (d-f) composition of those
+same three compartments under the shared labelling rule, mouse mean per mouse (blue) against human mean per patient
+sample (grey); a bar absent on one side is a population with no counterpart in that species. The cross-species marker
+overlap behind the labels is in `results/tables/m07_tme_vs_human_markers.csv`. The point to make: the immune compartment of this model is not the
 immune compartment of the disease - it is more inflamed, NK-rich and microglia-rich, and it lacks the
 border-associated and proliferating myeloid populations seen in patients.
 
@@ -213,10 +224,14 @@ whether treatment appears to move composition depends on how batch is handled.
 
 ![Figure 7](../results/figures/m08_treatment_effects.png)
 
-**Figure 7 - treatment effects on composition, state scores and expression.** Per-arm composition of tumour states and
-immune compartments, the state and metaprogram score contrasts, and the pseudobulk differential-expression summary. The
-point to make: this is the figure behind the one nominally significant tumour-state result (MP4 hypoxia with RT), which
-Figure 8 then fails to reproduce with an independent pathway method.
+**Figure 7 - treatment effects on composition and state scores.** Dots are per-mouse values and horizontal bars are
+arm means; the p-values above each panel come from mouse-level models against Control and are exploratory (2-4 mice per
+arm). (a-d) tumour cells, T/NK and myeloid as a share of all cells, and Mono/Macro as a share of immune cells.
+(e-h) interferon-myeloid and homeostatic microglia as a share of myeloid, NK as a share of T and NK, and cycling as a
+share of tumour cells. (i-l) tumour MP4 hypoxia and MP8 MES-like UCell scores, and the tumour and microglia interferon
+set scores. The pseudobulk differential-expression summary is tabular only
+(`results/tables/m08_de_summary.csv`). The point to make: this is the figure behind the one nominally significant
+tumour-state result (i: MP4 hypoxia with RT), which Figure 8 then fails to reproduce with an independent pathway method.
 
 **The one previously "consistent" signal does not replicate under an independent method.** `m08` found the human MP4
 hypoxia gene set rising with RT (q = 0.006) and MP8 MES-like (q = 0.041). Running PROGENy on the same tumour cells of
