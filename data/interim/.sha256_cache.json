@@ -85,5 +85,6 @@
  "/Users/jubayer/Projects/dmg_mh_states/results/tables/m05_state_scores.csv.gz|3032239|1793127419": "414740cbd9e4524eb309140358968e9b77c8ffc0643b8942eb48afad26172f2a",
  "/Users/jubayer/Projects/dmg_mh_states/data/processed/m05_cnmf_usages.parquet|72867|1793127419": "974afd7eee0d108f7c555be32390c22701777dce77a25453adf4b4649dddf6ea",
  "/Users/jubayer/Projects/dmg_mh_states/results/tables/m05_cnmf_programs.csv|113479|1793127419": "25c648dffb0755d6936cd4d4a8ce46797a125ec018a8079018b0b9a26b7b8a23",
- "/Users/jubayer/Projects/dmg_mh_states/data/processed/mouse_tme_labels.csv|1353257|1793127256": "f9fd5db68b24c8cd6eed68cae57f142f9d079f335f3180ff04a90129749c52c3"
+ "/Users/jubayer/Projects/dmg_mh_states/data/processed/mouse_tme_labels.csv|1353257|1793127256": "f9fd5db68b24c8cd6eed68cae57f142f9d079f335f3180ff04a90129749c52c3",
+ "/Users/jubayer/Projects/dmg_mh_states/results/tables/m06_projection_per_cell.csv.gz|4677949|1793128141": "6cbd50bb15a5eb3c8b3f5d1f05b2841a4f7078703b968ac0b07d74b621f0ff22"
 }

@@ -230,7 +230,8 @@ def figure(per, calib, comp):
     Q = ad.read_h5ad(ATLAS_ROOT / "data/processed/query_mapping.h5ad", backed="r").obs
     ecdf(ax, per.uncertainty_knn, color=PAL.LINEAGE["malignant"], lw=1.8, label=f"mouse, all ({len(per):,})")
     mt = per[(per.tumour_call == "tumour") & per.qc_pass]
-    ecdf(ax, mt.uncertainty_knn, color="#742a2a", lw=1.8, ls="--", label=f"mouse, m04 tumour ({len(mt):,})")
+    ecdf(ax, mt.uncertainty_knn, color=PAL.shades(PAL.LINEAGE["malignant"], 3)[0], lw=1.8, ls="--",
+         label=f"mouse, m04 tumour ({len(mt):,})")
     for st, g in Q.groupby("study", observed=True):
         ecdf(ax, g.uncertainty_knn, lw=0.9, label=f"human: {st} ({len(g):,})")
     ax.set(xlabel="kNN uncertainty (percentile)",
