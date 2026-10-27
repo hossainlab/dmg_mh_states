@@ -15,7 +15,7 @@ regulatory T cells (see question 2).
 
 ## Figure guide
 
-Eight figures, in the order the argument runs. Each caption states the one point it makes.
+Nine figures, in the order the argument runs. Each caption states the one point it makes.
 
 | # | figure | the point |
 |---|---|---|
@@ -27,6 +27,7 @@ Eight figures, in the order the argument runs. Each caption states the one point
 | 6 | `m07_tme_comparison.png` | the microenvironment is where mouse and patient differ most |
 | 7 | `m08_treatment_effects.png` | treatment: composition, state scores and differential expression |
 | 8 | `m10_treatment_programmes.png` | treatment: pathway, TF and immune-programme activity |
+| 9 | `m11_subtype_umap_de.png` | the transferred subtype labels tested: one continuum, not five subtypes |
 
 ## Which mouse cells are really tumour
 
