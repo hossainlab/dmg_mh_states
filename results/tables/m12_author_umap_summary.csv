@@ -1,0 +1,15 @@
+author_label,n_cells,median_clone_r,n_defensible_tumour,frac_predicted_malignant,top_transferred_lineage,frac_of_defensible_tumour
+Neuronal-like tumor,29915,0.0694,0,0.2195,astrocyte,0.0
+Purkinje-like tumor,12999,0.0415,0,0.245,astrocyte,0.0
+Mono/Macro,6124,-0.0075,0,0.0614,myeloid,0.0
+Microglia,5685,-0.0059,0,0.0278,myeloid,0.0
+T cells,4943,-0.0035,0,0.0065,T_NK,0.0
+OPC-like tumor cells,3246,0.218,883,0.8253,malignant,0.991
+NK cells,1949,-0.0018,0,0.0031,T_NK,0.0
+pDC,465,-0.034,0,0.0022,myeloid,0.0
+Astrocyte-like tumor cells,372,0.0346,8,0.1667,astrocyte,0.009
+B/Plasma,370,-0.0016,0,0.0081,myeloid,0.0
+Meningeal fibroblasts (VLMC),351,-0.0013,0,0.5299,malignant,0.0
+Vascular cells,347,-0.0081,0,0.0634,vascular,0.0
+Choroid plexus epithelial cells,297,-0.0145,0,0.8754,malignant,0.0
+Neutrophils,250,-0.0536,0,0.196,astrocyte,0.0

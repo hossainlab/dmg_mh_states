@@ -1,0 +1,14 @@
+{
+ "script": "scripts/m12_author_umap_annotated.py",
+ "utc": "2026-10-27T18:35:50Z",
+ "inputs_sha256": {
+  "dmg_mh_states/data/processed/mouse_all_hs.h5ad": "a1e097e90ac90d617e82d6627d6800b031df7caa7dcad2b83998f6804320d7f0",
+  "dmg_mh_states/data/processed/mouse_tumour_calls.csv": "162a7ccceffae68164db01ecf658ac6ddb1dda3727e1799f5bc17db1ce91782b",
+  "dmg_mh_states/results/tables/m06_projection_per_cell.csv.gz": "1d4dc6a3e01d361ce58c411630eb441bbe73a8dd5ff17ab79013c3cdea7a45bd"
+ },
+ "argv": [
+  "--force"
+ ],
+ "n_cells": 67313,
+ "n_defensible_tumour": 891
+}
