@@ -168,7 +168,9 @@ with log.step("calls + tables + figure"):
                                              left=0.19, right=0.965, top=0.945, bottom=0.075)
     ax = fig.add_subplot(gs[0, 0])
     order = bylab.sort_values("median_clone_r").index
-    ax.boxplot([o.clone_r[o.author_label == l].dropna() for l in order], vert=False, showfliers=False, widths=0.6)
+    ax.boxplot([o.clone_r[o.author_label == l].dropna() for l in order], vert=False, showfliers=False,
+               widths=0.6, medianprops=dict(color="#222222", lw=1.0))  # neutral: the default orange now
+    # reads as the AC-like subtype in the shared palette
     ax.set_yticks(range(1, len(order) + 1), order); ax.axvline(thr_r, ls="--", lw=0.7, c="k")
     ax.set_xlabel("correlation with shared tumour CNV profile\n(leave-one-mouse-out)"); panel(ax, "a", "CNV clone signal by author label")
     ax = fig.add_subplot(gs[0, 1])
