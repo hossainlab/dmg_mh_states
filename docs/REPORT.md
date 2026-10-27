@@ -278,6 +278,56 @@ q < 0.1 (there are none); (b) T-cell activation against dysfunction, one point p
 (a) and (c) are not significant at this sample size, and panel (d) shows why - the per-mouse spread within an arm is as
 large as the difference between arms.
 
+## Follow-up - do the transferred subtype labels mark distinct clusters?
+
+**No. On their own embedding the 891 tumour cells are one continuum, not five subtypes** (`m11`). This matters for how
+the labels may be used: `m05` assigns a subtype by scoring the five human marker sets per cell and taking the argmax,
+which returns a label for every cell whether or not any state fits, so the labels must be tested rather than assumed.
+
+| measure | all genes | defining markers removed |
+|---|---|---|
+| ARI, Leiden clusters vs subtype | 0.075 | 0.053 |
+| ARI, Leiden clusters vs mouse of origin | 0.064 | 0.045 |
+| silhouette, subtype | **-0.031** | **-0.045** |
+| silhouette, subtype with labels permuted | -0.046 +/- 0.021 | -0.045 +/- 0.027 |
+| silhouette, mouse of origin | -0.180 | -0.179 |
+
+The subtype silhouette sits inside the permutation band in both embeddings, and once the 137 defining marker genes are
+removed it equals the permuted baseline exactly (-0.045 against -0.045). The labels therefore carry no transcriptional
+structure beyond the genes that assigned them. The mouse of origin separates even less well (-0.180), so this is not a
+batch artefact being mistaken for biology - the cells simply do not partition.
+
+**Differential expression validates the labels only in the sense of showing what they actually are.** One-vs-rest
+Wilcoxon recovers most of each defining set, as it must by construction (AC-like 20/30 of its own markers, MES-like
+12/30, OC-like 8/30, OPC-like 25/30, cycling 27/29). The informative part is the genes *outside* every defining set:
+
+- *cycling* is the one subtype that validates cleanly - `STMN1`, `HIST1H1B`, `TUBA1B`, `CKS2`, `CDCA8`, independent
+  mitotic genes, matching the de novo programme p1 and the +0.47 pseudobulk correlation.
+- *AC-like* comes back as **astrocyte identity, not an AC-like tumour state** - `SLC6A11`, `ACSBG1`, `GRIA1` are
+  astrocyte genes, which is the same conclusion the metaprogram scores reached from the other direction.
+- *MES-like* comes back as **interferon**, not mesenchyme - `CXCL10`, `OAS3`, `USP18`, `BST2`. That is the mouse-only
+  JAK-STAT axis of `m09`, relabelled by the argmax as the nearest human state.
+- *OPC-like* returns 3,318 up-regulated genes, a quarter of the tested transcriptome, which is **a depth artefact**:
+  its cells carry a median 1,065 genes against 484 for MES-like (Kruskal-Wallis H = 60.0, p = 2.9e-12). A one-vs-rest
+  test across groups that differ two-fold in complexity is not interpretable, so OPC-like's gene list is reported but
+  not used as evidence.
+
+![Figure 9](../results/figures/m11_subtype_umap_de.png)
+
+**Figure 9 - the transferred subtype labels tested on the mouse's own embedding.** 891 QC-pass tumour cells, UMAP over
+2,000 highly variable orthologs. (a) cells coloured by transferred subtype, named in the plot; (b) the same cells
+coloured by mouse of origin, the confound control - one animal contributes 45 % of the set. (c) per subtype, the
+strongest up-regulated genes that belong to no defining marker set, as Wilcoxon z across all five groups.
+(d) silhouette of the subtype labels in PCA space against a 20-draw label-permutation baseline and against the mouse of
+origin, before and after removing the 137 defining marker genes. (e) genes detected per cell by subtype, the depth
+confound behind OPC-like's gene count. (f) subtype composition of each mouse. The point to make: panels (a) and (d)
+together say the labels are a projection onto human axes rather than discrete states in this model.
+
+**What this changes.** Nothing about Question 1 - the pseudobulk correlations, pathway and TF evidence are computed on
+profiles, not on these per-cell labels. What it does change is usage: per-cell subtype labels should not be treated as
+cluster assignments in this model, and any analysis that conditions on them (per-subtype DE, per-subtype composition
+by arm) inherits a label that is one argmax away from noise for every subtype except cycling.
+
 ## What this analysis cannot support
 
 1. **Power.** Two to four mice per arm, and the tumour analyses rest on 11 mice of which only 2 are RT and 2 FUS+RT.
@@ -378,6 +428,7 @@ Searched via PubMed (NCBI); every reference below was retrieved and its metadata
 | treatment effects on pathways, TFs and immune programmes | `results/tables/m10_*.csv*`, `results/figures/m10_treatment_programmes.png` |
 | microenvironment | `results/tables/m07_*.csv`, `results/figures/m07_tme_comparison.png` |
 | treatment effects (composition, states, DE) | `results/tables/m08_*.csv*`, `results/figures/m08_treatment_effects.png` |
+| transferred subtype labels tested (UMAP, separation, DE) | `results/tables/m11_*.csv*`, `results/figures/m11_subtype_umap_de.png` |
 
 Every file in `results/` has a `.provenance.json` sidecar recording the producing script and the sha256 of each input.
 CollecTRI and PROGENy were retrieved from omnipathdb.org; see `data/external/resources_provenance.json`.
