@@ -43,6 +43,7 @@ import dmg_atlas.utils as U  # noqa: E402
 import numpy as np, pandas as pd, anndata as ad  # noqa: E402
 from mouse_cmp import INTERIM, PROCESSED, RESULTS, LOGS, ATLAS_ROOT  # noqa: E402
 from mouse_cmp.figio import PAGE_W, save_figure, panel, pretty, annotate_clusters  # noqa: E402
+from mouse_cmp import palette as PAL  # noqa: E402
 from mouse_cmp.common import provenance, skip_existing  # noqa: E402
 
 K = 15
@@ -209,8 +210,7 @@ def figure(per, calib, comp):
     H = ad.read_h5ad(ATLAS_ROOT / "data/processed/dmg_atlas_v1.h5ad", backed="r")
     hu = H.obsm["X_umap"][:]
     ax.scatter(hu[:, 0], hu[:, 1], s=0.3, c="0.88", lw=0, rasterized=True)
-    pal = {"malignant": "#de2d26", "myeloid": "#2b6cb0", "T_NK": "#38a169", "oligodendrocyte": "#805ad5",
-           "astrocyte": "#dd6b20", "neuron": "#718096", "vascular": "#d53f8c"}
+    pal = PAL.LINEAGE
     for lab, g in per.groupby("predicted_lineage"):
         ax.scatter(g.umap_ref_1, g.umap_ref_2, s=1.2, lw=0, rasterized=True, color=pal.get(lab, "0.4"))
     ax.set(xticks=[], yticks=[])
@@ -228,7 +228,7 @@ def figure(per, calib, comp):
         ax.step(v, np.arange(1, len(v) + 1) / len(v), where="post", **kw)
 
     Q = ad.read_h5ad(ATLAS_ROOT / "data/processed/query_mapping.h5ad", backed="r").obs
-    ecdf(ax, per.uncertainty_knn, color="#de2d26", lw=1.8, label=f"mouse, all ({len(per):,})")
+    ecdf(ax, per.uncertainty_knn, color=PAL.LINEAGE["malignant"], lw=1.8, label=f"mouse, all ({len(per):,})")
     mt = per[(per.tumour_call == "tumour") & per.qc_pass]
     ecdf(ax, mt.uncertainty_knn, color="#742a2a", lw=1.8, ls="--", label=f"mouse, m04 tumour ({len(mt):,})")
     for st, g in Q.groupby("study", observed=True):
@@ -254,7 +254,7 @@ def figure(per, calib, comp):
     ax = axes[1, 1]
     c = calib.set_index("cohort")
     y = np.arange(len(c))
-    col = np.where(c.species == "mouse", "#de2d26", "#2b6cb0")
+    col = np.where(c.species == "mouse", PAL.LINEAGE["malignant"], PAL.LINEAGE["myeloid"])
     ax.barh(y - 0.2, c.median_uncertainty_knn, height=0.38, color=col, label="median kNN uncertainty")
     ax.barh(y + 0.2, c.frac_predicted_malignant, height=0.38, color=col, alpha=0.45,
             label="fraction malignant")

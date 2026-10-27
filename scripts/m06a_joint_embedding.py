@@ -34,6 +34,7 @@ import numpy as np, pandas as pd, anndata as ad  # noqa: E402
 from dmg_atlas.states import STATE_GENE_SETS  # noqa: E402
 from mouse_cmp import RESULTS, LOGS, HUMAN, ATLAS_ROOT  # noqa: E402
 from mouse_cmp.figio import PAGE_W, save_figure  # noqa: E402
+from mouse_cmp import palette as PAL  # noqa: E402
 from mouse_cmp.common import provenance, skip_existing  # noqa: E402
 
 LOG = U.StepLogger(LOGS / "m06a_joint_embedding.log", context="m06a_joint_embedding")
@@ -124,10 +125,9 @@ def figure(ho, mo):
     # label (>= MIN_LABEL cells and median absolute deviation below MAX_SPREAD of the panel width); anything else is
     # left unlabelled and named in the caption, which is more honest than a label pointing at scattered dust.
     MIN_LABEL, MAX_SPREAD = 150, 0.22
-    STATE_COL = {"OPC_like": "#de2d26", "AC_like": "#fd8d3c", "OC_like": "#8c510a", "MES_like": "#762a83",
-                 "cycling": "#111111", "unassigned": "#cccccc"}
-    LIN_COL = {"myeloid": "#2b6cb0", "T_NK": "#38a169", "oligodendrocyte": "#00b8d4", "astrocyte": "#0f766e",
-               "neuron": "#718096", "vascular": "#d53f8c", "Unknown": "#e2e8f0", "malignant": "#9aa5b1"}
+    STATE_COL = dict(PAL.SUBTYPE)
+    # "malignant" and "Unknown" are background in these panels, so they stay deliberately pale
+    LIN_COL = {**PAL.LINEAGE, "Unknown": "#e2e8f0", "malignant": "#9aa5b1"}
     PRETTY = {"OPC_like": "OPC-like", "AC_like": "AC-like", "OC_like": "OC-like", "MES_like": "MES-like",
               "cycling": "cycling", "unassigned": "no state call", "malignant": "malignant\n(no state call)",
               "T_NK": "T/NK", "Unknown": "unannotated", "Neuronal-like tumor": "Neuronal-like",
@@ -207,7 +207,8 @@ def figure(ho, mo):
     ax.scatter(xy[:, 0], xy[:, 1], s=0.3, c="0.92", lw=0, rasterized=True)
     labs_b = mo["author_label"].astype(str)
     cats = list(labs_b.value_counts().index)
-    pal_b = dict(zip(cats, (list(plt.cm.tab20.colors) * 2)[:len(cats)]))
+    # hue says which compartment, lightness separates the labels inside it
+    pal_b = PAL.by_compartment(cats, PAL.AUTHOR_COMPARTMENT, order=cats)
     for lab in cats:
         g = mo[labs_b.eq(lab)]
         ax.scatter(g.umap_ref_1, g.umap_ref_2, s=1.3 if len(g) > 2000 else 3.5, color=pal_b[lab], lw=0,

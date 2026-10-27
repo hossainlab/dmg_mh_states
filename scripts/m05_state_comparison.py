@@ -71,6 +71,7 @@ def _cut(s, n=26):
         return s
     keep = s[:n].rsplit(";", 1)[0]
     return (keep or s[:n]) + ";..."  # noqa: E402
+from mouse_cmp import palette as PAL  # noqa: E402
 from mouse_cmp.common import provenance, skip_existing, bh  # noqa: E402
 from dmg_atlas.states import STATE_GENE_SETS  # noqa: E402
 from dmg_atlas import metaprograms as MP  # noqa: E402
@@ -250,7 +251,7 @@ with log.step("write + figure"):
     ax = fig.add_subplot(gs[1, 0])
     sp_ = PROPS[PROPS.rule == "state_raw_mouse_mean"].pivot_table(index="set", columns="state", values="proportion").fillna(0)
     sp_ = sp_.loc[[s for s in ["primary", "all_tumour", "author_glial", "author_all", "human_cells", "human_nuclei", "human_all"] if s in sp_.index]]
-    cols = {"OPC_like": "#3b6fb6", "OC_like": "#7fb3e0", "AC_like": "#d98b2b", "MES_like": "#b8433a", "cycling": "#4f9a55", "unassigned": "#bbbbbb"}
+    cols = PAL.SUBTYPE
     left = np.zeros(len(sp_))
     for st in cols:
         if st in sp_:

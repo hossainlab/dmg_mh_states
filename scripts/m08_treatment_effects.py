@@ -49,6 +49,7 @@ import statsmodels.api as sm  # noqa: E402
 from statsmodels.nonparametric.smoothers_lowess import lowess  # noqa: E402
 from mouse_cmp import INTERIM, PROCESSED, EXTERNAL, RESULTS, LOGS, HUMAN, ATLAS_ROOT  # noqa: E402
 from mouse_cmp.figio import PAGE_W, save_figure, pretty  # noqa: E402
+from mouse_cmp import palette as PAL  # noqa: E402
 from mouse_cmp.common import provenance, skip_existing, bh, sample_block, ARMS  # noqa: E402
 from dmg_atlas import metaprograms as MP  # noqa: E402
 from dmg_atlas.figstyle import apply_figure_style  # noqa: E402
@@ -249,7 +250,7 @@ with log.step("write + figure"):
     PM.to_csv(OUTS[0], index=False); COMPR.to_csv(OUTS[1], index=False); SC.to_csv(OUTS[2], index=False); DE.to_csv(OUTS[3], index=False)
     SUMM.to_csv(OUTS[4], index=False)
     apply_figure_style()
-    acol = {"Control": "0.45", "FUS": "#3b6fb6", "RT": "#d98b2b", "FUS+RT": "#b8433a"}
+    acol = PAL.ARM  # same arm colours as m10, which used to disagree with these
     panels = [("compartment", "tumour", "tumour cells / all cells"), ("compartment", "T_NK", "T/NK / all cells"),
               ("compartment", "myeloid", "myeloid / all cells"), ("immune_type", "Mono/Macro", "Mono/Macro / immune"),
               ("myeloid_label", "interferon_myeloid", "IFN-myeloid / myeloid"), ("myeloid_label", "homeostatic_microglia", "homeostatic MG / myeloid"),

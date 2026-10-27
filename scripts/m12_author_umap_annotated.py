@@ -21,6 +21,7 @@ import dmg_atlas.utils as U  # noqa: E402
 import numpy as np, pandas as pd, h5py  # noqa: E402
 from mouse_cmp import PROCESSED, RESULTS, LOGS  # noqa: E402
 from mouse_cmp.figio import PAGE_W, save_figure, panel, pretty, annotate_clusters  # noqa: E402
+from mouse_cmp import palette as PAL  # noqa: E402
 from mouse_cmp.common import provenance, skip_existing  # noqa: E402
 
 LOG = U.StepLogger(LOGS / "m12_author_umap_annotated.log", context="m12_author_umap_annotated")
@@ -29,8 +30,7 @@ CALLS = PROCESSED / "mouse_tumour_calls.csv"
 PROJ = RESULTS / "tables/m06_projection_per_cell.csv.gz"
 OUT = {"summary": RESULTS / "tables/m12_author_umap_summary.csv",
        "fig": RESULTS / "figures/m12_author_umap_annotated.png"}
-LIN_COL = {"malignant": "#de2d26", "myeloid": "#2b6cb0", "T_NK": "#38a169", "oligodendrocyte": "#805ad5",
-           "astrocyte": "#0f766e", "neuron": "#718096", "vascular": "#d53f8c"}
+LIN_COL = PAL.LINEAGE
 
 
 def read_obs():
@@ -92,8 +92,8 @@ def figure(d, s):
 
     ax = axes[0, 0]
     labs = sorted(d.author_label.unique())
-    cmap = plt.get_cmap("tab20")
-    acol = {l: cmap(i % 20) for i, l in enumerate(labs)}
+    # hue says which compartment the authors assigned, lightness separates labels inside it
+    acol = PAL.by_compartment(labs, PAL.AUTHOR_COMPARTMENT)
     for l in labs:
         g = d[d.author_label == l]
         ax.scatter(g.umap_1, g.umap_2, s=0.6, lw=0, color=acol[l], rasterized=True)
@@ -115,7 +115,7 @@ def figure(d, s):
     ax = axes[1, 0]
     ax.scatter(xy[:, 0], xy[:, 1], s=0.5, lw=0, color="0.88", rasterized=True)
     g = d[d.defensible_tumour]
-    ax.scatter(g.umap_1, g.umap_2, s=3.5, lw=0.15, edgecolor="white", color="#b2182b", rasterized=True)
+    ax.scatter(g.umap_1, g.umap_2, s=3.5, lw=0.15, edgecolor="white", color=PAL.LINEAGE["malignant"], rasterized=True)
     ax.set(xticks=[], yticks=[])
     ax.text(0.02, 0.02, f"{len(g)} clone-defined,\nQC-pass tumour cells", transform=ax.transAxes,
             fontsize=5.5, va="bottom", ha="left",

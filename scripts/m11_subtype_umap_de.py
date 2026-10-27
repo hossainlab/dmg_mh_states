@@ -34,12 +34,12 @@ from sklearn.metrics import adjusted_rand_score, normalized_mutual_info_score, s
 from dmg_atlas.states import STATE_GENE_SETS  # noqa: E402
 from mouse_cmp import PROCESSED, RESULTS, LOGS  # noqa: E402
 from mouse_cmp.figio import PAGE_W, save_figure, panel, pretty, annotate_clusters  # noqa: E402
+from mouse_cmp import palette as PAL  # noqa: E402
 from mouse_cmp.common import provenance, skip_existing  # noqa: E402
 
 LOG = U.StepLogger(LOGS / "m11_subtype_umap_de.log", context="m11_subtype_umap_de")
 STATES = ["OPC_like", "AC_like", "OC_like", "MES_like", "cycling"]
-COL = {"OPC_like": "#b2182b", "AC_like": "#e08214", "OC_like": "#8c510a", "MES_like": "#762a83",
-       "cycling": "#111111", "unassigned": "#bdbdbd"}
+COL = PAL.SUBTYPE
 SEED = 0
 IN = PROCESSED / "mouse_all_hs.h5ad"
 CALLS = PROCESSED / "mouse_tumour_calls.csv"
@@ -185,8 +185,7 @@ def figure(emb, sep, de, sig, qc, obs):
 
     ax = axes[0, 1]
     mice = sorted(emb.mouse.unique())
-    cmap = plt.get_cmap("tab20")
-    mcol = {m: cmap(i % 20) for i, m in enumerate(mice)}
+    mcol = PAL.mouse_palette(mice)
     for m in mice:
         g = emb[emb.mouse == m]
         ax.scatter(g.umap_1, g.umap_2, s=7, lw=0, color=mcol[m], alpha=0.9)
@@ -215,9 +214,9 @@ def figure(emb, sep, de, sig, qc, obs):
     w = 0.26
     s0 = sep.set_index("embedding")
     order = ["all genes", "defining markers removed"]
-    ax.bar(x - w, s0.loc[order, "silhouette_subtype"], w, color="#b2182b", label="subtype")
+    ax.bar(x - w, s0.loc[order, "silhouette_subtype"], w, color=PAL.SUBTYPE["OPC_like"], label="subtype")
     ax.bar(x, s0.loc[order, "silhouette_subtype_permuted_mean"], w, color="0.65", label="subtype, labels permuted")
-    ax.bar(x + w, s0.loc[order, "silhouette_mouse"], w, color="#2b6cb0", label="mouse of origin")
+    ax.bar(x + w, s0.loc[order, "silhouette_mouse"], w, color=PAL.LINEAGE["myeloid"], label="mouse of origin")
     ax.axhline(0, color="k", lw=0.6)
     ax.set(xticks=x, xticklabels=["all genes", "markers\nremoved"])
     ax.set_ylabel("silhouette in PCA space", fontsize=6)
@@ -228,7 +227,7 @@ def figure(emb, sep, de, sig, qc, obs):
     ax = axes[1, 1]
     order = [s for s in STATES if s in set(obs.subtype)]
     ax.boxplot([obs.n_genes[obs.subtype == s].values for s in order], showfliers=False, widths=0.6,
-               medianprops=dict(color="#b2182b"))
+               medianprops=dict(color=PAL.SUBTYPE["OPC_like"]))
     ax.set(xticks=range(1, len(order) + 1), xticklabels=[pretty(s) for s in order], ylabel="genes detected per cell")
     ax.tick_params(axis="x", rotation=45, labelsize=5.5)
     panel(ax, "e", "Library complexity")

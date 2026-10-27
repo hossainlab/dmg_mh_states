@@ -31,6 +31,7 @@ import scipy.stats as ss  # noqa: E402
 from dmg_atlas.states import STATE_GENE_SETS  # noqa: E402
 from mouse_cmp import INTERIM, PROCESSED, RESULTS, LOGS, HUMAN, EXTERNAL, ATLAS_ROOT  # noqa: E402
 from mouse_cmp.figio import PAGE_W, save_figure, panel, pretty  # noqa: E402
+from mouse_cmp import palette as PAL  # noqa: E402
 from mouse_cmp.common import provenance, skip_existing  # noqa: E402
 
 LOG = U.StepLogger(LOGS / "m09_subpopulation_evidence.log", context="m09_subpopulation_evidence")
@@ -197,7 +198,8 @@ def figure(mk, pa, ta, corr):
     ax = axes[0, 0]
     d = mk.dropna(subset=["mouse_tumour_detect_frac", "human_subpop_detect_frac"])
     for s, g in d.groupby("subpopulation"):
-        ax.scatter(g.human_subpop_detect_frac, g.mouse_tumour_detect_frac, s=14, label=f"{pretty(s)} ({len(g)})", alpha=0.85)
+        ax.scatter(g.human_subpop_detect_frac, g.mouse_tumour_detect_frac, s=14, alpha=0.85,
+                   color=PAL.SUBTYPE.get(s, "0.4"), label=f"{pretty(s)} ({len(g)})")
     ax.plot([0, 1], [0, 1], ls=":", c="0.5", lw=0.8)
     ax.set(xlabel="detected in human cells of that subpopulation", ylabel="detected in mouse tumour cells",
            xlim=(-0.02, 1.02), ylim=(-0.02, 1.02))

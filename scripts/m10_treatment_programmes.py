@@ -33,6 +33,7 @@ import numpy as np, pandas as pd, anndata as ad, scipy.sparse as sp  # noqa: E40
 import statsmodels.api as sm  # noqa: E402
 from mouse_cmp import INTERIM, PROCESSED, RESULTS, LOGS, EXTERNAL, ATLAS_ROOT  # noqa: E402
 from mouse_cmp.figio import PAGE_W, save_figure, panel, pretty  # noqa: E402
+from mouse_cmp import palette as PAL  # noqa: E402
 from mouse_cmp.common import provenance, skip_existing, bh  # noqa: E402
 
 LOG = U.StepLogger(LOGS / "m10_treatment_programmes.log", context="m10_treatment_programmes")
@@ -199,7 +200,7 @@ def figure(tum, prog, tst, de):
     from dmg_atlas.figstyle import apply_figure_style, letter
     apply_figure_style()
     fig, axes = plt.subplots(2, 2, figsize=(PAGE_W, 6.2))
-    COL = {"Control": "#4a5568", "FUS": "#2b6cb0", "RT": "#de2d26", "FUS+RT": "#805ad5"}
+    COL = PAL.ARM
 
     ax = axes[0, 0]
     d = tum[tum.family == "tumour_pathway_progeny"]

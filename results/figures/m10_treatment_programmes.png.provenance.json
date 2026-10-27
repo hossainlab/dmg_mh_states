@@ -1,13 +1,23 @@
 {
- "script": "scripts/m10_treatment_programmes.py",
- "utc": "2026-10-25T09:35:40Z",
+ "script": "m10_treatment_programmes.py",
+ "utc": "2026-10-27T18:54:52Z",
  "inputs_sha256": {
-  "dmg_mh_states/results/tables/m10_tumour_pathway_tf.csv": "6043d40ca34031180fb8d15a9463ef554223b7aea238306c4532ae7f127d4fc1",
-  "dmg_mh_states/results/tables/m10_immune_programmes.csv": "5a863268b8b27290779046057adab0ff936659a38e69f624da0acfcfa844cf91",
-  "dmg_mh_states/results/tables/m10_immune_programme_tests.csv": "4698fb87281eb072e17934dd02d90bc46cd2c1385110482aae104c72b0dffab7",
-  "dmg_mh_states/results/tables/m10_immune_de_genes.csv.gz": "f0d24a6a29cff5aa2e3a4decc7802f00545bc9da84c0866b239861b297c118e7"
+  "dmg_mh_states/data/processed/mouse_all_hs.h5ad": "a1e097e90ac90d617e82d6627d6800b031df7caa7dcad2b83998f6804320d7f0",
+  "dmg_mh_states/data/processed/mouse_tumour_calls.csv": "162a7ccceffae68164db01ecf658ac6ddb1dda3727e1799f5bc17db1ce91782b",
+  "dmg_mh_states/data/external/collectri_human.csv": "f4706bde7185746f9263ff83ca2cc3a31078d2bb7580305cf53182fe08757f79",
+  "dmg_mh_states/data/external/progeny_human.csv": "c08df9d90ac734eff8ec9c07a09715fb4834789d13c09c3e3cc0d17424d26310"
  },
  "argv": [
-  "--refigure"
- ]
+  "--force"
+ ],
+ "programmes": {
+  "inflammation": 14,
+  "interferon": 16,
+  "immune_suppression": 14,
+  "T_cell_dysfunction": 10,
+  "T_cell_activation": 14,
+  "regulatory_T": 6
+ },
+ "min_tumour_cells": 20,
+ "min_immune_cells": 50
 }

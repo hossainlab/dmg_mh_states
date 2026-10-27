@@ -60,3 +60,34 @@ figures: 311,618 human plus 67,313 mouse points as vector paths would produce an
 
 Colour-vision safety was not re-derived here; the palettes are unchanged from the earlier figure pass.
 CMYK conversion is left to the journal, as is the final caption text.
+
+## Colour system (added 2026-10-28)
+
+The palettes had been declared separately inside `m06a`, `m07`, `m08`, `m10`, `m11` and `m12`, and `m05` and `m09`
+carried a sixth and seventh set, so colours had drifted. The measured defects were:
+
+| defect | evidence |
+|---|---|
+| the same colour meant three different things | `#de2d26` was OPC-like (m06a), the RT arm (m10) and the malignant lineage (m12); `#2b6cb0` was FUS and myeloid; `#805ad5` was FUS+RT and oligodendrocyte |
+| the same entity changed colour between figures | OPC-like `#de2d26` in m06a vs `#b2182b` in m11, and **blue** `#3b6fb6` in m05; AC-like `#fd8d3c` vs `#e08214` |
+| the same treatment arm changed colour between adjacent figures | in m08 RT was amber and FUS+RT red; in m10 RT was red and FUS+RT violet |
+| one palette failed colour-vision testing | in m11, OPC-like and OC-like were **0.045** apart under deuteranopia simulation - indistinguishable |
+| three panels coloured by palette index | `tab10`/`tab20` by position in whatever category list the script happened to build, so colours move when the category set changes |
+| m09 panel a used matplotlib's default cycle | AC-like was blue there and orange everywhere else |
+
+`src/mouse_cmp/palette.py` now holds the single source of truth. Its rules:
+
+1. Three variable families occupy three separate colour ranges - malignant subtypes are warm, microenvironment
+   lineages are cool, treatment arms are neutral-to-violet - and no colour appears in two families.
+2. Within a compartment, hue carries the compartment and lightness separates the members, because lightness is the
+   channel that survives every colour-vision deficiency. `by_compartment()` applies this to the deposit's 14 author
+   labels and to the microenvironment subclusters, replacing the index palettes.
+3. The mouse of origin, a nuisance variable, uses deliberately muted earth and slate tones so it cannot be mistaken
+   for a lineage and stays visually subordinate.
+4. `check()` simulates deuteranopia, protanopia and tritanopia and reports any pair closer than 0.15, so a future
+   edit cannot quietly reintroduce an indistinguishable pair. All three palettes currently report zero risky pairs.
+
+Two choices were made against the first draft of the palette and are worth recording: OC-like started as a pale tan
+(`#fdd0a2`), which was invisible as points on a white panel, and is now dark ochre `#a6761d` (luminance 0.48, minimum
+CVD distance 0.207); and the neuron grey was lightened to `#b3b3b3` because a darker grey collapsed onto the T/NK
+green for a deuteranope (0.082).

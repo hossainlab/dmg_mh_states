@@ -41,6 +41,7 @@ import numpy as np, pandas as pd, anndata as ad, scanpy as sc  # noqa: E402
 import scipy.stats as ss  # noqa: E402
 from mouse_cmp import INTERIM, PROCESSED, RESULTS, LOGS, HUMAN  # noqa: E402
 from mouse_cmp.figio import PAGE_W, save_figure, panel, pretty, annotate_clusters  # noqa: E402
+from mouse_cmp import palette as PAL  # noqa: E402
 from mouse_cmp.common import provenance, skip_existing, bh  # noqa: E402
 from dmg_atlas.states import TME_SUBTYPE_MARKERS  # noqa: E402
 from dmg_atlas.figstyle import apply_figure_style  # noqa: E402
@@ -160,23 +161,24 @@ with log.step("write + figure"):
                                                      left=0.215, right=0.985, top=0.945, bottom=0.115))
     for j, comp in enumerate(COMP):
         ax = axes[0, j]; m = LAB[LAB.compartment == comp]
-        cats = sorted(m.label_clean.unique()); cmap = plt.get_cmap("tab10")
+        cats = sorted(m.label_clean.unique())
+        pal_c = PAL.shades(PAL.COMPARTMENT.get(comp, "#737373"), len(cats))
         for i, c in enumerate(cats):
             s_ = m.label_clean == c
-            ax.scatter(m.umap1[s_], m.umap2[s_], s=1, color=cmap(i % 10), label=c, rasterized=True)
+            ax.scatter(m.umap1[s_], m.umap2[s_], s=1, color=pal_c[i], label=c, rasterized=True)
         ax.set_xticks([]); ax.set_yticks([])
         panel(ax, "abc"[j], f"Mouse {pretty(comp)}")
         # populations are named in the plot: six entries in a legend under each panel needed 4.5 pt type,
         # below the 5 pt floor any journal accepts at final size.
         miss = annotate_clusters(ax, m[["umap1", "umap2"]].values, m.label_clean.values,
-                                 {c: cmap(i % 10) for i, c in enumerate(cats)}, fontsize=5.5)
+                                 {c: pal_c[i] for i, c in enumerate(cats)}, fontsize=5.5)
         if miss:
             log.write(f"{comp}: not labelled in plot -> {'; '.join(miss)}")
         ax = axes[1, j]
         P = PROP[(PROP.compartment == comp) & (PROP.rule == "sample_mean")].pivot_table(index="label", columns="species", values="proportion").fillna(0)
         P = P.sort_values("human", ascending=True)
         y = np.arange(len(P)); ax.barh(y - 0.2, P.get("human", 0), 0.4, color="0.55", label="human (sample mean)")
-        ax.barh(y + 0.2, P.get("mouse", 0), 0.4, color="#3b6fb6", label="mouse (mouse mean)")
+        ax.barh(y + 0.2, P.get("mouse", 0), 0.4, color=PAL.COMPARTMENT["myeloid"], label="mouse (mouse mean)")
         ax.set_yticks(y, [pretty(l) for l in P.index], fontsize=6); ax.set_xlabel("proportion of compartment")
         panel(ax, "def"[j], f"{pretty(comp)} composition")
         if j == 0:

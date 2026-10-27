@@ -79,5 +79,11 @@
  "/Users/jubayer/Projects/dmg_mh_states/results/tables/m10_tumour_pathway_tf.csv|20312|1792867162": "6043d40ca34031180fb8d15a9463ef554223b7aea238306c4532ae7f127d4fc1",
  "/Users/jubayer/Projects/dmg_mh_states/results/tables/m10_immune_programmes.csv|2369649|1792867172": "5a863268b8b27290779046057adab0ff936659a38e69f624da0acfcfa844cf91",
  "/Users/jubayer/Projects/dmg_mh_states/results/tables/m10_immune_programme_tests.csv|3774|1792867172": "4698fb87281eb072e17934dd02d90bc46cd2c1385110482aae104c72b0dffab7",
- "/Users/jubayer/Projects/dmg_mh_states/results/tables/m10_immune_de_genes.csv.gz|1339974|1792867189": "f0d24a6a29cff5aa2e3a4decc7802f00545bc9da84c0866b239861b297c118e7"
+ "/Users/jubayer/Projects/dmg_mh_states/results/tables/m10_immune_de_genes.csv.gz|1339974|1792867189": "f0d24a6a29cff5aa2e3a4decc7802f00545bc9da84c0866b239861b297c118e7",
+ "/Users/jubayer/Projects/dmg_mh_states/results/tables/m06_projection_per_cell.csv.gz|4677949|1793127210": "effb7ac3f5570bf1a2b9f82ec32c31c33ec77cdc23d5e50baf7fb44b064a32a7",
+ "/Users/jubayer/Projects/dmg_mh_states/results/tables/m05_state_scores.csv.gz|3032239|1793127178": "ee8377a852ec31100f4a2d7120a221975236fb570af4f8921be19ab8f9c4e7cb",
+ "/Users/jubayer/Projects/dmg_mh_states/results/tables/m05_state_scores.csv.gz|3032239|1793127419": "414740cbd9e4524eb309140358968e9b77c8ffc0643b8942eb48afad26172f2a",
+ "/Users/jubayer/Projects/dmg_mh_states/data/processed/m05_cnmf_usages.parquet|72867|1793127419": "974afd7eee0d108f7c555be32390c22701777dce77a25453adf4b4649dddf6ea",
+ "/Users/jubayer/Projects/dmg_mh_states/results/tables/m05_cnmf_programs.csv|113479|1793127419": "25c648dffb0755d6936cd4d4a8ce46797a125ec018a8079018b0b9a26b7b8a23",
+ "/Users/jubayer/Projects/dmg_mh_states/data/processed/mouse_tme_labels.csv|1353257|1793127256": "f9fd5db68b24c8cd6eed68cae57f142f9d079f335f3180ff04a90129749c52c3"
 }
