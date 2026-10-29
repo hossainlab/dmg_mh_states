@@ -172,8 +172,8 @@ PANELS = {
         "Pericytes and tip/angiogenic endothelium are present in human and absent in mouse.",
         "Based on 304 mouse cells."),
  },
- 7: {
-  "a": ("Composition panels (a-d)",
+ 7: {  # replaced at runtime by _figure7_panels(); kept so the dict shape stays uniform
+  "_": ("Composition panels (a-d)",
         "Tumour cells, T/NK and myeloid as a share of all cells, and Mono/Macro as a share of immune cells.",
         "Dots are per-mouse values, bars are arm means; p-values above each panel are mouse-level models against Control.",
         "Nothing in composition reaches q < 0.1 under the primary model except one contrast (OC-like share, FUS+RT vs RT, q 0.0986).",
@@ -283,6 +283,48 @@ QUESTION = {
 }
 
 
+def _figure7_panels():
+    """The twelve panels of figure 7, in the order m08 draws them, with each panel's own p-values from the tables."""
+    import pandas as pd
+    comp = pd.read_csv(RESULTS / "tables/m08_composition.csv")
+    sco = pd.read_csv(RESULTS / "tables/m08_scores.csv")
+    comp_panels = [("compartment", "tumour", "tumour cells / all cells"), ("compartment", "T_NK", "T/NK / all cells"),
+                   ("compartment", "myeloid", "myeloid / all cells"), ("immune_type", "Mono/Macro", "Mono/Macro / immune"),
+                   ("myeloid_label", "interferon_myeloid", "IFN-myeloid / myeloid"),
+                   ("myeloid_label", "homeostatic_microglia", "homeostatic MG / myeloid"),
+                   ("T_NK_label", "NK", "NK / T+NK"), ("tumour_state", "cycling", "cycling / tumour (state)")]
+    score_panels = [("human_MP_ucell", "tumour", "MP4_hypoxia", "tumour: MP4 hypoxia UCell"),
+                    ("human_MP_ucell", "tumour", "MP8_MES_like", "tumour: MP8 MES-like UCell"),
+                    ("pseudobulk_geneset", "tumour", "Interferon", "tumour IFN set score"),
+                    ("pseudobulk_geneset", "Microglia", "Interferon", "microglia IFN set score")]
+
+    def stat(df):
+        df = df[df.model == "arm"].set_index("contrast")
+        bits = []
+        for c, lab in (("FUS_vs_Control", "FUS"), ("RT_vs_Control", "RT"), ("FUS+RT_vs_Control", "FUS+RT")):
+            if c in df.index:
+                bits.append(f"{lab} p {df.loc[c, 'p']:.3g} (q {df.loc[c, 'q']:.3g})")
+        return "; ".join(bits)
+
+    out = {}
+    for i, (s_, c_, title) in enumerate(comp_panels):
+        out["abcdefgh"[i]] = (
+            title,
+            f"Per-mouse proportion for {title}, one dot per mouse, horizontal bar at the arm mean.",
+            "Compare the spread within an arm against the gap between arms before reading any difference.",
+            stat(comp[(comp.set == s_) & (comp.category == c_)]),
+            "Two to four mice per arm; p-values are exploratory and the composition result depends on whether the inferred processing block is modelled.")
+    for i, (f_, pop, sc_, title) in enumerate(score_panels):
+        out["ijkl"[i]] = (
+            title,
+            f"Per-mouse mean of {title}, one dot per mouse, horizontal bar at the arm mean.",
+            "Scores are on the tumour cells of the 11 mice with at least 20 QC-pass tumour cells.",
+            stat(sco[(sco.family == f_) & (sco.population == pop) & (sco.score == sc_)]),
+            "Panel i does not replicate under an independent method: PROGENy hypoxia in the same cells gives +0.31, p 0.877 (figure 8a)."
+            if sc_ == "MP4_hypoxia" else "")
+    return out
+
+
 def page_mm(pdf):
     d = pdf.read_bytes()
     m = re.search(rb"MediaBox\s*\[\s*([\d.]+)\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)", d)
@@ -297,8 +339,10 @@ def main():
         prov = json.loads(prov_path.read_text()) if prov_path.exists() else {}
         inputs = "; ".join(Path(k).name for k in prov.get("inputs_sha256", {}))
         rendered = datetime.fromtimestamp(png.stat().st_mtime, timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-        for panel, (ptitle, shows, how, key, caveat) in PANELS[num].items():
+        panels = _figure7_panels() if num == 7 else PANELS[num]
+        for panel, (ptitle, shows, how, key, caveat) in panels.items():
             rows.append({
+                "panel_tag": f"Fig {num}{panel}",
                 "figure": num, "figure_title": title, "report_section": section,
                 "question_answered": QUESTION[num],
                 "panel": panel, "panel_title": ptitle,
