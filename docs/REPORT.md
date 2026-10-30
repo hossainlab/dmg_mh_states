@@ -78,9 +78,9 @@ two metaprograms that met the atlas's replication rule.
 
 **Figure 2 - the human annotation first, then the mouse on the same axes.** Populations are named in the plot rather
 than in a legend; a name is placed at the densest point of its population, and populations too small or too scattered to
-carry a legible label are named here instead. (a) the human atlas, malignant cells coloured by subpopulation (warm
-colours and black) and the microenvironment by lineage (cool colours), so AC-like tumour is not confusable with normal
-astrocyte nor MES-like with oligodendrocyte; unlabelled in grey are 89,924 unannotated cells, 3,928 malignant cells
+carry a legible label are named here instead. (a) the human atlas, malignant cells coloured by subpopulation
+(saturated) and the microenvironment by lineage (muted), so AC-like tumour is not confusable with normal astrocyte
+nor OC-like with oligodendrocyte; unlabelled in grey are 89,924 unannotated cells, 3,928 malignant cells
 without a state call and 509 unassigned. (b) mouse cells placed by their 15 nearest reference neighbours, coloured by
 the author annotation; only populations above 1,000 cells are named, the remainder being Astrocyte-like (372),
 B/Plasma (370), Choroid plexus (297), Meningeal fibroblasts (351), Neutrophils (250), Vascular (347) and pDC (465).

@@ -77,17 +77,32 @@ carried a sixth and seventh set, so colours had drifted. The measured defects we
 
 `src/mouse_cmp/palette.py` now holds the single source of truth. Its rules:
 
-1. Three variable families occupy three separate colour ranges - malignant subtypes are warm, microenvironment
-   lineages are cool, treatment arms are neutral-to-violet - and no colour appears in two families.
-2. Within a compartment, hue carries the compartment and lightness separates the members, because lightness is the
-   channel that survives every colour-vision deficiency. `by_compartment()` applies this to the deposit's 14 author
-   labels and to the microenvironment subclusters, replacing the index palettes.
-3. The mouse of origin, a nuisance variable, uses deliberately muted earth and slate tones so it cannot be mistaken
-   for a lineage and stays visually subordinate.
-4. `check()` simulates deuteranopia, protanopia and tritanopia and reports any pair closer than 0.15, so a future
-   edit cannot quietly reintroduce an indistinguishable pair. All three palettes currently report zero risky pairs.
+1. Colours come from published colour-vision-deficiency-safe qualitative sets - Okabe-Ito and Paul Tol's bright,
+   muted and vibrant schemes - not from hand-picked hex or a `tab10` index.
+2. Colour is not asked to carry eleven categories. Solving the eleven-colour packing exactly (binary search on the
+   distance threshold plus maximum clique over the candidate sets) tops out at a worst pair of 0.183, which is not
+   comfortable. So the palette has two tiers: the five malignant subpopulations are focal, saturated and separated
+   as far as the space allows (worst pair 0.405), and the six microenvironment lineages are context - muted, lower
+   chroma, and always directly labelled in plot. They read as a different class of thing, which is the point.
+3. `cycling` takes neutral dark rather than a hue, because it is a cell-cycle state and not a lineage. That is
+   semantically right and frees a hue for the four lineage-like subpopulations.
+4. Assignment within a tier follows adjacency in the embedding, not preference: OPC-like, AC-like and OC-like
+   border one another in figure 2a, so the two red-family colours go to OPC-like and MES-like, which do not touch.
+5. Within a compartment, hue carries the compartment and lightness separates the members. `shades()` ramps over
+   ABSOLUTE lightness (0.30 to 0.72), not a multiple of the base: multiplying meant a dark base could only produce
+   dark variants, and the six myeloid subclusters came out as six nearly identical indigos.
+6. In-plot labels are neutral dark `#1A1A1A` with a white halo, not the colour of the population they name. These
+   labels sit ON their own points, so colouring the text by series fights the background - "OC-like" in sky blue
+   over the red OPC-like territory was unreadable however much the text was darkened. Position already ties a label
+   to its cluster. Bold is reserved for panel letters.
+7. `report()` checks each family AND the unions that share a panel.
 
-Two choices were made against the first draft of the palette and are worth recording: OC-like started as a pale tan
-(`#fdd0a2`), which was invisible as points on a white panel, and is now dark ochre `#a6761d` (luminance 0.48, minimum
-CVD distance 0.207); and the neuron grey was lightened to `#b3b3b3` because a darker grey collapsed onto the T/NK
-green for a deuteranope (0.082).
+The last rule is the one that matters most, because its absence is what let three rounds of review pass over an
+unreadable figure. The first palette validated SUBTYPE and LINEAGE separately and reported zero risky pairs in each
+- but both are drawn in figure 2a, and across that union OC-like sat 0.063 from vascular and MES-like 0.077 from
+T/NK. Validating families one at a time when they share a panel is not a weak check, it is the wrong check. The
+union now reports a worst pair of 0.196, 3.1x better, and `report()` prints it on every run.
+
+Distances throughout are the minimum Euclidean RGB distance over normal vision plus deuteranopia, protanopia and
+tritanopia simulation - a pair is only as distinguishable as its worst viewing condition. Scoring the simulations
+alone, as the first version did, can rate a pair safe when it is the colour-normal reader who cannot separate it.

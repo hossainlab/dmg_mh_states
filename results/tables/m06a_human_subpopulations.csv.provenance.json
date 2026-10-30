@@ -1,11 +1,11 @@
 {
  "script": "m06a_joint_embedding.py",
- "utc": "2026-10-30T00:53:45Z",
+ "utc": "2026-10-30T01:45:16Z",
  "inputs_sha256": {
   "dmg_atlas/data/processed/dmg_atlas_v1.h5ad": "331a50d758b3cac2bf0ead7fbda2279af2c0e11cdd3faa8ad1171039988925ed",
   "dmg_atlas/results/tables/malignant_state_assignment.csv.gz": "f7190db3576b877abe8709784e4d26d48321e7be9a56aef733a43b350dc3558d",
-  "dmg_mh_states/results/tables/m06_projection_per_cell.csv.gz": "ea57bc060c884d5544c8ec9c785737c9d9c46c7585d311e67437c3ab1e12b170",
-  "dmg_mh_states/results/tables/m05_state_scores.csv.gz": "8163fa85354ce314b833bb8ccef2a79ff083247a4e20cd994cc42095d6d74b7f"
+  "dmg_mh_states/results/tables/m06_projection_per_cell.csv.gz": "f26d0721ed655f3557850317363ad2bc650cf3642915fdf73568c8aed2d4d08f",
+  "dmg_mh_states/results/tables/m05_state_scores.csv.gz": "63daa4987b9b58ba1a896e5216164ab8f4b011b04c02467303921daa400da218"
  },
  "argv": [
   "--force"

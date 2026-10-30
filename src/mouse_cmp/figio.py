@@ -13,6 +13,12 @@ PAGE_W = 7.2          # 183 mm, double column
 COL_W = 3.42          # 87 mm, single column
 MIN_PT = 5.0          # smallest text any journal accepts at final size
 
+# In-plot cluster labels are drawn in neutral dark, not in their cluster's colour. Colouring the text by series
+# seems helpful but fights the background, because these labels sit ON their own points: "OC-like" in sky blue
+# over the red OPC-like territory was unreadable however much the text was darkened. Position already ties a
+# label to its cluster, so the colour channel is redundant here and only costs contrast.
+LABEL_INK = "#1A1A1A"
+
 
 def check_figure(fig, min_pt: float = MIN_PT):
     """Geometric check: text boxes that overlap each other or a spine, text outside the canvas, text below min_pt."""
@@ -213,9 +219,9 @@ def annotate_clusters(ax, coords, labels, palette, *, fontsize=6.0, min_label=1,
                 break
             y = clamp(y + (0.015 * yr) * (1 if y >= clash[0][1] else -1), y0 + my, y1 - my)
         placed.append((x, y))
-        t = ax.text(x, y, lab, fontsize=fontsize, fontweight="bold", ha="center", va="center",
-                    color=_readable_text(col), zorder=6)
-        t.set_path_effects([mpe.withStroke(linewidth=1.8, foreground="white")])
+        t = ax.text(x, y, lab, fontsize=fontsize, ha="center", va="center",
+                    color=LABEL_INK, zorder=6)
+        t.set_path_effects([mpe.withStroke(linewidth=2.2, foreground="white")])
         drawn.append(t)
     _nudge_inside(ax, drawn)
     return skipped
