@@ -1,7 +1,7 @@
 # Mouse DMG model against the human H3 K27-altered DMG atlas
 
-Analysis report, updated 23 October 2026. Code, tables and figures: `mouse_comparison/` (steps `m01`-`m10`, notes in
-`docs/m01-m08_notes.md`). Human reference: the 311,618-cell cross-cohort DMG atlas (57 samples, 52 patients, 6 studies).
+Analysis report, updated 30 October 2026. Code, tables and figures: this repository (`dmg_mh_states`), steps `m01`-`m14`,
+notes in `docs/m01-m08_notes.md`. Human reference: the 311,618-cell cross-cohort DMG atlas (57 samples, 52 patients, 6 studies).
 
 ## Data as received
 
@@ -15,7 +15,7 @@ regulatory T cells (see question 2).
 
 ## Figure guide
 
-Nine figures, in the order the argument runs. Each caption states the one point it makes.
+Thirteen figures, in the order the argument runs. Each caption states the one point it makes.
 
 | # | figure | the point |
 |---|---|---|
@@ -28,6 +28,10 @@ Nine figures, in the order the argument runs. Each caption states the one point 
 | 7 | `m08_treatment_effects.png` | treatment: composition, state scores and differential expression |
 | 8 | `m10_treatment_programmes.png` | treatment: pathway, TF and immune-programme activity |
 | 9 | `m11_subtype_umap_de.png` | the transferred subtype labels tested: one continuum, not five subtypes |
+| 10 | `m12_author_umap_annotated.png` | the authors' own UMAP: only one of their four tumour clusters carries the clone |
+| 11 | `figures_denovo/m14_denovo_clusters.png` | the same cluster re-clustered without human labels: 31% of it is not tumour |
+| 12 | `figures_denovo/m14_denovo_vs_human.png` | each de novo cluster against the human subpopulations: one conserved match |
+| 13 | `figures_denovo/m14_denovo_treatment.png` | treatment on the de novo clusters: nothing, lowest q 0.495 |
 
 ## Which mouse cells are really tumour
 
@@ -329,6 +333,56 @@ profiles, not on these per-cell labels. What it does change is usage: per-cell s
 cluster assignments in this model, and any analysis that conditions on them (per-subtype DE, per-subtype composition
 by arm) inherits a label that is one argmax away from noise for every subtype except cycling.
 
+## Follow-up - clustering the mouse tumour cells without using the human labels
+
+Dr Shenglin raised the right objection to the two follow-ups above: both of them start from a human category system.
+Figure 9 tests labels that were transferred onto 891 cells; figure 10 annotates the authors' own clusters. Neither asks
+what structure the mouse data has on its own terms. His proposal was to cluster the mouse tumour cells de novo, and only
+then ask how the resulting clusters relate to the human subpopulations. That is step `m14` (figures 11-13).
+
+**The cell set.** The 3,246 cells the authors label *OPC-like tumor cells* - the one author cluster that carries the
+clone (figure 10b, median clone correlation 0.218, holding 883 of the 891 strict-set cells). Taking the authors' three
+other "tumor" clusters as well would have reintroduced the neuronal and Purkinje-like populations that figure 10 shows
+carry no clone; restricting to the strict 891 would have thrown away the power the question needs.
+
+**The clustering did not pass its own rule, and is reported that way.** The resolution was to be the lowest in 0.2-1.0
+giving at least 50 cells and 3 mice in every cluster. No resolution satisfied it - a 28-cell cluster persists throughout
+the sweep. The fallback is the lowest resolution (0.2, five clusters), with that cluster (M5) flagged and excluded from
+every statistic rather than quietly merged.
+
+**What the five clusters are.** Marker genes name them without reference to any human label (figure 11d), and the CNV
+clone - genetic evidence that owes nothing to the atlas - says which of them are tumour (figure 11e):
+
+| cluster | cells | mice | median clone *r* | in the strict 891 | marker identity |
+|---|---|---|---|---|---|
+| M3 | 500 | 15 | **0.449** | 36.4% | `CSPG4`, `PTPRZ1`, `SOX6`, `VCAN` - OPC/tumour |
+| M2 | 1,733 | 15 | 0.259 | 38.1% | `RPS12`, `RPL19`, `RPS18` - ribosomal |
+| M4 | 890 | 15 | 0.053 | 3.7% | `SYNE1`, `PCLO`, `RYR2`, `RBFOX3` - neuronal |
+| M1 | 95 | 12 | 0.047 | 7.4% | `ARHGDIB`, `AIF1`, `LCP1`, `DOCK2` - immune |
+| M5 | 28 | 10 | 0.038 | 0% | `CFAP44`, `SPEF2`, `DNAH6` - ciliated |
+
+Against the clone-positive threshold fixed in `m04` (*r* = 0.267), only M3 clears it; M2 sits just below. M1, M4 and M5
+together are 1,013 cells, **31.2% of the authors' best tumour cluster**, and their marker identities - immune, neuronal,
+ciliated - are not tumour identities at all.
+
+**The one conserved subpopulation.** Testing each cluster's top 50 markers against the human defining sets gives a
+single result below q = 0.1 that survives inspection: **M3 against OPC-like, four genes (`CSPG4`, `PTPRZ1`, `SOX6`,
+`VCAN`), q = 8.2e-5** (figure 12b). M1 against MES-like (`LGALS3`, `TGFBI`, q = 0.050) is better read as a property of
+the human MES-like set, which overlaps myeloid biology, than as a conserved mesenchymal programme - M1 is an immune
+cluster. The pseudobulk correlations (figure 12a) are weak in every cell once genes are z-scored across profiles, and
+with only four mouse profiles they carry little information; the marker overlap is the discriminating test here.
+
+**Treatment, again, moves nothing.** Twelve contrasts of de novo cluster composition against Control give a lowest
+q of 0.495 (figure 13b). The largest raw effects are M3 with FUS (+0.99 log-odds, p = 0.053) and M4 with FUS (-1.35,
+p = 0.146). This is the fourth independent parameterisation of the treatment question - author labels, transferred
+subtypes, state scores, and now the mouse's own clusters - and the answer has not changed.
+
+**What this adds.** Figure 9 established that the transferred subtype labels do not mark clusters. Clustering de novo
+says why, and recovers something figure 9 could not: the cell set being labelled is itself a mixture, and once the
+tumour core is isolated from it, that core does carry a conserved OPC-like marker programme. The de novo route is the
+better one, and it narrows the honest claim rather than widening it - *one* mouse population, 500 cells, matches *one*
+human subpopulation on conserved markers.
+
 ## What this analysis cannot support
 
 1. **Power.** Two to four mice per arm, and the tumour analyses rest on 11 mice of which only 2 are RT and 2 FUS+RT.
@@ -430,6 +484,9 @@ Searched via PubMed (NCBI); every reference below was retrieved and its metadata
 | microenvironment | `results/tables/m07_*.csv`, `results/figures/m07_tme_comparison.png` |
 | treatment effects (composition, states, DE) | `results/tables/m08_*.csv*`, `results/figures/m08_treatment_effects.png` |
 | transferred subtype labels tested (UMAP, separation, DE) | `results/tables/m11_*.csv*`, `results/figures/m11_subtype_umap_de.png` |
+| the authors' own UMAP, annotated | `results/tables/m12_*.csv`, `results/figures/m12_author_umap_annotated.png` |
+| de novo mouse subpopulations, cross-species tests, treatment | `results/tables/m14_*.csv*`, `results/figures_denovo/m14_*.png` |
+| per-panel figure index (63 panels, 13 figures) | `results/tables/m13_figure_index.csv` |
 
 Every file in `results/` has a `.provenance.json` sidecar recording the producing script and the sha256 of each input.
 CollecTRI and PROGENy were retrieved from omnipathdb.org; see `data/external/resources_provenance.json`.

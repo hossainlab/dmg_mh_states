@@ -16,12 +16,12 @@ Compares a mouse diffuse midline glioma (DMG) model with the human H3 K27-altere
 
 ## Quick start
 
-This is a sub-project of the main atlas repo and expects to sit inside it as `mouse_comparison/`
-(it imports `../src/dmg_atlas` and reads human outputs from `../data`, `../results`, `../models`).
+This is a standalone repository that reads the human atlas from a sibling `dmg_atlas` checkout
+(it imports `dmg_atlas/src/dmg_atlas` and reads human outputs from its `data`, `results` and `models`).
+Set `DMG_ATLAS_ROOT` if the atlas lives somewhere other than `../dmg_atlas`.
 
 ```bash
-cd mouse_comparison
-nice -n 10 python scripts/m01_ingest.py            # run steps in order, m01 → m10
+nice -n 10 python scripts/m01_ingest.py            # run steps in order, m01 → m14
 nice -n 10 python scripts/m01_ingest.py --force    # recompute an existing output
 ```
 
@@ -40,8 +40,14 @@ nice -n 10 python scripts/m01_ingest.py --force    # recompute an existing outpu
 | 8 | `m08_treatment_effects.py` | per-mouse composition (quasi-binomial), state scores (OLS), pseudobulk DE (limma-trend) |
 | 9 | `m09_subpopulation_evidence.py` | per subpopulation: markers, PROGENy pathways, CollecTRI TFs, correlation — human and mouse alike |
 | 10 | `m10_treatment_programmes.py` | treatment effects on tumour pathways/TFs and named immune programmes (AUCell) |
+| 11 | `m11_subtype_umap_de.py` | do the transferred subtype labels mark clusters? silhouette vs. permutation, per-subtype DE |
+| 12 | `m12_author_umap_annotated.py` | the authors' own published UMAP annotated with clone, strict tumour set and transferred lineage |
+| 13 | `m13_figure_index.py` | per-panel figure index: what each panel shows, how to read it, key numbers, caveats |
+| 14 | `m14_denovo_subpopulations.py` | de novo clustering of the authors' OPC-like tumour cluster; cross-species markers/pathways/TFs; treatment |
 
-Each script writes to `results/tables/`, `results/figures/` or `results/qc/`. Shared helpers: `src/mouse_cmp/common.py`.
+Each script writes to `results/tables/`, `results/figures/`, `results/figures_denovo/` or `results/qc/`.
+Shared helpers: `src/mouse_cmp/common.py` (pipeline), `src/mouse_cmp/figio.py` (figure sizing and legibility
+checks), `src/mouse_cmp/palette.py` (the single colour system, colour-vision checked).
 
 ## Data
 
