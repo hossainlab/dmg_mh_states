@@ -1,0 +1,20 @@
+{
+ "script": "scripts/m14_denovo_subpopulations.py",
+ "utc": "2026-10-30T00:33:57Z",
+ "inputs_sha256": {
+  "dmg_mh_states/data/processed/mouse_all_hs.h5ad": "a1e097e90ac90d617e82d6627d6800b031df7caa7dcad2b83998f6804320d7f0",
+  "dmg_mh_states/data/processed/mouse_tumour_calls.csv": "162a7ccceffae68164db01ecf658ac6ddb1dda3727e1799f5bc17db1ce91782b",
+  "dmg_mh_states/data/interim/mouse_qc.csv": "af5eb98e2b40ba79dc5026dc950e63208db4e06f6c0ee94645003ad38ff3d5ff",
+  "dmg_atlas/data/processed/dmg_atlas_v1.h5ad": "331a50d758b3cac2bf0ead7fbda2279af2c0e11cdd3faa8ad1171039988925ed",
+  "dmg_mh_states/data/external/progeny_human.csv": "c08df9d90ac734eff8ec9c07a09715fb4834789d13c09c3e3cc0d17424d26310",
+  "dmg_mh_states/data/external/collectri_human.csv": "f4706bde7185746f9263ff83ca2cc3a31078d2bb7580305cf53182fe08757f79"
+ },
+ "argv": [
+  "--force"
+ ],
+ "cell_set": "OPC-like tumor cells",
+ "n_cells": 3246,
+ "resolution": 0.2,
+ "n_clusters": 5,
+ "seed": 0
+}

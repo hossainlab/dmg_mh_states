@@ -64,6 +64,31 @@ AUTHOR_COMPARTMENT = {
 }
 
 
+def denovo(n: int):
+    """Colours for de novo mouse clusters - a fifth family, kept clear of the four that carry meaning.
+
+    Cluster IDs are nominal, so they take positions along a perceptually uniform ramp (viridis) rather than a hue
+    that would imply a relationship to a human subtype, a lineage or a treatment arm. The positions are not evenly
+    spaced: evenly spaced samples of viridis put adjacent clusters 0.07 apart under deuteranopia simulation, so the
+    positions are chosen greedily to maximise the smallest pairwise distance across all three simulations.
+    """
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import matplotlib.colors as mc
+    cm = plt.get_cmap("viridis")
+    grid = [mc.to_hex(cm(x)) for x in np.linspace(0.0, 1.0, 41)]
+
+    def d(a, b):
+        return min(float(np.linalg.norm(_simulate(a, k) - _simulate(b, k)))
+                   for k in ("deuteranopia", "protanopia", "tritanopia"))
+
+    picked = [grid[0], grid[-1]]
+    while len(picked) < n:
+        best = max((min(d(c, q) for q in picked), c) for c in grid if c not in picked)
+        picked.append(best[1])
+    return picked[:n]
+
+
 def shades(base: str, n: int, lo: float = 0.45, hi: float = 1.45):
     """n variants of one hue, spread over lightness - the channel every colour-vision deficiency keeps."""
     import colorsys

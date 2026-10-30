@@ -1,0 +1,6 @@
+cluster,cells,n_mice,median_clone_r,frac_strict_set,below_floor
+M1,95,12,0.0467,0.0737,False
+M2,1733,15,0.2593,0.3814,False
+M3,500,15,0.449,0.364,False
+M4,890,15,0.0531,0.0371,False
+M5,28,10,0.0384,0.0,True
