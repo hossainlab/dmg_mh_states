@@ -31,7 +31,14 @@ FIGURES = [
     (8, "m10_treatment_programmes", "Treatment effects on pathways, TFs and immune programmes", "Question 2"),
     (9, "m11_subtype_umap_de", "The transferred subtype labels tested on the mouse's own embedding", "Follow-up"),
     (10, "m12_author_umap_annotated", "The authors' own DIPG1 UMAP annotated with this study's evidence", "Follow-up"),
+    (11, "m14_denovo_clusters", "De novo clusters inside the authors' OPC-like tumour cluster", "Follow-up"),
+    (12, "m14_denovo_vs_human", "Each de novo cluster tested against the human subpopulations", "Follow-up"),
+    (13, "m14_denovo_treatment", "Treatment effects on the de novo clusters", "Follow-up"),
 ]
+
+# Figures 11-13 are written to a separate directory so the de novo analysis stays visibly distinct from the
+# label-transfer figures it is meant to be an alternative to.
+FIGDIR = {11: RESULTS / "figures_denovo", 12: RESULTS / "figures_denovo", 13: RESULTS / "figures_denovo"}
 
 # figure -> panel -> (panel title, what it shows, how to read it, key numbers, caveat)
 PANELS = {
@@ -280,7 +287,80 @@ QUESTION = {
  8: "'You can check DE genes, check pathway, check NMF programs' and 'how FUS, RT, FUS+RT affect inflammation, immune suppression, T cell dysfunction, T cell activation'",
  9: "'Generate a UMAP of the mouse tumor cells coloured by transferred subtype ... and examine the DE genes for each subtype to validate their identities'",
  10: "follow-up on Dr Mei's own published UMAP: which of the clusters labelled tumour carry the clone",
+ 11: "Dr Shenglin's proposal: 'cluster the mouse tumour cells de novo rather than transferring human labels'",
+ 12: "Dr Shenglin's proposal: 'then correlate the de novo clusters with the human subpopulations and compare markers, pathways and TFs'",
+ 13: "Dr Shenglin's proposal: 'then test FUS/RT effects on the de novo clusters'",
 }
+
+
+PANELS.update({
+ 11: {
+  "a": ("De novo clusters",
+        "UMAP of the 3,246 cells the authors label OPC-like tumor cells, re-embedded and Leiden-clustered without using any human label.",
+        "Five clusters at resolution 0.2. This is the figure Dr Shenglin asked for: the mouse's own structure, found before any human annotation is consulted.",
+        "M2 1,733 cells; M4 890; M3 500; M1 95; M5 28.",
+        "No resolution between 0.2 and 1.0 satisfied the pre-stated floor of >=50 cells and >=3 mice in every cluster; the lowest resolution is used as the fallback and M5 (28 cells) is excluded from all statistics."),
+  "b": ("Mouse of origin",
+        "The same embedding coloured by which of the 15 mice each cell came from.",
+        "A cluster occupying one colour would be a per-animal batch effect rather than a cell population.",
+        "M2, M3 and M4 each draw on all 15 mice; M1 on 12; M5 on 10.",
+        ""),
+  "c": ("Cluster mix per mouse",
+        "Share of each mouse's cells falling in each de novo cluster.",
+        "Read across a row to see whether one animal dominates a cluster.",
+        "",
+        ""),
+  "d": ("Cluster markers",
+        "Top differentially expressed genes per de novo cluster, Wilcoxon, one column block per cluster.",
+        "These names are what each cluster actually is, independent of any human label.",
+        "M1 immune (ARHGDIB, AIF1, LCP1, CORO1A, DOCK2); M2 ribosomal (RPS12, RPL19, RPS18); M3 CSPG4/PTPRZ1/SOX6/VCAN-bearing; M4 neuronal (SYNE1, PCLO, RYR2, RBFOX3); M5 ciliated (CFAP44, SPEF2, DNAH6).",
+        ""),
+  "e": ("Clone signal per cluster",
+        "Each cell's correlation with the shared tumour CNV profile, one box per de novo cluster.",
+        "This is the panel that decides which clusters are tumour. The clone is genetic evidence and owes nothing to the human atlas.",
+        "Median clone correlation M3 0.449, M2 0.259, M4 0.053, M1 0.047, M5 0.038.",
+        "The clone profile is built leave-one-mouse-out."),
+  "f": ("Overlap with the strict set",
+        "Share of each de novo cluster that is also in the 891 clone-defined QC-pass tumour cells.",
+        "An independent confirmation of panel e using the study's own strict tumour call.",
+        "M2 38.1%, M3 36.4%, M1 7.4%, M4 3.7%, M5 0%.",
+        ""),
+ },
+ 12: {
+  "a": ("Pseudobulk correlation",
+        "Spearman correlation between each de novo mouse cluster and each human subpopulation, over the 1,995 most variable genes, z-scored across profiles within each species.",
+        "Z-scoring removes the expression baseline every tumour profile shares, so a value here means distinctive resemblance, not overall similarity. Read a row for which human subpopulation a cluster leans towards.",
+        "M4 OC-like +0.38 and cycling -0.47; M1 cycling +0.27; M2 cycling +0.21; M3 OC-like +0.17, OPC-like +0.14.",
+        "With only four mouse profiles the z-score forces each row towards zero mean, so the magnitudes are small and the sign pattern, not the value, is the readable part. These numbers are not comparable with figure 3d, which uses six mouse groups."),
+  "b": ("Marker-gene overlap",
+        "Number of genes shared between each cluster's top 50 markers and each human subpopulation's defining set, with a hypergeometric test.",
+        "This is the discriminating test in the figure. A dark cell is a conserved marker programme, not just a correlated profile.",
+        "M3 x OPC-like: 4 genes (CSPG4, PTPRZ1, SOX6, VCAN), q 8.2e-5. M1 x MES-like: 2 genes (LGALS3, TGFBI), q 0.050. Nothing else below q 0.1.",
+        "LGALS3 and TGFBI are also macrophage genes, and M1 is an immune cluster; the human MES-like set overlaps myeloid biology, so this hit is more likely contamination of the human set than a conserved mesenchymal programme."),
+  "c": ("Pathways",
+        "PROGENy pathway activity for the human subpopulations and the de novo mouse clusters side by side.",
+        "Columns left of the rule are human, right are mouse. Compare a row across the rule.",
+        "",
+        "Human and mouse activities are computed on ortholog-mapped matrices but in separate runs; absolute values are not directly comparable across the rule."),
+  "d": ("Transcription factors",
+        "CollecTRI transcription factor activity, the 16 factors with the largest absolute activity.",
+        "Same layout as panel c.",
+        "",
+        "Same caveat as panel c."),
+ },
+ 13: {
+  "a": ("Cluster composition by arm",
+        "Share of each mouse's OPC-like-cluster cells falling in each de novo cluster, one dot per mouse, grouped by treatment arm.",
+        "Spread within an arm is the noise level any treatment effect has to beat.",
+        "15 mice: Control 4, FUS 4, RT 3, FUS+RT 4.",
+        ""),
+  "b": ("Composition shift",
+        "Quasi-binomial log-odds coefficient per cluster and contrast against Control, with Benjamini-Hochberg q values.",
+        "Nothing in this panel is significant. It is shown because the absence is the result.",
+        "12 contrasts, lowest q 0.495; largest raw effects M3 with FUS +0.99 log-odds (p 0.053) and M4 with FUS -1.35 (p 0.146).",
+        "Dispersion is estimated per cluster from the Pearson chi-square and the test uses the residual degrees of freedom, so the unit of replication is the mouse, not the cell."),
+ },
+})
 
 
 def _figure7_panels():
@@ -334,8 +414,9 @@ def page_mm(pdf):
 def main():
     rows = []
     for num, stem, title, section in FIGURES:
-        png, pdf = FIG / f"{stem}.png", FIG / f"{stem}.pdf"
-        prov_path = FIG / f"{stem}.png.provenance.json"
+        d = FIGDIR.get(num, FIG)
+        png, pdf = d / f"{stem}.png", d / f"{stem}.pdf"
+        prov_path = d / f"{stem}.png.provenance.json"
         prov = json.loads(prov_path.read_text()) if prov_path.exists() else {}
         inputs = "; ".join(Path(k).name for k in prov.get("inputs_sha256", {}))
         rendered = datetime.fromtimestamp(png.stat().st_mtime, timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
