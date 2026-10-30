@@ -110,6 +110,40 @@ def panel(ax, s, title=None, dx=-0.06, dy=1.032, pad=3.0, letter_pt=8.0, title_p
         ax.set_title(title, loc="left", fontsize=title_pt, pad=pad)
 
 
+def _readable_text(col, max_luminance: float = 0.22):
+    """Darken a colour until a bold label in it is legible on white.
+
+    In-plot labels are drawn in their cluster's own colour so the reader can tie label to points without a legend.
+    A fixed 0.62 multiplier was used for this, which is fine for dark palettes and fails for light ones: 0.62 of
+    viridis yellow is still yellow, and the label disappeared. Darkening now continues until the text clears a
+    luminance ceiling, so the tie to the cluster colour survives for dark palettes and legibility survives for
+    light ones.
+    """
+    import numpy as np
+    import matplotlib.colors as mc
+    rgb = np.array(mc.to_rgb(col))
+    f = lambda c: np.where(c <= 0.04045, c / 12.92, ((c + 0.055) / 1.055) ** 2.4)
+    for _ in range(24):
+        if float((np.array([0.2126, 0.7152, 0.0722]) * f(rgb)).sum()) <= max_luminance:
+            break
+        rgb = rgb * 0.88
+    return tuple(rgb)
+
+
+def cell_grid(ax, nrows: int, ncols: int, color: str = "0.75", lw: float = 0.5):
+    """Draw cell borders on an imshow heatmap.
+
+    A heatmap whose low end is white loses its cells against a white page - a significance matrix where most
+    entries are zero stops looking like a matrix at all. Borders keep the grid readable whatever the colormap does.
+    """
+    import numpy as np
+    ax.set_xticks(np.arange(-0.5, ncols, 1), minor=True)
+    ax.set_yticks(np.arange(-0.5, nrows, 1), minor=True)
+    ax.grid(which="minor", color=color, linewidth=lw)
+    ax.tick_params(which="minor", length=0)
+    ax.set_axisbelow(False)
+
+
 def annotate_clusters(ax, coords, labels, palette, *, fontsize=6.0, min_label=1,
                       max_spread=0.35, background=(), names=None):
     """Name populations inside the plot instead of in a legend; returns the labels it could not place.
@@ -158,9 +192,8 @@ def annotate_clusters(ax, coords, labels, palette, *, fontsize=6.0, min_label=1,
                 break
             y = clamp(y + (0.015 * yr) * (1 if y >= clash[0][1] else -1), y0 + my, y1 - my)
         placed.append((x, y))
-        r, g_, b = mc.to_rgb(col)
         t = ax.text(x, y, lab, fontsize=fontsize, fontweight="bold", ha="center", va="center",
-                    color=(r * 0.62, g_ * 0.62, b * 0.62), zorder=6)
+                    color=_readable_text(col), zorder=6)
         t.set_path_effects([mpe.withStroke(linewidth=1.8, foreground="white")])
         drawn.append(t)
     _nudge_inside(ax, drawn)

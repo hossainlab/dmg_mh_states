@@ -373,7 +373,7 @@ cluster. The pseudobulk correlations (figure 12a) are weak in every cell once ge
 with only four mouse profiles they carry little information; the marker overlap is the discriminating test here.
 
 **Treatment, again, moves nothing.** Twelve contrasts of de novo cluster composition against Control give a lowest
-q of 0.495 (figure 13b). The largest raw effects are M3 with FUS (+0.99 log-odds, p = 0.053) and M4 with FUS (-1.35,
+q of 0.495, and every 95% confidence interval crosses zero (figure 13b). The largest raw effects are M3 with FUS (+0.99 log-odds, p = 0.053) and M4 with FUS (-1.35,
 p = 0.146). This is the fourth independent parameterisation of the treatment question - author labels, transferred
 subtypes, state scores, and now the mouse's own clusters - and the answer has not changed.
 

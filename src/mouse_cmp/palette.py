@@ -64,28 +64,48 @@ AUTHOR_COMPARTMENT = {
 }
 
 
+def _luminance(hex_colour: str) -> float:
+    """WCAG relative luminance, used to keep categorical colours dark enough to read on white."""
+    import matplotlib.colors as mc
+    r, g, b = mc.to_rgb(hex_colour)
+    f = lambda c: c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4
+    return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b)
+
+
+# Paul Tol's qualitative sets, which are built to stay separable under the common colour-vision deficiencies.
+# The light members (#88CCEE sky, #DDCC77 sand) are kept in the list and filtered out by luminance rather than
+# dropped by hand, so the rule that excludes them is visible.
+_TOL_QUALITATIVE = ["#332288", "#88CCEE", "#44AA99", "#117733", "#999933",
+                    "#DDCC77", "#CC6677", "#882255", "#AA4499", "#6699CC", "#994455"]
+MAX_POINT_LUMINANCE = 0.40
+
+
 def denovo(n: int):
     """Colours for de novo mouse clusters - a fifth family, kept clear of the four that carry meaning.
 
-    Cluster IDs are nominal, so they take positions along a perceptually uniform ramp (viridis) rather than a hue
-    that would imply a relationship to a human subtype, a lineage or a treatment arm. The positions are not evenly
-    spaced: evenly spaced samples of viridis put adjacent clusters 0.07 apart under deuteranopia simulation, so the
-    positions are chosen greedily to maximise the smallest pairwise distance across all three simulations.
+    Cluster IDs are nominal, so the colours must be distinguishable without implying an order or a relationship
+    to a human subtype, a lineage or a treatment arm. Two constraints are applied, in this order:
+
+    1. Readability on white. These colours are used for single cells plotted as small dots on a white page, so a
+       colour must be dark enough to see. An earlier version sampled viridis, which satisfied the colour-vision
+       criterion below but returned its yellow endpoint (#fde725, luminance 0.84) - invisible as points and
+       unreadable as a label. Candidates above MAX_POINT_LUMINANCE are therefore rejected outright.
+    2. Separation under colour-vision deficiency. Among the survivors, colours are chosen greedily to maximise the
+       smallest pairwise distance across deuteranopia, protanopia and tritanopia simulations.
     """
     import numpy as np
-    import matplotlib.pyplot as plt
-    import matplotlib.colors as mc
-    cm = plt.get_cmap("viridis")
-    grid = [mc.to_hex(cm(x)) for x in np.linspace(0.0, 1.0, 41)]
+    grid = [c for c in _TOL_QUALITATIVE if _luminance(c) <= MAX_POINT_LUMINANCE]
+    if n > len(grid):
+        raise ValueError(f"denovo() has {len(grid)} readable colours, {n} requested")
 
     def d(a, b):
         return min(float(np.linalg.norm(_simulate(a, k) - _simulate(b, k)))
                    for k in ("deuteranopia", "protanopia", "tritanopia"))
 
-    picked = [grid[0], grid[-1]]
+    # Seed with the most widely separated pair, then extend greedily.
+    picked = list(max(((d(a, b), a, b) for i, a in enumerate(grid) for b in grid[i + 1:]))[1:])
     while len(picked) < n:
-        best = max((min(d(c, q) for q in picked), c) for c in grid if c not in picked)
-        picked.append(best[1])
+        picked.append(max((min(d(c, q) for q in picked), c) for c in grid if c not in picked)[1])
     return picked[:n]
 
 

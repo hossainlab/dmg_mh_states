@@ -36,7 +36,7 @@ import statsmodels.api as sm  # noqa: E402
 import decoupler as dc  # noqa: E402
 from dmg_atlas.states import STATE_GENE_SETS  # noqa: E402
 from mouse_cmp import INTERIM, PROCESSED, EXTERNAL, RESULTS, LOGS, HUMAN, ATLAS_ROOT  # noqa: E402
-from mouse_cmp.figio import PAGE_W, save_figure, panel, pretty, annotate_clusters  # noqa: E402
+from mouse_cmp.figio import PAGE_W, save_figure, panel, pretty, annotate_clusters, cell_grid  # noqa: E402
 from mouse_cmp import palette as PAL  # noqa: E402
 from mouse_cmp.common import provenance, skip_existing, bh, ARMS  # noqa: E402
 
@@ -316,18 +316,27 @@ def figures(emb, mk, corr, ov, act, tr, res, summ):
     annotate_clusters(ax, emb[["umap_1", "umap_2"]].values, emb.cluster.values, ccol, fontsize=6)
     panel(ax, "a", f"De novo clusters (resolution {res})")
 
+    # Fifteen mice cannot be told apart as fifteen point colours - the first version of this panel was an
+    # indistinguishable brown wash with overlapping SampleN labels. The per-mouse batch check lives in panel c,
+    # which shows it properly; this panel asks the other question a reader has, whether the structure tracks
+    # treatment, and four arms can be coloured legibly.
     ax = axes[0, 1]
-    mcol = PAL.mouse_palette(emb.mouse.unique())
-    for m in sorted(emb.mouse.unique()):
-        g = emb[emb.mouse == m]
-        ax.scatter(g.umap_1, g.umap_2, s=3, lw=0, color=mcol[m], rasterized=True)
+    acol = PAL.ARM
+    for a in ARMS:
+        g = emb[emb.arm == a]
+        if len(g):
+            ax.scatter(g.umap_1, g.umap_2, s=3, lw=0, color=acol[a], rasterized=True,
+                       label=f"{a} ({g.mouse.nunique()})")
     ax.set(xticks=[], yticks=[])
-    annotate_clusters(ax, emb[["umap_1", "umap_2"]].values, emb.mouse.values, mcol, fontsize=5.5, min_label=150)
-    panel(ax, "b", "Mouse of origin")
+    ax.legend(loc="upper left", bbox_to_anchor=(0.0, 1.0), frameon=False, fontsize=5.5, markerscale=2.2,
+              handletextpad=0.3, labelspacing=0.25, borderpad=0.0)
+    panel(ax, "b", "Treatment arm")
 
     ax = axes[0, 2]
     comp = emb.groupby(["mouse", "cluster"]).size().unstack(fill_value=0)
     comp = comp.div(comp.sum(1), axis=0).reindex(columns=clusters_all)
+    # Sample10 sorts before Sample2 lexically; order the axis the way a reader reads the names.
+    comp = comp.reindex(index=sorted(comp.index, key=lambda s: int("".join(ch for ch in s if ch.isdigit()) or 0)))
     left = np.zeros(len(comp))
     for c in clusters_all:
         ax.barh(range(len(comp)), comp[c].values, left=left, color=ccol[c], height=0.78)
@@ -347,6 +356,7 @@ def figures(emb, mk, corr, ov, act, tr, res, summ):
     ax.set(yticks=range(len(genes)), yticklabels=genes, xticks=range(len(clusters_all)),
            xticklabels=clusters_all)
     ax.tick_params(axis="y", labelsize=5)
+    cell_grid(ax, Mx.shape[0], Mx.shape[1])
     cb = plt.colorbar(im, ax=ax, shrink=0.75)
     cb.set_label("Wilcoxon z", fontsize=6)
     panel(ax, "d", "Cluster markers")
@@ -384,6 +394,7 @@ def figures(emb, mk, corr, ov, act, tr, res, summ):
            xticklabels=[pretty(s) for s in STATES])
     ax.tick_params(axis="x", rotation=45)
     cb = plt.colorbar(im, ax=ax, shrink=0.75); cb.set_label("Spearman rho", fontsize=6)
+    cell_grid(ax, P1.shape[0], P1.shape[1])
     panel(ax, "a", "Pseudobulk correlation")
 
     ax = axes[0, 1]
@@ -402,6 +413,7 @@ def figures(emb, mk, corr, ov, act, tr, res, summ):
            xticklabels=[pretty(s) for s in STATES])
     ax.tick_params(axis="x", rotation=45)
     cb = plt.colorbar(im, ax=ax, shrink=0.75); cb.set_label("-log10 q", fontsize=6)
+    cell_grid(ax, P2.shape[0], P2.shape[1])
     panel(ax, "b", "Marker-gene overlap")
 
     for k, (fam, lab, cmap) in enumerate((("pathway", "PROGENy activity", "RdBu_r"),
@@ -426,6 +438,7 @@ def figures(emb, mk, corr, ov, act, tr, res, summ):
             ax.text((x0 + x1 - 1) / 2, 1.055, name, transform=ax.get_xaxis_transform(),
                     ha="center", va="bottom", fontsize=6, style="italic")
         cb = plt.colorbar(im, ax=ax, shrink=0.75); cb.set_label(lab, fontsize=6)
+        cell_grid(ax, P3.shape[0], P3.shape[1], lw=0.3)
         panel(ax, "cd"[k], "Pathways" if fam == "pathway" else "Transcription factors")
     fig.subplots_adjust(left=0.10, right=0.945, top=0.945, bottom=0.115, wspace=0.40, hspace=0.45)
     save_figure(fig, OUT["fig2"], LOG)
@@ -449,20 +462,42 @@ def figures(emb, mk, corr, ov, act, tr, res, summ):
               handletextpad=0.3, columnspacing=0.9)
     panel(ax, "a", "Cluster composition by arm")
 
+    # A diverging heatmap of these coefficients reads as a strong pattern - saturated cells at both ends - when in
+    # fact no contrast comes close to significance (lowest q 0.495). Effect sizes with their intervals say the same
+    # numbers honestly: every interval crosses zero.
     ax = axes[1]
-    P4 = tr.pivot(index="cluster", columns="contrast", values="coef_logodds").reindex(index=clusters)
-    qp = tr.pivot(index="cluster", columns="contrast", values="q").reindex(index=clusters)
-    v = np.nanmax(abs(P4.values))
-    im = ax.imshow(P4.values, cmap="PuOr_r", vmin=-v, vmax=v, aspect="auto")
-    for i in range(P4.shape[0]):
-        for j in range(P4.shape[1]):
-            if np.isfinite(qp.values[i, j]) and qp.values[i, j] < 0.1:
-                ax.text(j, i, "*", ha="center", va="center", fontsize=9)
-    ax.set(yticks=range(P4.shape[0]), yticklabels=P4.index, xticks=range(P4.shape[1]),
-           xticklabels=[c.replace("_vs_Control", "") for c in P4.columns])
-    cb = plt.colorbar(im, ax=ax, shrink=0.8); cb.set_label("log-odds vs control", fontsize=6)
+    rows = [(c, arm) for c in clusters for arm in ARMS[1:]]
+    ypos = {}
+    y = 0.0
+    for c in clusters:
+        for arm in ARMS[1:]:
+            ypos[(c, arm)] = y
+            y += 1.0
+        y += 0.6                                        # a gap between clusters
+    crit = ss.t.ppf(0.975, 11)                          # 15 mice - 4 arms, as in the fitted model
+    for (c, arm) in rows:
+        r = tr[(tr.cluster == c) & (tr.contrast == f"{arm}_vs_Control")]
+        if not len(r):
+            continue
+        b, se = float(r.coef_logodds.iloc[0]), float(r.se.iloc[0])
+        yy = ypos[(c, arm)]
+        ax.plot([b - crit * se, b + crit * se], [yy, yy], color=PAL.ARM[arm], lw=1.4,
+                solid_capstyle="butt", zorder=2)
+        ax.plot([b], [yy], "o", color=PAL.ARM[arm], ms=3.4, mec="white", mew=0.5, zorder=3)
+    ax.axvline(0, color="0.25", lw=0.8, ls="--", zorder=1)
+    ax.set_yticks([np.mean([ypos[(c, a)] for a in ARMS[1:]]) for c in clusters])
+    ax.set_yticklabels(clusters)
+    ax.invert_yaxis()
+    ax.set_xlabel("log-odds vs Control (95% CI)")
+    ax.set_ylim(max(ypos.values()) + 1.0, -1.0)
+    for arm in ARMS[1:]:
+        ax.plot([], [], color=PAL.ARM[arm], lw=1.4, marker="o", ms=3.4, label=arm)
+    ax.legend(fontsize=5.5, frameon=False, ncol=3, loc="upper center", bbox_to_anchor=(0.5, -0.215),
+              handletextpad=0.4, columnspacing=0.9, handlelength=1.4)
+    ax.text(0.99, 0.015, f"lowest q = {tr.q.min():.2f}", transform=ax.transAxes, ha="right", va="bottom",
+            fontsize=5.5, style="italic", color="0.3")
     panel(ax, "b", "Composition shift")
-    fig.subplots_adjust(left=0.085, right=0.945, top=0.90, bottom=0.26, wspace=0.42)
+    fig.subplots_adjust(left=0.085, right=0.975, top=0.90, bottom=0.28, wspace=0.30)
     save_figure(fig, OUT["fig3"], LOG)
 
 
