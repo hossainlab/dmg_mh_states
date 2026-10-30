@@ -238,7 +238,7 @@ PANELS = {
         "Silhouette of the subtype labels in PCA space, against a 20-draw label permutation and against the mouse of origin, before and after removing the 137 defining marker genes.",
         "The decisive panel: if the red bar is inside the grey band, the labels carry no structure.",
         "Subtype -0.031 against a permuted baseline of -0.046 +/- 0.021; with markers removed, -0.045 against -0.045.",
-        ""),
+        "Computed on the 881 cells carrying a subtype call, not all 891: the 10 cells left unassigned by the argmax have no label whose separation could be measured. Panel a shows all 891."),
   "e": ("Library complexity",
         "Genes detected per cell by subtype.",
         "Explains why the OPC-like one-vs-rest DE returns a quarter of the transcriptome.",

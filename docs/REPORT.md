@@ -289,6 +289,9 @@ large as the difference between arms.
 the labels may be used: `m05` assigns a subtype by scoring the five human marker sets per cell and taking the argmax,
 which returns a label for every cell whether or not any state fits, so the labels must be tested rather than assumed.
 
+The embedding (figure 9a) shows all 891 cells; the separation statistics below are computed on the 881 that carry
+a subtype call, since the 10 cells whose argmax left them unassigned have no label whose separation could be measured.
+
 | measure | all genes | defining markers removed |
 |---|---|---|
 | ARI, Leiden clusters vs subtype | 0.075 | 0.053 |
