@@ -36,7 +36,8 @@ import statsmodels.api as sm  # noqa: E402
 import decoupler as dc  # noqa: E402
 from dmg_atlas.states import STATE_GENE_SETS  # noqa: E402
 from mouse_cmp import INTERIM, PROCESSED, EXTERNAL, RESULTS, LOGS, HUMAN, ATLAS_ROOT  # noqa: E402
-from mouse_cmp.figio import PAGE_W, save_figure, panel, pretty, annotate_clusters, cell_grid  # noqa: E402
+from mouse_cmp.figio import (PAGE_W, save_figure, panel, pretty, annotate_clusters, cell_grid,  # noqa: E402
+                             species_axis)
 from mouse_cmp import palette as PAL  # noqa: E402
 from mouse_cmp.common import provenance, skip_existing, bh, ARMS  # noqa: E402
 
@@ -429,17 +430,11 @@ def figures(emb, mk, corr, ov, act, tr, res, summ):
         v = np.nanmax(abs(P3.values))
         im = ax.imshow(P3.values, cmap=cmap, vmin=-v, vmax=v, aspect="auto")
         ax.set(yticks=range(P3.shape[0]), yticklabels=P3.index, xticks=range(len(cols)))
-        ax.set_xticklabels([pretty(c.split(":", 1)[1]) for c in cols], rotation=90, fontsize=5.5)
+        species_axis(ax, cols, fontsize=5.5)
         ax.tick_params(axis="y", labelsize=5)
-        nh = sum(c.startswith("human:") for c in cols)
-        ax.axvline(nh - 0.5, color="k", lw=1)
-        # Species belongs under the axis as a group label, not as a one-letter prefix on every tick.
-        for x0, x1, name in ((0, nh, "Human"), (nh, len(cols), "Mouse")):
-            ax.text((x0 + x1 - 1) / 2, 1.055, name, transform=ax.get_xaxis_transform(),
-                    ha="center", va="bottom", fontsize=6, style="italic")
         cb = plt.colorbar(im, ax=ax, shrink=0.75); cb.set_label(lab, fontsize=6)
         cell_grid(ax, P3.shape[0], P3.shape[1], lw=0.3)
-        panel(ax, "cd"[k], "Pathways" if fam == "pathway" else "Transcription factors")
+        panel(ax, "cd"[k], "Pathways" if fam == "pathway" else "Transcription factors", dy=1.085, pad=12.0)
     fig.subplots_adjust(left=0.10, right=0.945, top=0.945, bottom=0.115, wspace=0.40, hspace=0.45)
     save_figure(fig, OUT["fig2"], LOG)
 

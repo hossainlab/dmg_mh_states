@@ -30,7 +30,7 @@ import numpy as np, pandas as pd, anndata as ad, scipy.sparse as sp  # noqa: E40
 import scipy.stats as ss  # noqa: E402
 from dmg_atlas.states import STATE_GENE_SETS  # noqa: E402
 from mouse_cmp import INTERIM, PROCESSED, RESULTS, LOGS, HUMAN, EXTERNAL, ATLAS_ROOT  # noqa: E402
-from mouse_cmp.figio import PAGE_W, save_figure, panel, pretty  # noqa: E402
+from mouse_cmp.figio import species_axis, PAGE_W, save_figure, panel, pretty  # noqa: E402
 from mouse_cmp import palette as PAL  # noqa: E402
 from mouse_cmp.common import provenance, skip_existing  # noqa: E402
 
@@ -213,10 +213,9 @@ def figure(mk, pa, ta, corr):
     v = np.nanmax(np.abs(piv.values))
     im = ax.imshow(piv.values, cmap="RdBu_r", vmin=-v, vmax=v, aspect="auto")
     ax.set(yticks=range(piv.shape[0]), yticklabels=piv.index, xticks=range(piv.shape[1]))
-    ax.set_xticklabels([pretty(c.replace("human:", "H ").replace("mouse:", "M ")) for c in piv.columns], rotation=90, fontsize=6)
-    ax.axvline(sum(c.startswith("human:") for c in piv.columns) - 0.5, color="k", lw=1)
+    species_axis(ax, piv.columns)
     plt.colorbar(im, ax=ax, shrink=0.7, label="PROGENy activity")
-    panel(ax, "b", "Pathway activity, human and mouse")
+    panel(ax, "b", "Pathway activity, human and mouse", dy=1.085, pad=12.0)
 
     ax = axes[1, 0]
     sel = ta[(ta.species == "human") & ta.group.isin([f"human:{s}" for s in STATES])]
@@ -227,10 +226,9 @@ def figure(mk, pa, ta, corr):
     v = np.nanmax(np.abs(piv2.values))
     im = ax.imshow(piv2.values, cmap="PuOr_r", vmin=-v, vmax=v, aspect="auto")
     ax.set(yticks=range(piv2.shape[0]), yticklabels=piv2.index, xticks=range(piv2.shape[1]))
-    ax.set_xticklabels([pretty(c.replace("human:", "H ").replace("mouse:", "M ")) for c in piv2.columns], rotation=90, fontsize=6)
-    ax.axvline(sum(c.startswith("human:") for c in piv2.columns) - 0.5, color="k", lw=1)
+    species_axis(ax, piv2.columns)
     plt.colorbar(im, ax=ax, shrink=0.7, label="CollecTRI activity")
-    panel(ax, "c", "Transcription-factor activity")
+    panel(ax, "c", "Transcription-factor activity", dy=1.085, pad=12.0)
 
     ax = axes[1, 1]
     piv3 = corr.pivot(index="mouse_group", columns="human_subpopulation", values="rho")

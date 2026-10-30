@@ -144,6 +144,27 @@ def cell_grid(ax, nrows: int, ncols: int, color: str = "0.75", lw: float = 0.5):
     ax.set_axisbelow(False)
 
 
+def species_axis(ax, columns, fontsize: float = 6.0, group_fontsize: float = 6.0, rule: bool = True):
+    """Label a heatmap x-axis whose columns are 'human:<name>' and 'mouse:<name>'.
+
+    The prefix belongs above the axis as a group label, not on every tick as a one-letter code: 'H AC-like' and
+    'M astrocyte-like (normal)' are cryptic and long, and the length is what forces these panels to reserve a third
+    of their height for rotated text.
+    """
+    cols = [str(c) for c in columns]
+    ax.set_xticks(range(len(cols)))
+    ax.set_xticklabels([pretty(c.split(":", 1)[1] if ":" in c else c) for c in cols],
+                       rotation=90, fontsize=fontsize)
+    nh = sum(c.startswith("human:") for c in cols)
+    if not (0 < nh < len(cols)):
+        return
+    if rule:
+        ax.axvline(nh - 0.5, color="k", lw=1)
+    for x0, x1, name in ((0, nh, "Human"), (nh, len(cols), "Mouse")):
+        ax.text((x0 + x1 - 1) / 2, 1.02, name, transform=ax.get_xaxis_transform(),
+                ha="center", va="bottom", fontsize=group_fontsize, style="italic")
+
+
 def annotate_clusters(ax, coords, labels, palette, *, fontsize=6.0, min_label=1,
                       max_spread=0.35, background=(), names=None):
     """Name populations inside the plot instead of in a legend; returns the labels it could not place.
