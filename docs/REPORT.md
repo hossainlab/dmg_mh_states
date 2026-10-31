@@ -336,6 +336,21 @@ profiles, not on these per-cell labels. What it does change is usage: per-cell s
 cluster assignments in this model, and any analysis that conditions on them (per-subtype DE, per-subtype composition
 by arm) inherits a label that is one argmax away from noise for every subtype except cycling.
 
+## Follow-up - the authors' own UMAP, annotated with this study's evidence
+
+Dr Mei sent the published DIPG1 all-cells UMAP. Figure 10 reproduces it from the deposit's own coordinates
+(`obs UMAP_1/UMAP_2`) and overlays what this analysis found, so the two annotations can be compared on identical axes
+rather than on a re-embedding.
+
+Of the four clusters the authors label as tumour, **only `OPC-like tumor cells` carries the clone**: 3,246 cells,
+median clone correlation 0.218, holding 883 of the 891 strict-set cells (99.1%) and 82.5% predicted malignant by the
+human reference classifier. `Neuronal-like tumor` (29,915 cells, median 0.069) and `Purkinje-like tumor` (12,999,
+0.041) - together 64% of the dataset - contribute none, and `Astrocyte-like tumor cells` (372) contributes eight.
+Two small clusters pick up reference-coverage artefacts rather than biology: choroid plexus epithelium is called 87.5%
+malignant and meningeal fibroblasts 53%, neither of which has a counterpart in the human atlas.
+
+![Figure 10](../results/figures/m12_author_umap_annotated.png)
+
 ## Follow-up - clustering the mouse tumour cells without using the human labels
 
 Dr Shenglin raised the right objection to the two follow-ups above: both of them start from a human category system.
@@ -364,6 +379,8 @@ clone - genetic evidence that owes nothing to the atlas - says which of them are
 | M1 | 95 | 12 | 0.047 | 7.4% | `ARHGDIB`, `AIF1`, `LCP1`, `DOCK2` - immune |
 | M5 | 28 | 10 | 0.038 | 0% | `CFAP44`, `SPEF2`, `DNAH6` - ciliated |
 
+![Figure 11](../results/figures_denovo/m14_denovo_clusters.png)
+
 Against the clone-positive threshold fixed in `m04` (*r* = 0.267), only M3 clears it; M2 sits just below. M1, M4 and M5
 together are 1,013 cells, **31.2% of the authors' best tumour cluster**, and their marker identities - immune, neuronal,
 ciliated - are not tumour identities at all.
@@ -375,10 +392,14 @@ the human MES-like set, which overlaps myeloid biology, than as a conserved mese
 cluster. The pseudobulk correlations (figure 12a) are weak in every cell once genes are z-scored across profiles, and
 with only four mouse profiles they carry little information; the marker overlap is the discriminating test here.
 
+![Figure 12](../results/figures_denovo/m14_denovo_vs_human.png)
+
 **Treatment, again, moves nothing.** Twelve contrasts of de novo cluster composition against Control give a lowest
 q of 0.495, and every 95% confidence interval crosses zero (figure 13b). The largest raw effects are M3 with FUS (+0.99 log-odds, p = 0.053) and M4 with FUS (-1.35,
 p = 0.146). This is the fourth independent parameterisation of the treatment question - author labels, transferred
 subtypes, state scores, and now the mouse's own clusters - and the answer has not changed.
+
+![Figure 13](../results/figures_denovo/m14_denovo_treatment.png)
 
 **What this adds.** Figure 9 established that the transferred subtype labels do not mark clusters. Clustering de novo
 says why, and recovers something figure 9 could not: the cell set being labelled is itself a mixture, and once the

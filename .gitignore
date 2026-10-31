@@ -242,3 +242,4 @@ data/interim/mouse_qc.csv
 data/processed/mouse_tumour_calls.csv
 results/tables/m06a_joint_coordinates.csv.gz
 results/tables/m08_pseudobulk_de.csv.gz
+dist/
