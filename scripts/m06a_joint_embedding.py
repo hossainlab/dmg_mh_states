@@ -33,7 +33,7 @@ import dmg_atlas.utils as U  # noqa: E402
 import numpy as np, pandas as pd, anndata as ad  # noqa: E402
 from dmg_atlas.states import STATE_GENE_SETS  # noqa: E402
 from mouse_cmp import RESULTS, LOGS, HUMAN, ATLAS_ROOT  # noqa: E402
-from mouse_cmp.figio import PAGE_W, save_figure, LABEL_INK  # noqa: E402
+from mouse_cmp.figio import PAGE_W, save_figure, LABEL_INK, _label_box  # noqa: E402
 from mouse_cmp import palette as PAL  # noqa: E402
 from mouse_cmp.common import provenance, skip_existing  # noqa: E402
 
@@ -169,8 +169,7 @@ def figure(ho, mo):
                 y += (0.013 * yr) * (1 if y >= py else -1)
             placed.append((x, y))
             t = ax.text(x, y, lab, fontsize=fontsize, ha="center", va="center",
-                        color=LABEL_INK, zorder=6)
-            t.set_path_effects([mpe.withStroke(linewidth=2.2, foreground="white")])
+                        color=LABEL_INK, zorder=6, bbox=_label_box(col))
 
     def annotate(ax, coords, series, palette, fontsize=8, min_label=None):
         min_label = MIN_LABEL if min_label is None else min_label

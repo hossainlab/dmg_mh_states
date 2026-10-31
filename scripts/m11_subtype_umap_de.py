@@ -179,18 +179,30 @@ def figure(emb, sep, de, sig, qc, obs):
         g = emb[emb.subtype == s]
         ax.scatter(g.umap_1, g.umap_2, s=7, lw=0, color=COL[s], alpha=0.9)
     ax.set(xticks=[], yticks=[])
-    annotate_clusters(ax, emb[["umap_1", "umap_2"]].values, emb.subtype.values, COL, fontsize=6,
-                      background=("unassigned",), names={s: pretty(s) for s in STATES})
+    # A legend, not in-plot labels. Everywhere else in this figure set a population is named where it sits, but
+    # that convention assumes populations HAVE a place to sit. Here they do not - the whole point of the panel is
+    # that the five subtypes are intermixed - so the five labels converged on one spot and stacked into a block.
+    # A legend states the key without implying five territories that the data do not contain.
+    for s in STATES:
+        ax.scatter([], [], s=14, lw=0, color=COL[s], label=f"{pretty(s)} ({int((emb.subtype == s).sum())})")
+    ax.legend(loc="upper left", bbox_to_anchor=(-0.02, 1.02), frameon=False, fontsize=5.5, markerscale=1.0,
+              handletextpad=0.25, labelspacing=0.22, borderpad=0.0)
     panel(ax, "a", "Transferred subtype")
 
     ax = axes[0, 1]
-    mice = sorted(emb.mouse.unique())
-    mcol = PAL.mouse_palette(mice)
-    for m in mice:
-        g = emb[emb.mouse == m]
-        ax.scatter(g.umap_1, g.umap_2, s=7, lw=0, color=mcol[m], alpha=0.9)
+    # Fifteen mice as fifteen point colours is unreadable, and the panel does not need fifteen: its job is the
+    # confound check, and the confound is that ONE animal dominates. Showing that animal against the rest states
+    # it directly; the full per-mouse composition is panel f.
+    top = emb.mouse.value_counts().idxmax()
+    share = emb.mouse.eq(top).mean()
+    rest = emb[emb.mouse != top]
+    ax.scatter(rest.umap_1, rest.umap_2, s=7, lw=0, color="#C8C8C8", alpha=0.9,
+               label=f"other {emb.mouse.nunique() - 1} mice ({1 - share:.0%})")
+    g = emb[emb.mouse.eq(top)]
+    ax.scatter(g.umap_1, g.umap_2, s=7, lw=0, color="#762A83", alpha=0.9, label=f"{top} ({share:.0%})")
     ax.set(xticks=[], yticks=[])
-    annotate_clusters(ax, emb[["umap_1", "umap_2"]].values, emb.mouse.values, mcol, fontsize=6, min_label=40)
+    ax.legend(loc="upper left", bbox_to_anchor=(-0.02, 1.02), frameon=False, fontsize=5.5, markerscale=1.0,
+              handletextpad=0.25, labelspacing=0.22, borderpad=0.0)
     panel(ax, "b", "Mouse of origin")
 
     ax = axes[0, 2]

@@ -20,6 +20,22 @@ MIN_PT = 5.0          # smallest text any journal accepts at final size
 LABEL_INK = "#1A1A1A"
 
 
+def _label_box(col):
+    """White plate behind an in-plot label, outlined in the population's own colour.
+
+    These figures carry no legends - populations are named in plot - so the label is the ONLY place a reader can
+    learn which colour means which cell type. Two earlier attempts both failed at that. Colouring the text itself
+    was unreadable, because a label sits on its own points and competes with them. Making the text neutral dark
+    fixed the contrast but severed the colour-to-name link entirely: "AC-like" printed over a patch holding red,
+    blue and rose points tells a reader nothing about which of the three is AC-like.
+
+    A white plate with a coloured border carries both: the plate lifts dark text clear of whatever it covers, and
+    the border is an unambiguous colour key attached to the name. It also measures as part of the text's window
+    extent, so the existing collision logic keeps working unchanged.
+    """
+    return dict(boxstyle="round,pad=0.22", facecolor="white", edgecolor=col, linewidth=1.0, alpha=0.93)
+
+
 def check_figure(fig, min_pt: float = MIN_PT):
     """Geometric check: text boxes that overlap each other or a spine, text outside the canvas, text below min_pt."""
     import matplotlib as mpl
@@ -220,8 +236,7 @@ def annotate_clusters(ax, coords, labels, palette, *, fontsize=6.0, min_label=1,
             y = clamp(y + (0.015 * yr) * (1 if y >= clash[0][1] else -1), y0 + my, y1 - my)
         placed.append((x, y))
         t = ax.text(x, y, lab, fontsize=fontsize, ha="center", va="center",
-                    color=LABEL_INK, zorder=6)
-        t.set_path_effects([mpe.withStroke(linewidth=2.2, foreground="white")])
+                    color=LABEL_INK, zorder=6, bbox=_label_box(col))
         drawn.append(t)
     _nudge_inside(ax, drawn)
     return skipped
