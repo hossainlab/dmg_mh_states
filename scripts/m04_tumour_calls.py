@@ -172,6 +172,20 @@ with log.step("calls + tables + figure"):
                widths=0.6, medianprops=dict(color="#222222", lw=1.0))  # neutral: the default orange now
     # reads as the AC-like subtype in the shared palette
     ax.set_yticks(range(1, len(order) + 1), order); ax.axvline(thr_r, ls="--", lw=0.7, c="k")
+    # The dashed line is a PER-CELL threshold, so a box's median says little about whether the label carries the
+    # clone: every label's median sits left of it, including OPC-like tumor cells, which supplies every tumour
+    # call in the dataset. The quantity that actually supports the call is the fraction of each label's cells
+    # that clear the line, so it is printed next to each box rather than left for the reader to infer.
+    x0, x1 = ax.get_xlim()
+    ax.set_xlim(x0, x1 + 0.17 * (x1 - x0))        # a clear column for the percentages, off the whiskers
+    xmax = float(ax.get_xlim()[1])
+    for i, l in enumerate(order, start=1):
+        f = float(bylab.loc[l, "frac_clone_pos"])
+        ax.text(xmax, i, f"{f * 100:.0f}%", va="center", ha="right", fontsize=5,
+                color="#222222" if f >= 0.10 else "#8C8C8C")
+    ax.text(xmax, len(order) + 0.9, "% of cells\nright of line", va="center", ha="right", fontsize=5,
+            style="italic", color="#555555")
+    ax.set_ylim(0.4, len(order) + 1.6)
     ax.set_xlabel("correlation with shared tumour CNV profile\n(leave-one-mouse-out)"); panel(ax, "a", "CNV clone signal by author label")
     ax = fig.add_subplot(gs[0, 1])
     PR = pd.DataFrame(prof_rows).set_index("sample"); PR = PR[PR.n_seed >= 3].drop(columns="n_seed")

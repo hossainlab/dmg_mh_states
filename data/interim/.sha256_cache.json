@@ -117,5 +117,6 @@
  "/Users/jubayer/Projects/dmg_mh_states/data/processed/m05_cnmf_usages.parquet|72867|1793324673": "974afd7eee0d108f7c555be32390c22701777dce77a25453adf4b4649dddf6ea",
  "/Users/jubayer/Projects/dmg_mh_states/results/tables/m05_cnmf_programs.csv|113479|1793324672": "25c648dffb0755d6936cd4d4a8ce46797a125ec018a8079018b0b9a26b7b8a23",
  "/Users/jubayer/Projects/dmg_mh_states/data/processed/mouse_tme_labels.csv|1353257|1793324517": "f9fd5db68b24c8cd6eed68cae57f142f9d079f335f3180ff04a90129749c52c3",
- "/Users/jubayer/Projects/dmg_mh_states/results/tables/m06_projection_per_cell.csv.gz|4677949|1793469610": "bf8477c72c470d565b0b4671b0bb848c1c968fb9bcee9f86c19647b0f9e339f8"
+ "/Users/jubayer/Projects/dmg_mh_states/results/tables/m06_projection_per_cell.csv.gz|4677949|1793469610": "bf8477c72c470d565b0b4671b0bb848c1c968fb9bcee9f86c19647b0f9e339f8",
+ "/Users/jubayer/Projects/dmg_mh_states/data/processed/mouse_tumour_calls.csv|9126417|1793471581": "162a7ccceffae68164db01ecf658ac6ddb1dda3727e1799f5bc17db1ce91782b"
 }

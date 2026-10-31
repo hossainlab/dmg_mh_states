@@ -305,6 +305,17 @@ def figures(emb, mk, corr, ov, act, tr, res, summ):
     clusters_all = sorted(emb.cluster.unique(), key=lambda c: int(c[1:]))
     clusters = [c for c in clusters_all if c in set(corr.mouse_cluster)]   # above the floor
     excluded = [c for c in clusters_all if c not in clusters]
+    # A cluster that is excluded from the statistics must not be drawn as a peer of the ones that are not
+    # (figure-style 1.1). It keeps its colour so it can be found in every panel, but its bars are hatched and
+    # its name carries the exclusion, so a reader cannot take it for a result.
+    def _tick(c):
+        # Asterisk, not the word: "M5 (excluded)" as a y-tick ran left into the neighbouring panel's colourbar.
+        # The word is spelled out once, in panel a, where there is room for it.
+        return f"{c}*" if c in excluded else c
+
+    def _name(c):
+        return f"{c} (excluded)" if c in excluded else c
+    _hatch = ["///" if c in excluded else "" for c in clusters_all]
     ccol = dict(zip(clusters_all, PAL.denovo(len(clusters_all))))
 
     # ---- figure 1: the clustering itself
@@ -314,7 +325,8 @@ def figures(emb, mk, corr, ov, act, tr, res, summ):
         g = emb[emb.cluster == c]
         ax.scatter(g.umap_1, g.umap_2, s=3, lw=0, color=ccol[c], rasterized=True)
     ax.set(xticks=[], yticks=[])
-    annotate_clusters(ax, emb[["umap_1", "umap_2"]].values, emb.cluster.values, ccol, fontsize=6)
+    annotate_clusters(ax, emb[["umap_1", "umap_2"]].values, emb.cluster.values, ccol, fontsize=6,
+                      names={c: _name(c) for c in clusters_all})
     panel(ax, "a", f"De novo clusters (resolution {res})")
 
     # Fifteen mice cannot be told apart as fifteen point colours - the first version of this panel was an
@@ -355,7 +367,7 @@ def figures(emb, mk, corr, ov, act, tr, res, summ):
     im = ax.imshow(Mx.values, cmap="RdBu_r", vmin=-np.nanmax(abs(Mx.values)), vmax=np.nanmax(abs(Mx.values)),
                    aspect="auto")
     ax.set(yticks=range(len(genes)), yticklabels=genes, xticks=range(len(clusters_all)),
-           xticklabels=clusters_all)
+           xticklabels=[_tick(c) for c in clusters_all])
     ax.tick_params(axis="y", labelsize=5)
     cell_grid(ax, Mx.shape[0], Mx.shape[1])
     cb = plt.colorbar(im, ax=ax, shrink=0.75)
@@ -365,19 +377,27 @@ def figures(emb, mk, corr, ov, act, tr, res, summ):
     ax = axes[1, 1]
     y = np.arange(len(clusters_all))
     ax.barh(y, summ.set_index("cluster").loc[clusters_all, "median_clone_r"].values,
-            color=[ccol[c] for c in clusters_all], height=0.7)
+            color=[ccol[c] for c in clusters_all], height=0.7, hatch=_hatch, edgecolor="white", linewidth=0)
     ax.axvline(0.27, ls="--", lw=0.7, c="k")
-    ax.set(yticks=y, yticklabels=clusters_all, xlabel="median clone correlation")
+    ax.set(yticks=y, yticklabels=[_tick(c) for c in clusters_all], xlabel="median clone correlation")
     ax.invert_yaxis()
     panel(ax, "e", "Clone signal per cluster")
 
     ax = axes[1, 2]
     ax.barh(y, 100 * summ.set_index("cluster").loc[clusters_all, "frac_strict_set"].values,
-            color=[ccol[c] for c in clusters_all], height=0.7)
-    ax.set(yticks=y, yticklabels=clusters_all, xlabel="% in the strict clone-positive set")
+            color=[ccol[c] for c in clusters_all], height=0.7, hatch=_hatch, edgecolor="white", linewidth=0)
+    # A zero-valued bar draws nothing, which reads as missing rather than zero (figure-style 6.1).
+    vals = 100 * summ.set_index("cluster").loc[clusters_all, "frac_strict_set"].values
+    for yi, v in zip(y, vals):
+        if v <= 0:
+            ax.plot([0], [yi], marker="|", ms=4, mew=1.0, color="#555555")
+    ax.set(yticks=y, yticklabels=[_tick(c) for c in clusters_all], xlabel="% in the strict clone-positive set")
     ax.invert_yaxis()
     panel(ax, "f", "Overlap with the strict set")
     fig.subplots_adjust(left=0.085, right=0.955, top=0.93, bottom=0.095, wspace=0.46, hspace=0.42)
+    if excluded:
+        fig.text(0.5, 0.012, f"* below the {MIN_CLUSTER_CELLS}-cell floor; excluded from all statistics",
+                 ha="center", va="bottom", fontsize=5, style="italic", color="#555555")
     save_figure(fig, OUT["fig1"], LOG)
 
     # ---- figure 2: mouse clusters against human subpopulations
